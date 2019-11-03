@@ -1,0 +1,125 @@
+.btn-sm-blue {
+  color: white;
+  background: $main-blue;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 7px 14px;
+  display: block;
+  text-align: center;
+  width: 87px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btn-sm-blue:hover{
+  opacity: 0.75;
+  color: $white;
+  background: $seafoam;
+  text-decoration: none;
+}
+
+.btn-md-blue {
+  color: white;
+  background: $main-blue;
+  border: 2px solid white;
+  border-radius: 50px;
+  padding: 10px 15px;
+  display: block;
+  text-align: center;
+  width: 110px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn-md-blue:hover {
+  opacity: 0.75;
+  color: $white;
+  background: $seafoam;
+  text-decoration: none;
+}
+
+
+.btn-lg-blue {
+  color: $white;
+  background: $main-blue;
+  border: 2px solid $white;
+  border-radius: 50px;
+  padding: 10px 15px;
+  display: block;
+  text-align: center;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn-lg-blue:hover {
+  opacity: 0.75;
+  color: $white;
+  background: $seafoam;
+  text-decoration: none;
+}
+
+.btn-sm-white {
+  color: $main-blue;
+  background: white;
+  border: 2px solid $main-blue;
+  border-radius: 50px;
+  padding: 7px 14px;
+  display: block;
+  text-align: center;
+  width: 87px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.btn-sm-white:hover{
+  opacity: 0.75;
+  color: $main-blue;
+  background: $seafoam;
+  text-decoration: none;
+}
+
+.btn-md-white {
+  color: $main-blue;
+  background: white;
+  border: 2px solid $main-blue;
+  border-radius: 50px;
+  padding: 10px 15px;
+  display: block;
+  text-align: center;
+  width: 110px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.btn-md-white:hover {
+  opacity: 0.75;
+  color: $main-blue;
+  background: $seafoam;
+  text-decoration: none;
+}
+
+
+.btn-lg-white {
+  color: $main-blue;
+  background: white;
+  border: 2px solid $main-blue;
+  border-radius: 50px;
+  padding: 10px 15px;
+  display: block;
+  text-align: center;
+  width: 200px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btn-lg-white:hover {
+  opacity: 0.75;
+  color: $main-blue;
+  background: $seafoam;
+  text-decoration: none;
+}
+
+
+
+

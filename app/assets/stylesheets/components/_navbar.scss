@@ -8,5 +8,23 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 50px;
+  margin-left: 15px;
 }
+
+.navbar-icons {
+  display: flex;
+  margin-right: 35px;
+}
+
+.navbar-icons .navbar-collapse{
+  display: flex;
+  flex-direction: column;
+  margin-right: 35px;
+}
+
+
+.navbar-lewagon .nav-link img:hover {
+  opacity: .7;
+}
+
