@@ -1,0 +1,23 @@
+.masthead {
+  height: 100vh;
+  min-height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background: linear-gradient(transparent, white),
+  asset-url('cartwheel_beach.jpg');
+}
+
+
+.banner-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.tagline {
+  color: $dark-blue;
+  padding: 20px;
+}
+
