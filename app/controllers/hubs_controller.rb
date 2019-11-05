@@ -10,5 +10,6 @@ class HubsController < ApplicationController
 
   def show
     @hub = Hub.find(params[:id])
+    @event = Event.new
   end
 end
