@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :events, only: [:edit, :destroy, :create, :update, :show]
+  resources :events, only: [:edit, :destroy, :update, :show] do
+    resources :event_bookings, only: :create
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :hubs, only: [:index, :show]
+  resources :hubs, only: [:index, :show] do
+    resources :events, only: :create
+  end
 end
