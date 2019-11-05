@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-md-6 mx-auto">
+    <div class="card mb-5 p-4">
+      <p>Event: <%= @event.title %></p>
+      <p>Description: <%= @event.description %></p>
+      <p>Hub: <%= link_to @event.hub.name, hub_path(@event.hub) %></p>
+      <p>Host Email: <%= @event.user.email %></p>
+      <p>Total Spots: <%= @event.capacity %></p>
+      <p>Spots Available: <%= (@event.capacity - @event.event_bookings.length) %></p>
+      <% if @event.event_bookings.length < @event.capacity %>
+        <%= simple_form_for([@event, @booking]) do |f| %>
+          <%= f.button :submit, input_html: { class: "btn-md-blue" } %>
+          <% if @booking.errors.any? %>
+            <div class="errors-container">
+              <ul>
+                <% @booking.errors.messages.each do |attr, msg| %>
+                  <% msg.each do |val| %>
+                  <li><%= val %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <% end %>
+      <% else %>
+        <h5>this is event is fully booked</h5>
+      <% end %>
+    </div>
+  </div>
+</div>
