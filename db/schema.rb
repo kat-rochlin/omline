@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_094917) do
+ActiveRecord::Schema.define(version: 2019_11_04_101932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(version: 2019_11_04_094917) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_connection_id"
+    t.bigint "user_id"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_connection_id"], name: "index_messages_on_user_connection_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -93,8 +103,11 @@ ActiveRecord::Schema.define(version: 2019_11_04_094917) do
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
     t.string "tag_type"
+    t.string "tagable_type"
+    t.bigint "tagable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable_type_and_tagable_id"
   end
 
   create_table "teacher_certifications", force: :cascade do |t|
@@ -104,6 +117,36 @@ ActiveRecord::Schema.define(version: 2019_11_04_094917) do
     t.datetime "updated_at", null: false
     t.index ["certification_id"], name: "index_teacher_certifications_on_certification_id"
     t.index ["user_id"], name: "index_teacher_certifications_on_user_id"
+  end
+
+  create_table "teacher_experiences", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "studio_name"
+    t.text "description"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_teacher_experiences_on_user_id"
+  end
+
+  create_table "teacher_languages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_teacher_languages_on_language_id"
+    t.index ["user_id"], name: "index_teacher_languages_on_user_id"
+  end
+
+  create_table "teacher_teaching_styles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "teaching_style_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["teaching_style_id"], name: "index_teacher_teaching_styles_on_teaching_style_id"
+    t.index ["user_id"], name: "index_teacher_teaching_styles_on_user_id"
   end
 
   create_table "teaching_styles", force: :cascade do |t|
@@ -128,18 +171,25 @@ ActiveRecord::Schema.define(version: 2019_11_04_094917) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
     t.string "first_name"
     t.string "last_name"
-    t.date "birthdate"
+    t.integer "age"
     t.string "nationality"
     t.text "description"
     t.bigint "hub_id"
     t.string "profile_photo"
     t.string "cover_photo"
     t.boolean "is_teacher"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["hub_id"], name: "index_users_on_hub_id"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "event_bookings", "events"
@@ -148,9 +198,16 @@ ActiveRecord::Schema.define(version: 2019_11_04_094917) do
   add_foreign_key "event_types", "types"
   add_foreign_key "events", "hubs"
   add_foreign_key "events", "users"
+  add_foreign_key "messages", "user_connections"
+  add_foreign_key "messages", "users"
   add_foreign_key "studios", "hubs"
   add_foreign_key "teacher_certifications", "certifications"
   add_foreign_key "teacher_certifications", "users"
+  add_foreign_key "teacher_experiences", "users"
+  add_foreign_key "teacher_languages", "languages"
+  add_foreign_key "teacher_languages", "users"
+  add_foreign_key "teacher_teaching_styles", "teaching_styles"
+  add_foreign_key "teacher_teaching_styles", "users"
   add_foreign_key "user_connections", "users", column: "connectee_id"
   add_foreign_key "user_connections", "users", column: "connector_id"
   add_foreign_key "users", "hubs"
