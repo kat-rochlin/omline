@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_101932) do
+ActiveRecord::Schema.define(version: 2019_11_05_092342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,16 +44,15 @@ ActiveRecord::Schema.define(version: 2019_11_04_101932) do
     t.bigint "hub_id"
     t.string "title"
     t.text "description"
-    t.date "start_date"
-    t.date "end_date"
-    t.time "start_time"
-    t.time "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.string "address"
     t.integer "capacity"
     t.string "photo"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location_name"
     t.index ["hub_id"], name: "index_events_on_hub_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_101932) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "cover_photo"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_101932) do
     t.string "styles"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["hub_id"], name: "index_studios_on_hub_id"
   end
 

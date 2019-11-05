@@ -7,7 +7,7 @@ class EventBookingsController < ApplicationController
     if @booking.save
       redirect_to event_path(@event)
     else
-      render :new
+      render 'events/show'
     end
   end
 
