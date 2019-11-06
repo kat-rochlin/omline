@@ -25,4 +25,11 @@
       <%= link_to "remove friend", remove_friend_path(friend), method: :delete %>
     <% end %>
   <% end %>
+
+<%= current_user.first_name %>
+<%= current_user.last_name %>
+<%= current_user.nationality %>
+<%= current_user.birthdate %>
+<%= cl_image_tag @user.profile_photo, height: 300, width: 400, crop: :fill %>
+
 </div>

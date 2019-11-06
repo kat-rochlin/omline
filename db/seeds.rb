@@ -54,7 +54,7 @@ user = User.new(
   password: "password",
   first_name: "Quinn",
   last_name: "Zite",
-  birthdate: "1988-06-26",
+  birthdate: "1988-06-26"
   nationality: "American",
   description: "Quinn is awesome",
   hub_id: 2,
