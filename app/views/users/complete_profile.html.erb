@@ -1,0 +1,54 @@
+<h1>Users#complete_profile</h1>
+<p>Find me in app/views/users/complete_profile.html.erb</p>
+
+<%= simple_form_for @user, url: update_profile_path, method: :patch do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "First Name" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Last Name" }%>
+    <%= f.input :birthdate,
+                as: :date,
+                html5: true,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "Birthdate" }%>
+    <%= f.country_select :nationality,
+                label: "Country",
+                input_html: { class: "select2" } %>
+    <%= f.input :is_teacher,
+                as: :boolean,
+                label: "Are you a teacher?",
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "teacher" }%>
+    <%= f.input :description,
+                as: :text,
+                label: "Bio (optional)",
+                autofocus: true,
+                input_html: { autocomplete: "bio" }%>
+    <%= f.input :profile_photo,
+                label: "Profile Photo (optional)",
+                autofocus: true,
+                input_html: { autocomplete: "photo" }%>
+    <%= f.input :cover_photo,
+                label: "Cover Photo (optional)",
+                autofocus: true,
+                input_html: { autocomplete: "photo" }%>
+    <%= f.input :tags,
+                as: :string,
+                label: "Interests (optional)",
+                autofocus: true,
+                input_html: { autocomplete: "interests" }%>
+</div>
+  <%= f.button :submit %>
+
+<% end %>
+
+

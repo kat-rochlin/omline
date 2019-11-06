@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
+gem 'geocoder'
 # add friendships between users
 gem 'has_friendship'
 group :development do
@@ -29,3 +30,7 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
 end
+
+gem 'country_select', '~> 4.0'
+gem 'cloudinary', '~> 1.9.1'
+gem 'carrierwave', '~> 1.2'
