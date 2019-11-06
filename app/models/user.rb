@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :teacher_certifications
   has_many :teacher_languages
   has_many :teacher_teaching_styles
-  validates :is_teacher, inclusion: { in: [true, false] }
-  validates :first_name, :last_name, :birthdate, :nationality, presence: true
+  validates :is_teacher, inclusion: { in: [true, false] }, on: :update
+  validates :first_name, :last_name, :birthdate, :nationality, presence: true, on: :update
   # allows user to have - accept - and block friends
   has_friendship
 
