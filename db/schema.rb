@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_092342) do
-
+ActiveRecord::Schema.define(version: 2019_11_05_084006) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,6 +54,17 @@ ActiveRecord::Schema.define(version: 2019_11_05_092342) do
     t.string "location_name"
     t.index ["hub_id"], name: "index_events_on_hub_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "friendships", id: :serial, force: :cascade do |t|
+    t.string "friendable_type"
+    t.integer "friendable_id"
+    t.integer "friend_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer "blocker_id"
+    t.integer "status"
+    t.index ["friendable_id", "friend_id"], name: "index_friendships_on_friendable_id_and_friend_id", unique: true
   end
 
   create_table "hubs", force: :cascade do |t|
@@ -188,7 +198,9 @@ ActiveRecord::Schema.define(version: 2019_11_05_092342) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "friendship_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["friendship_id"], name: "index_users_on_friendship_id"
     t.index ["hub_id"], name: "index_users_on_hub_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -211,5 +223,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_092342) do
   add_foreign_key "teacher_teaching_styles", "users"
   add_foreign_key "user_connections", "users", column: "connectee_id"
   add_foreign_key "user_connections", "users", column: "connector_id"
+  add_foreign_key "users", "friendships"
   add_foreign_key "users", "hubs"
 end
