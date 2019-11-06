@@ -14,6 +14,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def dashboard
+    @user = current_user
+  end
+
   def request_friend
     current_user.friend_request(@user)
     # raise

@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row justify-content-between mb-3">
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>Events</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center">
+          <% @user.events.each do |event| %>
+            <div class="border-top p-3 w-100">
+              <%= event.title %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>Connections</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center">
+          <%= @user.first_name %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>Your Hub</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center">
+          <%= @user.first_name %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

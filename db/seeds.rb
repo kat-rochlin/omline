@@ -48,6 +48,38 @@ puts 'creating users'
   user.save!
 end
 
+puts 'creating Quinn'
+user = User.new(
+  email: "quinnzite@gmail.com",
+  password: "password",
+  first_name: "Quinn",
+  last_name: "Zite",
+  age: 31,
+  nationality: "American",
+  description: "Quinn is awesome",
+  hub_id: 2,
+  is_teacher: false
+)
+
+user.save!
+puts 'Quinn now exists'
+
+puts 'creating Mason'
+user = User.new(
+  email: "msnyder193@gmail.com",
+  password: "password",
+  first_name: "Mason",
+  last_name: "Snyder",
+  age: 31,
+  nationality: "American",
+  description: "Mason is awesome",
+  hub_id: 2,
+  is_teacher: false
+)
+
+user.save!
+puts 'Mason now exists'
+
 # studios
 filepath_studios = File.join(__dir__, 'data/studios.csv')
 CSV.foreach(filepath_studios, csv_options) do |row|

@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :teacher_teaching_styles
   validates :is_teacher, inclusion: { in: [true, false] }, on: :update
   validates :first_name, :last_name, :birthdate, :nationality, presence: true, on: :update
+  has_many :user_connections
   # allows user to have - accept - and block friends
   has_friendship
 
