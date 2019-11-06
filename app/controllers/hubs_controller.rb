@@ -1,6 +1,11 @@
 class HubsController < ApplicationController
   def index
-    @hubs = Hub.all
+    @search = params[:search]
+    if @search.present?
+      @hubs = Hub.where("city ILIKE ?", "%#{@search}%")
+    else
+      @hubs = Hub.all
+    end
   end
 
   def show

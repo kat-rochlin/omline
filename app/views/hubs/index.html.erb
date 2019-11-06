@@ -1,6 +1,13 @@
-<h1>Hubs#index</h1>
-<p>Find me in app/views/hubs/index.html.erb</p>
-
+<div class="hub-search py-2">
+  <%= form_tag hubs_path, method: :get do %>
+    <%= text_field_tag :search,
+      @search,
+      class: "form-control",
+      placeholder: "Search a location"
+    %>
+    <%= submit_tag "Search", class:"btn-sm-blue"%>
+  <% end %>
+</div>
 <div class="cards">
   <% @hubs.each do |hub|%>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
@@ -8,5 +15,3 @@
     </div>
   <% end %>
 </div>
-
-
