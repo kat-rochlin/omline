@@ -6,5 +6,5 @@ class Event < ApplicationRecord
   has_many :event_types
   has_many :types, through: :event_types
   has_many :tags, as: :tagable
-  validates :title, :description, :start_time, :end_time, :end_date, :start_date, :address, :capacity, presence: true
+  validates :title, :description, :start_time, :end_time, :address, :capacity, presence: true
 end
