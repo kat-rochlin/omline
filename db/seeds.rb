@@ -35,17 +35,50 @@ puts 'creating users'
     password: row['encrypted_password'],
     first_name: row['first_name'],
     last_name: row['last_name'],
-    age: row['age'],
+    birthdate: row['birthdate'],
     nationality: row['nationality'],
     description: row['description'],
     hub_id: row['hub_id'],
-    is_teacher: row['is_teacher']
+    is_teacher: row['is_teacher'].to_i
   )
 
   user.profile_photo = row['profile_photo']
   user.cover_photo = row['cover_photo']
+
   user.save!
 end
+
+puts 'creating Quinn'
+user = User.new(
+  email: "quinnzite@gmail.com",
+  password: "password",
+  first_name: "Quinn",
+  last_name: "Zite",
+  age: 31,
+  nationality: "American",
+  description: "Quinn is awesome",
+  hub_id: 2,
+  is_teacher: false
+)
+
+user.save!
+puts 'Quinn now exists'
+
+puts 'creating Mason'
+user = User.new(
+  email: "msnyder193@gmail.com",
+  password: "password",
+  first_name: "Mason",
+  last_name: "Snyder",
+  age: 31,
+  nationality: "American",
+  description: "Mason is awesome",
+  hub_id: 2,
+  is_teacher: false
+)
+
+user.save!
+puts 'Mason now exists'
 
 # studios
 filepath_studios = File.join(__dir__, 'data/studios.csv')

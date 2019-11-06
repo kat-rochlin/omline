@@ -14,6 +14,17 @@ class PagesController < ApplicationController
     end
   end
 
+  def dashboard
+    @user = current_user
+  end
+
+  def current_hub
+    @user = current_user
+    newhub = Hub.find(params[:newhub].to_i)
+    @user.update(hub: newhub)
+    redirect_to dashboard_path
+  end
+
   def request_friend
     current_user.friend_request(@user)
     # raise
@@ -22,10 +33,12 @@ class PagesController < ApplicationController
 
   def accept_friend
     current_user.accept_request(@user)
+    redirect_to dashboard_path
   end
 
   def remove_friend
     current_user.remove_friend(@user)
+    redirect_to dashboard_path
   end
 
   def set_user
