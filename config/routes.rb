@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user_connections/create'
   get 'messages/index'
   devise_for :users
   root to: 'pages#home'
@@ -13,6 +14,8 @@ Rails.application.routes.draw do
   resources :user_connections, only: [:new, :create, :index, :show, :destroy] do
     resources :messages, only: [ :index, :create ]
   end
+
+  resources :user_connections, only: :create
 
   resources :events, only: [:edit, :destroy, :update, :show] do
     resources :event_bookings, only: :create

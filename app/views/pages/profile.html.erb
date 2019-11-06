@@ -6,23 +6,18 @@
   <% end %>
 
   <!-- Start a conversation with a friend from their profile -->
-  <% if current_user != @user %>
-    <%= link_to "Message", user_connection_messages_path(@user) %>
+  <% if current_user.friends.include?(@user) %>
+    <% if current_user != @user && @connection.present? %>
+      <%= link_to "Message", user_connection_messages_path(@connection) %>
+    <% else %>
+      <%= link_to "Message", user_connections_path(connector: @sender, connectee: @recipient), method: :post %>
+    <% end %>
   <% end %>
-
   <!-- Allow you to accept any pending friends  -->
   <% if current_user == @user %>
     <% @user.requested_friends.each do |friend| %>
       <%= friend %>
       <%= link_to "accept", accept_friend_path(friend), method: :post %>
-    <% end %>
-  <% end %>
-
-  <!-- List all friends and allow you to remove friends -->
-  <% current_user.friends.each do |friend| %>
-    <p>friends : <%= friend %></p>
-    <% if current_user == @user %>
-      <%= link_to "remove friend", remove_friend_path(friend), method: :delete %>
     <% end %>
   <% end %>
 </div>

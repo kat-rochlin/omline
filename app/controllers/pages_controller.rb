@@ -5,12 +5,10 @@ class PagesController < ApplicationController
   end
 
   def profile
-    sender = current_user
-    recipient = @user
-    if UserConnection.between(sender, recipient).present?
-      @connection = UserConnection.between(sender, recipient).first
-    else
-      @connection = nil
+    @sender = current_user
+    @recipient = @user
+    if UserConnection.between(@sender, @recipient).present?
+      @connection = UserConnection.between(@sender, @recipient).first
     end
   end
 
@@ -30,10 +28,6 @@ class PagesController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
-  end
-
-  def conversations
-    @conversations = Conversation.all
   end
 end
 
