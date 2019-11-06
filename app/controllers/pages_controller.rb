@@ -8,7 +8,6 @@ class PagesController < ApplicationController
     sender = current_user
     recipient = @user
     if UserConnection.between(sender, recipient).present?
-      raise
       @connection = UserConnection.between(sender, recipient).first
     else
       @connection = nil

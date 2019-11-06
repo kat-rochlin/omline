@@ -206,7 +206,7 @@ puts 'creating user_connections'
     connectee_id: row['connectee_id'],
     connector_id: row['connector_id']
   )
-  user_connection.save
+  user_connection.save!
 end
 
 # messages
