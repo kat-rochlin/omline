@@ -8,6 +8,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    raise
+    @message = params[:message]
   end
 end
