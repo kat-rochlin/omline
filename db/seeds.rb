@@ -35,15 +35,16 @@ puts 'creating users'
     password: row['encrypted_password'],
     first_name: row['first_name'],
     last_name: row['last_name'],
-    age: row['age'],
+    birthdate: row['birthdate'],
     nationality: row['nationality'],
     description: row['description'],
     hub_id: row['hub_id'],
-    is_teacher: row['is_teacher']
+    is_teacher: row['is_teacher'].to_i
   )
 
   user.profile_photo = row['profile_photo']
   user.cover_photo = row['cover_photo']
+
   user.save!
 end
 
