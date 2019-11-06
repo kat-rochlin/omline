@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'hubs/index'
   get 'hubs/show'
-  get "profile/:id", to: "pages#profile"
+  get "profile/:id", to: "pages#profile", as: "profile"
   get "complete_profile", to: "users#complete_profile", as: "complete_profile"
   patch "update_profile", to: "users#update_profile", as: "update_profile"
   get "new_profile", to: "teachers#new_profile", as: "new_teacher_profile"

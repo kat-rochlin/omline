@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     if @user.is_teacher
       redirect_to new_teacher_profile_path
     else
-      redirect_to hubs_path
+      redirect_to profile_path(@user.id)
     end
    else
     render 'complete_profile'
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
 
 def user_params
-  params.require(:user).permit(:first_name, :last_name, :birthdate, :nationality, :is_teacher)
+  params.require(:user).permit(:first_name, :last_name, :birthdate, :nationality, :is_teacher, :photo)
 end
 
 end
