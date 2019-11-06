@@ -15,7 +15,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'devise'
-
+# add friendships between users
+gem 'has_friendship'
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

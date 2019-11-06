@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  belongs_to :hub
+  # bypass hub_id upon signup
+  belongs_to :hub, optional: true
   has_many :tags, as: :tagable
+  # allows user to have - accept - and block friends
+  has_friendship
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
