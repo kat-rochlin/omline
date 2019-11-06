@@ -11,5 +11,7 @@ class HubsController < ApplicationController
   def show
     @hub = Hub.find(params[:id])
     @event = Event.new
+    @studios = Studio.all
+    @users = User.all
   end
 end
