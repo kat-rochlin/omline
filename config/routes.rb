@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post "friends/:id", to: "pages#accept_friend", as: "accept_friend"
   delete "friend/:id", to: "pages#remove_friend", as: "remove_friend"
   get "dashboard", to: "pages#dashboard"
+  get "new_hub", to: "pages#current_hub"
 
   resources :user_connections, only: [:new, :create, :index, :show, :destroy] do
     resources :messages, only: [ :index, :create ]
