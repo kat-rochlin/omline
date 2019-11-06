@@ -3,16 +3,18 @@ class EventsController < ApplicationController
 
   def show
     @booking = EventBooking.new
+    @event.user = current_user
   end
 
   def create
     @event = Event.new(event_params)
     @event.hub = Hub.find(params[:hub_id])
     @event.user = current_user
+    @studios = Studio.all
     if @event.save
-      redirect_to hubs_path(@hub)
+      redirect_to hub_path(@event.hub)
     else
-      render :new
+      render "hubs/show", locals: { :@hub => @event.hub }
     end
   end
 

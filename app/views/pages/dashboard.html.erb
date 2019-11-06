@@ -6,10 +6,14 @@
           <h3>Events</h3>
         </div>
         <div class="dash-card-body p-4 text-center">
-          <% @user.events.each do |event| %>
-            <div class="border-top p-3 w-100">
-              <%= event.title %>
-            </div>
+          <% if @user.events.empty? %>
+            <h5>You have not signed up for any events yet.</h5>
+          <% else %>
+            <% @user.events.each do |event| %>
+              <div class="border-top p-3 w-100">
+                <%= event.title %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -17,10 +21,13 @@
     <div class="col-lg-4">
       <div class="card">
         <div class="dash-card-header p-3 text-center border-bottom">
-          <h3>Connections</h3>
+          <h3>Friend Requests</h3>
         </div>
         <div class="dash-card-body p-4 text-center">
-          <%= @user.first_name %>
+          <% @user.requested_friends.each do |friendreq| %>
+            <%= friendreq.first_name %>
+            <%= link_to "accept", accept_friend_path(friendreq), method: :post %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -30,7 +37,27 @@
           <h3>Your Hub</h3>
         </div>
         <div class="dash-card-body p-4 text-center">
-          <%= @user.first_name %>
+          <%= link_to @user.hub.name, hub_path(@user.hub) %>
+          <%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>Friends</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center">
+          <% if @user.friends.empty? %>
+            <h5>You're a loser... no one likes you...</h5>
+          <% else %>
+            <% @user.friends.each do |friend| %>
+              <p><%= friend.first_name %></p>
+              <%= link_to "remove friend", remove_friend_path(friend), method: :delete %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
