@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get 'hubs/index'
+  get 'hubs/show'
   get "profile/:id", to: "pages#profile"
   post "friend/:id", to: "pages#request_friend", as: "request_friend"
   post "friends/:id", to: "pages#accept_friend", as: "accept_friend"
@@ -12,5 +14,11 @@ Rails.application.routes.draw do
     resources :messages, only: [ :index, :create ]
   end
 
+  resources :events, only: [:edit, :destroy, :update, :show] do
+    resources :event_bookings, only: :create
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :hubs, only: [:index, :show] do
+    resources :events, only: :create
+  end
 end
