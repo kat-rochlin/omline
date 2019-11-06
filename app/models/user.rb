@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :event_bookings
   has_many :events, through: :event_bookings
   has_many :tags, as: :tagable
+  has_many :user_connections
   # allows user to have - accept - and block friends
   has_friendship
 
