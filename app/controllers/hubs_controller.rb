@@ -12,6 +12,6 @@ class HubsController < ApplicationController
     @hub = Hub.find(params[:id])
     @event = Event.new
     @studios = Studio.all
-    @users = User.all
+    @users = User.where(hub: @hub)
   end
 end

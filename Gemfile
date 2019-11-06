@@ -32,4 +32,3 @@ group :development, :test do
 end
 
 gem 'country_select', '~> 4.0'
-gem 'dotenv-rails', groups: [:development, :test]

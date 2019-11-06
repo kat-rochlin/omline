@@ -3,11 +3,11 @@
 <div>
 
 <!-- <div class="avatar">
-  <% @users.each do |user| %>
-    <%= user.profile_photo %>
-  <% end %>
-</div> -->
-
+  <%# @users.each do |user| %>
+    <%#ß= cl_image_tag user.profile_photo, height: 400, width: 400, crop: :fill %>
+  <%# end %>
+</div>
+ -->
 <div class="container">
   <div class="row">
     <div class="col-md-6">
@@ -20,10 +20,11 @@
           <% end %>
         <!-- Button trigger modal -->
         </div>
-        <button type="button" class="btn-lg-white" data-toggle="modal" data-target="#exampleModal">
+        <button id="create-event-btn" type="button" class="btn-lg-white" data-toggle="modal" data-target="#exampleModal">
           Create Event
         </button>
 
+         <span id="form-to-render" data-to-render="<%= @failed %>"></span>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
