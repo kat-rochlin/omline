@@ -61,6 +61,32 @@
         </div>
       </div>
     </div>
+    <div class="col-lg-4">
+      <div class="card text-center">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>My Tags</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center">
+          <% if params[:newtags] == "newtags" %>
+            <% Tag.all.where(tag_type: "user").each do |tag| %>
+              <%= link_to tag.tag_name, add_tag_path({ :tag => "#{tag.tag_name}" }), :class => "btn-lg-blue" %>
+            <% end %>
+            <h2>my tags</h2>
+            <% @user.tags.each do |tag| %>
+              <%= tag.tag_name %>
+            <% end %>
+          <% else %>
+            <% @user.tags.each do |tag| %>
+              <%= tag.tag_name %>
+              <%= link_to remove_tag_path({ :tag => "#{tag.tag_name}" }), method: :delete  do %>
+                <h2>X</h2>
+              <% end %>
+            <% end %>
+            <%= link_to "add tags", dashboard_path({ :newtags => "newtags" }), :class => "btn-lg-blue" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

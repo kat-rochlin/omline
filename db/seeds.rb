@@ -225,16 +225,16 @@ puts 'creating messages'
 end
 
 
-# # tags
-# filepath_tags = File.join(__dir__, 'data/tags.csv')
-# CSV.foreach(filepath_tags, csv_options) do |row|
-# puts 'creating tags'
-#   tag = Tag.new(
-#     tag_name: row['tag_name'],
-#     tag_type: row['tag_type']
-#   )
-#   tag.save!
-# end
+# tags
+filepath_tags = File.join(__dir__, 'data/tags.csv')
+CSV.foreach(filepath_tags, csv_options) do |row|
+puts 'creating tags'
+  tag = Tag.new(
+    tag_name: row['tag_name'],
+    tag_type: row['tag_type']
+  )
+  tag.save!
+end
 
 
 
