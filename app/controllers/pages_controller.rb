@@ -25,7 +25,6 @@ class PagesController < ApplicationController
 
   def request_friend
     current_user.friend_request(@user)
-    # raise
     flash[:notice] = "Friendship Requested"
   end
 
