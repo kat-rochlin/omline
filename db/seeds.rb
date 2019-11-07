@@ -62,7 +62,9 @@ puts 'creating studio'
     email: row['email'],
     phone_number: row['phone_number'],
     hours: row['hours'],
-    styles: row['styles']
+    styles: row['styles'],
+    latitude: row['latitude'],
+    longitude: row['longitude']
   )
 
   studio.photo = row['photo']
