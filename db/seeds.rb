@@ -62,7 +62,9 @@ puts 'creating studio'
     email: row['email'],
     phone_number: row['phone_number'],
     hours: row['hours'],
-    styles: row['styles']
+    styles: row['styles'],
+    latitude: row['latitude'],
+    longitude: row['longitude']
   )
 
   studio.photo = row['photo']
@@ -225,16 +227,16 @@ puts 'creating messages'
 end
 
 
-# # tags
-# filepath_tags = File.join(__dir__, 'data/tags.csv')
-# CSV.foreach(filepath_tags, csv_options) do |row|
-# puts 'creating tags'
-#   tag = Tag.new(
-#     tag_name: row['tag_name'],
-#     tag_type: row['tag_type']
-#   )
-#   tag.save!
-# end
+# tags
+filepath_tags = File.join(__dir__, 'data/tags.csv')
+CSV.foreach(filepath_tags, csv_options) do |row|
+puts 'creating tags'
+  tag = Tag.new(
+    tag_name: row['tag_name'],
+    tag_type: row['tag_type']
+  )
+  tag.save!
+end
 
 
 
