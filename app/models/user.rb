@@ -14,7 +14,8 @@ class User < ApplicationRecord
   has_many :user_connections
   # allows user to have - accept - and block friends
   has_friendship
-
+  mount_uploader :profilephoto, PhotoUploader
+  mount_uploader :coverphoto, PhotoUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

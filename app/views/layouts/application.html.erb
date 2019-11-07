@@ -7,19 +7,20 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+   <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="<%= asset_path 'omline_logo.png' %>" />
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css' rel='stylesheet' />
   </head>
-  <body>
+  <body style="height: 100vh; display: flex; flex-direction: column; justify-content: space-between;">
+    <p class="custom-notice"><%= notice %></p>
+    <p class="custom-alert"><%= alert %></p>
     <%= render '/shared/navbar' %>
     <div class="overall-container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
+      <%= yield %>
     </div>
     <%= render 'shared/footer' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>

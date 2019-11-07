@@ -42,8 +42,8 @@ puts 'creating users'
     is_teacher: row['is_teacher'].to_i
   )
 
-  user.profile_photo = row['profile_photo']
-  user.cover_photo = row['cover_photo']
+  user.remote_profilephoto_url = row['profile_photo']
+  user.remote_coverphoto_url = row['cover_photo']
 
   user.save!
 end
