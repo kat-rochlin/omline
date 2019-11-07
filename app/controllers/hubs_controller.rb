@@ -18,7 +18,8 @@ class HubsController < ApplicationController
     @markers = @studios.map do |studio|
       {
         lat: studio.latitude,
-        lng: studio.longitude
+        lng: studio.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { studio: studio })
       }
     end
   end

@@ -1,5 +1,6 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
+
 import $ from 'jquery';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initSelect2 } from '../plugins/initSelect2';
