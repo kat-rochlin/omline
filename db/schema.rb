@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 2019_11_06_093710) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.string "tagable_type"
+    t.bigint "tagable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_relationships_on_tag_id"
+    t.index ["tagable_type", "tagable_id"], name: "index_relationships_on_tagable_type_and_tagable_id"
+  end
+
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -117,11 +127,8 @@ ActiveRecord::Schema.define(version: 2019_11_06_093710) do
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
     t.string "tag_type"
-    t.string "tagable_type"
-    t.bigint "tagable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable_type_and_tagable_id"
   end
 
   create_table "teacher_certifications", force: :cascade do |t|

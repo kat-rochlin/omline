@@ -14,12 +14,29 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
+    @tags = Tag.all
   end
 
   def current_hub
     @user = current_user
     newhub = Hub.find(params[:newhub].to_i)
     @user.update(hub: newhub)
+    redirect_to dashboard_path
+  end
+
+  def add_tag
+    @user = current_user
+    newtag = Tag.where(tag_name: params[:tag], tag_type: "user")
+    relation = Relationship.new(tag_id: newtag.first.id, tagable: @user)
+    relation.save
+    redirect_to dashboard_path
+  end
+
+  def remove_tag
+    @user = current_user
+    tag = @user.tags.where(tag_name: params[:tag]).first
+    relationship = Relationship.where(tag_id: tag.id, tagable_id: @user.id).first
+    relationship.destroy
     redirect_to dashboard_path
   end
 
