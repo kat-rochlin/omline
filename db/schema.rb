@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_093710) do
     t.string "encrypted_password", default: "", null: false
     t.string "first_name"
     t.string "last_name"
-    t.integer "age"
+    t.date "birthdate"
     t.string "nationality"
     t.text "description"
     t.bigint "hub_id"
