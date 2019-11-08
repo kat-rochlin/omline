@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   resources :teacher_certifications, only: [:create, :destroy]
   resources :teacher_teaching_styles, only: [:create, :destroy]
+  resources :teacher_experiences, only: [:create, :update, :destroy]
 
 
 end

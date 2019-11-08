@@ -12,7 +12,7 @@ class HubsController < ApplicationController
     @studios = Studio.geocoded #returns studios with coordinates
     @hub = Hub.find(params[:id])
     @event = Event.new
-    @studios = Studio.all
+    @studios = Studio.where(hub: @hub)
     @users = User.where(hub: @hub)
 
     @markers = @studios.map do |studio|
