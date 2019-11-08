@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   delete "friend/:id", to: "pages#remove_friend", as: "remove_friend"
   get "dashboard", to: "pages#dashboard"
   get "new_hub", to: "pages#current_hub"
+  get "add_tag", to: "pages#add_tag"
+  delete "remove_tag", to: "pages#remove_tag"
 
   resources :user_connections do
     resources :messages

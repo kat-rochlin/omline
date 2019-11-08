@@ -14,7 +14,9 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to hub_path(@event.hub)
     else
+      @failed = true
       render "hubs/show", locals: { :@hub => @event.hub }
+
     end
   end
 

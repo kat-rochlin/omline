@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_05_092342) do
+ActiveRecord::Schema.define(version: 2019_11_07_100508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,16 @@ ActiveRecord::Schema.define(version: 2019_11_05_092342) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "relationships", force: :cascade do |t|
+    t.bigint "tag_id"
+    t.string "tagable_type"
+    t.bigint "tagable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_relationships_on_tag_id"
+    t.index ["tagable_type", "tagable_id"], name: "index_relationships_on_tagable_type_and_tagable_id"
+  end
+
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -109,17 +119,16 @@ ActiveRecord::Schema.define(version: 2019_11_05_092342) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["hub_id"], name: "index_studios_on_hub_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
     t.string "tag_type"
-    t.string "tagable_type"
-    t.bigint "tagable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable_type_and_tagable_id"
   end
 
   create_table "teacher_certifications", force: :cascade do |t|
@@ -191,8 +200,8 @@ ActiveRecord::Schema.define(version: 2019_11_05_092342) do
     t.string "nationality"
     t.text "description"
     t.bigint "hub_id"
-    t.string "profile_photo"
-    t.string "cover_photo"
+    t.string "profilephoto"
+    t.string "coverphoto"
     t.boolean "is_teacher"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
