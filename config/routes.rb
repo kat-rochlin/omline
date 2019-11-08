@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'teachers_certifications/create'
   get 'teachers_certifications/destroy'
   get 'teachers/new_profile'
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
   post "friend/:id", to: "pages#request_friend", as: "request_friend"
   post "friends/:id", to: "pages#accept_friend", as: "accept_friend"
   delete "friend/:id", to: "pages#remove_friend", as: "remove_friend"
-  get "dashboard", to: "pages#dashboard"
+  get "dashboard", to: "pages#dashboard", as: 'dashboard'
   get "new_hub", to: "pages#current_hub"
   get "add_tag", to: "pages#add_tag"
   delete "remove_tag", to: "pages#remove_tag"
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
 
   resources :teacher_certifications, only: [:create, :destroy]
   resources :teacher_teaching_styles, only: [:create, :destroy]
+  resources :teacher_experiences, only: [:create, :update, :destroy]
 
 
 end

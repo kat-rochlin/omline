@@ -45,4 +45,4 @@ const initMapbox = () => {
 };
 
 
-export { initMapbox };
+initMapbox()

@@ -1,6 +1,5 @@
 class TeachersController < ApplicationController
   def new_profile
-
   end
 
   def save_profile

@@ -7,16 +7,25 @@ class EventsController < ApplicationController
   end
 
   def create
+    @studios = Studio.geocoded
     @event = Event.new(event_params)
     @event.hub = Hub.find(params[:hub_id])
     @event.user = current_user
-    @studios = Studio.all
+    @studios = Studio.where(hub: @event.hub)
+    @users = User.where(hub: @event.hub)
     if @event.save
       redirect_to hub_path(@event.hub)
     else
-      @failed = true
-      render "hubs/show", locals: { :@hub => @event.hub }
+    @markers = @studios.map do |studio|
+      {
+        lat: studio.latitude,
+        lng: studio.longitude,
+        infoWindow: render_to_string(partial: "hubs/info_window", locals: { studio: studio })
+      }
+    end
 
+      @failed = true
+      render "hubs/show", locals: { :@hub => @event.hub, :@markers => @markers }
     end
   end
 

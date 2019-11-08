@@ -6,7 +6,10 @@
 <div class="container">
   <div>
     <% @users.each do |user| %>
-      <%= cl_image_tag user.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %>
+      <%= link_to profile_path(user.id) do %>
+
+        <%= cl_image_tag user.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %>
+      <% end %>
     <% end %>
   </div>
   <div class="row">
@@ -81,3 +84,7 @@
     </div>
   </div>
 </div>
+
+
+<%= javascript_pack_tag 'map.js' %>
+
