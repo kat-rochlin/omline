@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  def create
+  end
 
   def complete_profile
     @user = current_user
