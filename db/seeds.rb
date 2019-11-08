@@ -42,8 +42,8 @@ puts 'creating users'
     is_teacher: row['is_teacher'].to_i
   )
 
-  user.profile_photo = row['profile_photo']
-  user.cover_photo = row['cover_photo']
+  user.remote_profilephoto_url = row['profile_photo']
+  user.remote_coverphoto_url = row['cover_photo']
 
   user.save!
 end
@@ -227,16 +227,16 @@ puts 'creating messages'
 end
 
 
-# # tags
-# filepath_tags = File.join(__dir__, 'data/tags.csv')
-# CSV.foreach(filepath_tags, csv_options) do |row|
-# puts 'creating tags'
-#   tag = Tag.new(
-#     tag_name: row['tag_name'],
-#     tag_type: row['tag_type']
-#   )
-#   tag.save!
-# end
+# tags
+filepath_tags = File.join(__dir__, 'data/tags.csv')
+CSV.foreach(filepath_tags, csv_options) do |row|
+puts 'creating tags'
+  tag = Tag.new(
+    tag_name: row['tag_name'],
+    tag_type: row['tag_type']
+  )
+  tag.save!
+end
 
 
 
