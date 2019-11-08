@@ -14,4 +14,8 @@ window.initMapbox = initMapbox
 initSelect2();
 triggerClickOnEventForm();
 
+const removeFlash = () => {
+  document.querySelector(".custom-notice").remove()
+}
 
+setTimeout(removeFlash, 5000);
