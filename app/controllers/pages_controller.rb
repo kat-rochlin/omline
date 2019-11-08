@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @tags = Tag.all
+    @events = Event.where(user: current_user)
   end
 
   def current_hub
