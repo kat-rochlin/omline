@@ -24,6 +24,13 @@
         <input name="languages[]" type="checkbox", value="<%= language.id %>"> <%= language.name %> <br>
       <% end %>
 
+      <hr>
+
+      <%= f.input :studio_name %>
+      <%= f.input :location %>
+      <%= f.input :description %>
+      <%= f.input :start_date %>
+      <%= f.input :end_date %>
   <%= f.button :submit %>
 <% end %>
     </div>

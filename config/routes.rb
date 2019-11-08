@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+
+  get 'teachers_certifications/create'
+  get 'teachers_certifications/destroy'
+  get 'teachers/new_profile'
+  get 'teachers/save_profile'
+  get 'users/complete_profile'
+  get 'users/update_profile'
+  get 'messages/index'
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
@@ -20,11 +28,9 @@ Rails.application.routes.draw do
   get "add_tag", to: "pages#add_tag"
   delete "remove_tag", to: "pages#remove_tag"
 
-  resources :user_connections, only: [:new, :create, :index, :show, :destroy] do
-    resources :messages, only: [ :index, :create ]
+  resources :user_connections do
+    resources :messages, only: :index
   end
-
-  resources :user_connections, only: :create
 
   resources :events, only: [:edit, :destroy, :update, :show] do
     resources :event_bookings, only: :create
@@ -37,6 +43,7 @@ Rails.application.routes.draw do
 
   resources :teacher_certifications, only: [:create, :destroy]
   resources :teacher_teaching_styles, only: [:create, :destroy]
+  resources :teacher_experiences, only: [:create, :update, :destroy]
 
 
 end
