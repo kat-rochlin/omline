@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get 'user_connections/create'
-  get 'teachers_certifications/create'
-  get 'teachers_certifications/destroy'
-  get 'teachers/new_profile'
-  get 'teachers/save_profile'
-  get 'users/complete_profile'
-  get 'users/update_profile'
-  get 'messages/index'
   devise_for :users, controllers: {
         registrations: 'users/registrations'
       }
@@ -23,7 +15,7 @@ Rails.application.routes.draw do
   post "friend/:id", to: "pages#request_friend", as: "request_friend"
   post "friends/:id", to: "pages#accept_friend", as: "accept_friend"
   delete "friend/:id", to: "pages#remove_friend", as: "remove_friend"
-  get "dashboard", to: "pages#dashboard"
+  get "dashboard", to: "pages#dashboard", as: 'dashboard'
   get "new_hub", to: "pages#current_hub"
   get "add_tag", to: "pages#add_tag"
   delete "remove_tag", to: "pages#remove_tag"
