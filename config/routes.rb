@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'user_connections/create'
   get 'teachers_certifications/create'
   get 'teachers_certifications/destroy'
   get 'teachers/new_profile'
@@ -28,11 +27,9 @@ Rails.application.routes.draw do
   get "add_tag", to: "pages#add_tag"
   delete "remove_tag", to: "pages#remove_tag"
 
-  resources :user_connections, only: [:new, :create, :index, :show, :destroy] do
-    resources :messages, only: [ :index, :create ]
+  resources :user_connections do
+    resources :messages, only: :index
   end
-
-  resources :user_connections, only: :create
 
   resources :events, only: [:edit, :destroy, :update, :show] do
     resources :event_bookings, only: :create
