@@ -4,7 +4,7 @@
       <% @conversations.each do |friend| %>
       <div class="card">
         <div class="card-body d-flex justify-content-between">
-          <p>First Name <%= friend.first_name %></p>
+          <p> <%= friend.first_name %> <%= friend.last_name %></p>
           <%= link_to "Chat", user_connection_messages_path(UserConnection.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first), class:"btn-sm-white" %>
         </div>
       </div>

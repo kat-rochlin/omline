@@ -42,8 +42,8 @@ class PagesController < ApplicationController
 
   def request_friend
     current_user.friend_request(@user)
-    # raise
     flash[:notice] = "Friendship Requested"
+    redirect_to profile_path(@user)
   end
 
   def accept_friend
@@ -61,11 +61,3 @@ class PagesController < ApplicationController
   end
 end
 
-# # @mac sends a friend request to @dee
-# @current_user.friend_request()
-
-# # @dee can accept the friend request
-# @dee.accept_request(@mac)
-
-# # @dee can also decline the friend request
-# @dee.decline_request(@mac)

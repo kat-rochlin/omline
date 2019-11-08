@@ -9,3 +9,9 @@ import { triggerClickOnEventForm } from '../plugins/trigger_click_on_event_form'
 initMapbox();
 initSelect2();
 triggerClickOnEventForm();
+
+const removeFlash = () => {
+  document.querySelector(".custom-notice").remove()
+}
+
+setTimeout(removeFlash, 5000);

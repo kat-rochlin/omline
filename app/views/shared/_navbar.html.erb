@@ -18,9 +18,13 @@
           <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to user_connection_messages_path(@connections.first), class: "nav-link" do%>
-            <%= image_tag "message_icon.png", :width => 32 %>
-            <% end %>
+              <% if @connections.present? %>
+                <%= link_to user_connection_messages_path(@connections.first), class: "nav-link" do%>
+                <%= image_tag "message_icon.png", :width => 32 %>
+                <% end %>
+              <% elsif %>
+                <%= image_tag "message_icon.png", :width => 32 %>
+              <% end %>
           </li>
           <li class="nav-item">
             <%= link_to "#", class: "nav-link" do%>
