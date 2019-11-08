@@ -7,7 +7,7 @@
 }
 
 .fa-arrow-left {
-  font-size: 40px;
+  font-size: 50px;
   color: $main-blue;
 }
 
@@ -18,8 +18,9 @@
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-top: 18vh !important;
-  max-width: 750px;
+  margin-top: 10vh !important;
+  max-width: 850px;
+  height: 60vh;
 }
 
 .card-signin .card-title {
