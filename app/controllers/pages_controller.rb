@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   def dashboard
     @user = current_user
     @tags = Tag.all
+    @events = Event.where(user: current_user)
   end
 
   def current_hub
@@ -42,7 +43,6 @@ class PagesController < ApplicationController
 
   def request_friend
     current_user.friend_request(@user)
-    # raise
     flash[:notice] = "Friendship Requested"
   end
 

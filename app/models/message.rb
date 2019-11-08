@@ -9,7 +9,6 @@ class Message < ApplicationRecord
   end
 
   def conversations
-    raise
     @conversations = Conversation.all
     @user = User.all
   end
