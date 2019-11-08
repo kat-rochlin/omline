@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   delete "remove_tag", to: "pages#remove_tag"
 
   resources :user_connections do
-    resources :messages, only: :index
+    resources :messages
   end
 
   resources :events, only: [:edit, :destroy, :update, :show] do
