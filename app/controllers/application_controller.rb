@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_connections
-    @connections = UserConnection.where('connector_id = ? OR connectee_id = ?', current_user.id, current_user.id)
+    if current_user
+      @connections = UserConnection.where('connector_id = ? OR connectee_id = ?', current_user.id, current_user.id)
+    end
   end
 end
