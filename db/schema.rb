@@ -127,11 +127,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_100508) do
   create_table "tags", force: :cascade do |t|
     t.string "tag_name"
     t.string "tag_type"
-    t.string "tagable_type"
-    t.bigint "tagable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tagable_type", "tagable_id"], name: "index_tags_on_tagable_type_and_tagable_id"
   end
 
   create_table "teacher_certifications", force: :cascade do |t|
