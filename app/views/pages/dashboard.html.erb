@@ -1,3 +1,4 @@
+
 <h1>My Dashboard</h1>
   <hr>
     <div class="row">
@@ -27,28 +28,26 @@
       </div>
 
 
-<div class="container">
-  <div class="row justify-content-between mb-3">
-    <div class="col-lg-4">
-      <div class="card">
-        <div class="dash-card-header p-3 text-center border-bottom">
-          <h3>Events</h3>
-        </div>
-        <div class="dash-card-body p-4 text-center">
-          <% if @user.events.empty? %>
-            <h5>You have not signed up for any events yet.</h5>
-          <% else %>
-            <% @user.events.each do |event| %>
-              <div class="border-top p-3 w-100">
-                <%= event.title %>
-              </div>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="event" role="tabpanel" aria-labelledby="event-tab">
+      <div>
+        <div class="card">
+          <div class="dash-card-header p-3 text-center border-bottom">
+            <h3>Events</h3>
+          </div>
+          <div class="dash-card-body p-4 text-center">
+            <% if @user.events.empty? %>
+              <h5>You have not signed up for any events yet.</h5>
+            <% else %>
+              <% @user.events.each do |event| %>
+                <div class="border-top p-3 w-100">
+                  <%= event.title %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
-      </div>
-    </div>
     <% if @events.empty? == false %>
-      <div class="col-lg-4">
         <div class="card">
           <div class="dash-card-header p-3 text-center border-bottom">
             <h3>My Hosted Events</h3>
@@ -61,9 +60,11 @@
             <% end %>
           </div>
         </div>
-      </div>
     <% end %>
-    <div class="col-lg-4">
+    </div>
+     </div>
+
+    <div class="tab-pane fade" id="requests" role="tabpanel" aria-labelledby="friend-request-tab">
       <div class="card">
         <div class="dash-card-header p-3 text-center border-bottom">
           <h3>Friend Requests</h3>
@@ -76,9 +77,12 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4">
+
+
+
+
+
+  <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
       <div class="card">
         <div class="dash-card-header p-3 text-center border-bottom">
           <h3>Your Hub</h3>
@@ -89,7 +93,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
+
+  <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
       <div class="card">
         <div class="dash-card-header p-3 text-center border-bottom">
           <h3>Friends</h3>
@@ -105,8 +110,10 @@
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4">
+  </div>
+
+
+  <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
       <div class="card text-center">
         <div class="dash-card-header p-3 text-center border-bottom">
           <h3>My Tags</h3>
