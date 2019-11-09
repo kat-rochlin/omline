@@ -1,41 +1,177 @@
+<div class="container-profile">
+  <div class = "cover-photo">
+    <div class = "action-btns"><%= link_to "Connect", "#", class:"btn-md-white" %><%= link_to "Message", "#", class:"btn-md-white" %>
+    </div>
+  </div>
+  <div class = "main-profile">
+    <div class="row row-centered">
+      <div class="col-xs-12 col-s-12 col-md-4">
+        <div class="card-interests" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">INTERESTS</h5>
+            <div class = "card-items">
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Yoga
 
-<div class="container">
-  <!-- Request a friend if youre not yet their friend and not on your own profile  -->
-  <% unless current_user == @user || @user.pending_friends.include?(current_user) %>
-  <%= link_to "friend request", request_friend_path(@user), method: :post %>
-  <% end %>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
 
-  <!-- Start a conversation with a friend from their profile -->
-  <% if current_user.friends.include?(@user) %>
-    <% if current_user != @user && @connection.present? %>
-      <%= link_to "Message", user_connection_messages_path(@connection) %>
-    <% else %>
-      <%= link_to "Message", user_connections_path(connector: @sender, connectee: @recipient), method: :post %>
-    <% end %>
-  <% end %>
-  <!-- Allow you to accept any pending friends  -->
-  <% if current_user == @user %>
-    <% @user.requested_friends.each do |friend| %>
-      <%= friend %>
-      <%= link_to "accept", accept_friend_path(friend), method: :post %>
-    <% end %>
-  <% end %>
+              </p>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Meditation
 
-  <!-- List all friends and allow you to remove friends -->
-  <% current_user.friends.each do |friend| %>
-    <p>friends : <%= friend %></p>
-    <% if current_user == @user %>
-      <%= link_to "remove friend", remove_friend_path(friend), method: :delete %>
-    <% end %>
-  <% end %>
 
-<%= @user.first_name %>
-<%= @user.last_name %>
-<%= @user.nationality %>
-<%= @user.birthdate %>
-<%= cl_image_tag @user.profilephoto, height: 300, width: 400, crop: :fill %>
+              </p>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Pranayama
 
+
+              </p>
+              <div class = "see_all-link1">
+                <a href="#" class="card-link">See All</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-s-12 col-md-4">
+        <div class="photo-avatar"><%= cl_image_tag @user.profilephoto, class:"prof-photo"  %>
+        </div>
+        <h4 class="name"><%= @user.first_name %> <%= @user.last_name %>
+        </h4>
+        <p class="info"><%= @user.nationality %>
+        </p><% if  @user.is_teacher == true %>
+        <div class="teacher-ind"><%= image_tag 'teacher_icon.png', class:"teacher-prof-icon"  %>
+          <div class="teacher-text">
+            <p>Teacher</p>
+          </div>
+        </div><% end %>
+      </>
+      <div class = "desc">
+        <p class="truncate-overflow">Hi ! My name is Jane Doe. I'm a UI/UX Designer
+      from Paris, in France. I really enjoy photography and mountains. Hi ! My name is Jane Doe. I'm a UI/UX Designer
+      from Paris, in France. I really enjoy photography and mountains.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-s-12 col-md-4">
+      <div class="card-connection" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">38 CONNECTIONS</h5>
+          <br>
+            <h6 class="card-subtitle mb-2 ">Recently Added</h6><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %>
+            <div class = "see_all-link">
+              <a href="#" class="card-link">See All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "container-teacher-info">
+    <div class = "teach-exp-top">
+      <h3 class="teach-exp-title">TEACHING EXPERIENCE</h3>
+
+    <div class = "teach-exp-cards">
+      <div class="card w-75 teach-exp">
+        <div class="card-test">
+          <div class = "col-8">
+            <h5 class="card-title">One Yoga Thailand</h5>
+            <p class="card-text">Koh Phangan</p>
+            <p class="card-text">I taught Vinyasa and Hatha classes</p>
+          </div>
+          <div class = "col-4">
+            <p>April 2018 - April 2019</p>
+          </div>
+        </div>
+      </div>
+      <div class="card w-75 teach-exp">
+        <div class="card-test">
+          <div class = "col-8">
+            <h5 class="card-title">One Yoga Thailand</h5>
+            <p class="card-text">Koh Phangan</p>
+            <p class="card-text">I taught Vinyasa and Hatha classes</p>
+          </div>
+          <div class = "col-4">
+            <p>April 2018 - April 2019</p>
+          </div>
+        </div>
+      </div>
+      <div class="card w-75 teach-exp">
+        <div class="card-test">
+          <div class = "col-8">
+            <h5 class="card-title">One Yoga Thailand</h5>
+            <p class="card-text">Koh Phangan</p>
+            <p class="card-text">I taught Vinyasa and Hatha classes</p>
+          </div>
+          <div class = "col-4">
+            <p>April 2018 - April 2019</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "see_all-link-exp">
+      <a href="#" class="card-link">See All</a>
+    </div>
+    </div>
+    <div class = "teach-info">
+      <div class="row row-centered">
+        <div class="col-xs-12 col-s-12 col-md-4">
+          <div class="card-teach" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">TEACHING STYLES</h5>
+              <div class = "card-items">
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Vinyasa
+
+
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Hatha
+
+
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Kundalini
+
+
+                </p>
+                <div class = "see_all-link1">
+                  <a href="#" class="card-link">See All</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-s-12 col-md-4">
+          <div class="card-teach" style="width: 18rem;">
+            <div class="card-body-teach">
+              <h5 class="card-title">CERTIFICATIONS</h5>
+              <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-s-12 col-md-4">
+          <div class="card-teach" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">LANGUAGES</h5>
+              <div class = "card-items">
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> English
+
+
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Finnish
+
+
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class = "current-location">
+  CURRENT LOCATION
+
+
+    <div class="curr-location-card" style="background-image: linear-gradient(rgba(192,192,192,0.6), rgba(192,192,192,0.6)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573291416/canggu_kwcov1.jpg)">
+  Canggu
+</div>
+  </div>
 </div>
