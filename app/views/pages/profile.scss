@@ -5,13 +5,11 @@
   margin: 30px auto 30px;
   padding: 0 !important;
   width: 90%;
-  height: 250vh;
+  height: 300vh;
   background-color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+  // box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
 }
 
 .main-profile {
@@ -92,15 +90,6 @@
   .cover-photo i {
     right: -90%;
   }
-}
-
-.prof-current-hub {
-  position: absolute;
-  bottom: 0;
-  left: 18px;
-  font-size: 20px;
-   padding-bottom: 3px;
-   color: white;
 }
 
 
@@ -287,7 +276,6 @@
 }
 
 
-
 .current-location {
   display: flex;
   flex-direction: column;
@@ -368,15 +356,12 @@
 
 .teach-exp-title {
   margin: auto;
-  padding: 30px;
+  padding: 40px;
 }
 
 .teach-exp {
   display: flex;
   margin: auto;
-  justify-content: space-between;
-  border-radius: 15px;
-  margin-bottom: 12px;
 }
 
 
@@ -387,7 +372,7 @@
 
 
 .teach-exp-cards {
-  height: 294px;
+  height: 276px;
   overflow: scroll;
 }
 
@@ -395,108 +380,7 @@
 .see_all-link-exp {
   bottom: 0;
   text-align: right;
-  padding-inline-end: 91px;
-}
-
-
-
-
-// .card {
-//     background-color: #ffffff;
-//     border: 1px solid rgba(0, 34, 51, 0.1);
-//     box-shadow: 2px 4px 10px 0 rgba(0, 34, 51, 0.05), 2px 4px 10px 0 rgba(0, 34, 51, 0.05);
-//     border-radius: 0.15rem;
-// }
-
-/* Tabs Card */
-
-.tab-card {
-  border: 3px solid #eee;
-  // padding: 20px;
-  border-radius: 20px;
-  height: 400px;
-}
-
-.tab-card-header {
-  background:none;
-}
-/* Default mode */
-.tab-card-header > .nav-tabs {
-  border: none;
-  margin: 0px;
-}
-.tab-card-header > .nav-tabs > li {
-  margin-right: 2px;
-}
-.tab-card-header > .nav-tabs > li > a {
-  border: 0;
-  border-bottom:2px solid transparent;
-  margin-right: 0;
-  color: #737373;
-  padding: 2px 15px;
-}
-
-.tab-card-header > .nav-tabs > li > a.show {
-    border-bottom:2px solid #007bff;
-    color: #007bff;
-}
-.tab-card-header > .nav-tabs > li > a:hover {
-    color: #007bff;
-}
-
-.tab-card-header > .tab-content {
-  padding-bottom: 0;
-}
-
-
-.card-title-event {
-  padding: 30px;
-}
-
-.tab-card {
-  height: 500px;
-}
-
-
-.card-product-group {
-  height: 275px;
-  overflow: scroll;
-}
-
-.card-product {
-  overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  border-radius: 20px;
-  align-items: center;
-  margin-bottom: 20px;
-  max-width: 650px;
-}
-
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
+    padding-inline-end: 91px;
 }
 
 
