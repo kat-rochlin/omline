@@ -1,0 +1,32 @@
+// $('.new-message').html("<%= render 'messages/form', user_connection: @user_connection, message: @message %>")
+// function refreshForm(innerHTML) {
+//   const newMessageForm = document.getElementByClassName('new-message');
+//   newMessageForm.innerHTML = innerHTML;
+// }
+
+// function addMessage(messageHTML) {
+//   const messages = document.getElementById('message_content');
+//   messages.insertAdjacentHTML('beforeend', messageHTML);
+// }
+
+function fillForm() {
+  console.log("im here");
+  const message = document.getElementById('message_content');
+  const container = document.getElementbyClassName('insert-message');
+
+  const html = `<div class=”item”>
+           <div class=”content”>
+            <div class=”header”><strong> user.first_name </strong> message.message_time </div>
+             <div class=”list”>
+              <div class=”item”>
+               <i class=”right triangle icon”></i>
+                 message.content
+             </div>
+           </div>
+          </div>
+        </div>`
+
+container.insertAdjacentHTML('afterbegin', html);
+}
+
+fillForm();
