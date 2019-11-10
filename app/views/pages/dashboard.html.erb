@@ -1,143 +1,123 @@
+<div class = "dash-container">
+<div class="sidebar-container">
+  <div class="row profile">
+    <div class="col">
+      <div class="profile-sidebar">
+        <div class="profile-userpic">
+          <div class="photo-avatar"><%= cl_image_tag @user.profilephoto, class:"prof-photo"  %>
+          </div>
 
-<h1>My Dashboard</h1>
-  <hr>
-    <div class="row">
-      <div class="col-md-2 mb-3">
-        <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link active" id="event-tab" data-toggle="tab" href="#event" role="tab"
+          <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+            Marcus Doe
+          </div>
+            <div class="profile-usertitle-job">
+            Developer
+          </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <ul class="nav nav-pills flex-column" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="event-tab" data-toggle="tab" href="#event" role="tab"
             aria-controls="event" aria-selected="true">Events</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="requests-tab" data-toggle="tab" href="#requests" role="tab"
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="requests-tab" data-toggle="tab" href="#requests" role="tab"
             aria-controls="requests" aria-selected="false">Friend Requests</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="hub-tab" data-toggle="tab" href="#your_hub" role="tab"
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="hub-tab" data-toggle="tab" href="#your_hub" role="tab"
             aria-controls="your_hub" aria-selected="false">Your Hub</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="connections-tab" data-toggle="tab" href="#connections" role="tab"
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="connections-tab" data-toggle="tab" href="#connections" role="tab"
             aria-controls="connections" aria-selected="false">Connections</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="interests-tab" data-toggle="tab" href="#interests" role="tab"
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="interests-tab" data-toggle="tab" href="#interests" role="tab"
             aria-controls="interests" aria-selected="false">Interests</a>
-          </li>
-        </ul>
-      </div>
-
-
-<div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active" id="event" role="tabpanel" aria-labelledby="event-tab">
-      <div>
-        <div class="card">
-          <div class="dash-card-header p-3 text-center border-bottom">
-            <h3>Events</h3>
-          </div>
-          <div class="dash-card-body p-4 text-center">
-            <% if @user.events.empty? %>
-              <h5>You have not signed up for any events yet.</h5>
-            <% else %>
-              <% @user.events.each do |event| %>
-                <div class="border-top p-3 w-100">
-                  <%= event.title %>
-                </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-    <% if @events.empty? == false %>
-        <div class="card">
-          <div class="dash-card-header p-3 text-center border-bottom">
-            <h3>My Hosted Events</h3>
-          </div>
-          <div class="dash-card-body p-4 text-center">
-            <% @events.each do |event| %>
-              <div class="border-top p-3 w-100">
-                <%= link_to event.title, event_path(event) %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-    <% end %>
-    </div>
-     </div>
-
-    <div class="tab-pane fade" id="requests" role="tabpanel" aria-labelledby="friend-request-tab">
-      <div class="card">
-        <div class="dash-card-header p-3 text-center border-bottom">
-          <h3>Friend Requests</h3>
-        </div>
-        <div class="dash-card-body p-4 text-center">
-          <% @user.requested_friends.each do |friendreq| %>
-            <%= friendreq.first_name %>
-            <%= link_to "accept", accept_friend_path(friendreq), method: :post %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-
-
-
-
-  <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
-      <div class="card">
-        <div class="dash-card-header p-3 text-center border-bottom">
-          <h3>Your Hub</h3>
-        </div>
-        <div class="dash-card-body p-4 text-center">
-          <%= link_to @user.hub.name, hub_path(@user.hub) %>
-          <%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
-        </div>
-      </div>
-    </div>
-
-  <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
-      <div class="card">
-        <div class="dash-card-header p-3 text-center border-bottom">
-          <h3>Friends</h3>
-        </div>
-        <div class="dash-card-body p-4 text-center">
-          <% if @user.friends.empty? %>
-            <h5>You're a loser... no one likes you...</h5>
-          <% else %>
-            <% @user.friends.each do |friend| %>
-              <p><%= friend.first_name %></p>
-              <%= link_to "remove friend", remove_friend_path(friend), method: :delete %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-  </div>
-
-
-  <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
-      <div class="card text-center">
-        <div class="dash-card-header p-3 text-center border-bottom">
-          <h3>My Tags</h3>
-        </div>
-        <div class="dash-card-body p-4 text-center">
-          <% if params[:newtags] == "newtags" %>
-            <% Tag.all.where(tag_type: "user").each do |tag| %>
-              <%= link_to tag.tag_name, add_tag_path({ :tag => "#{tag.tag_name}" }), :class => "btn-lg-blue" %>
-            <% end %>
-            <h2>my tags</h2>
-            <% @user.tags.each do |tag| %>
-              <%= tag.tag_name %>
-            <% end %>
-          <% else %>
-            <% @user.tags.each do |tag| %>
-              <%= tag.tag_name %>
-              <%= link_to remove_tag_path({ :tag => "#{tag.tag_name}" }), method: :delete  do %>
-                <h2>X</h2>
-              <% end %>
-            <% end %>
-            <%= link_to "add tags", dashboard_path({ :newtags => "newtags" }), :class => "btn-lg-blue" %>
-          <% end %>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- <div class="row"><div class="col-md-2"><ul class="nav nav-pills flex-column" id="myTab" role="tablist"><li class="nav-item"><a class="nav-link active" id="event-tab" data-toggle="tab" href="#event" role="tab"
+            aria-controls="event" aria-selected="true">Events</a></li><li class="nav-item"><a class="nav-link" id="requests-tab" data-toggle="tab" href="#requests" role="tab"
+            aria-controls="requests" aria-selected="false">Friend Requests</a></li><li class="nav-item"><a class="nav-link" id="hub-tab" data-toggle="tab" href="#your_hub" role="tab"
+            aria-controls="your_hub" aria-selected="false">Your Hub</a></li><li class="nav-item"><a class="nav-link" id="connections-tab" data-toggle="tab" href="#connections" role="tab"
+            aria-controls="connections" aria-selected="false">Connections</a></li><li class="nav-item"><a class="nav-link" id="interests-tab" data-toggle="tab" href="#interests" role="tab"
+            aria-controls="interests" aria-selected="false">Interests</a></li></ul></div> -->
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="event" role="tabpanel" aria-labelledby="event-tab">
+    <div>
+      <div class="card">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>Events</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center"><% if @user.events.empty? %>
+          <h5>You have not signed up for any events yet.</h5><% else %><% @user.events.each do |event| %>
+          <div class="border-top p-3 w-100"><%= event.title %>
+          </div><% end %><% end %>
+        </div>
+      </div><% if @events.empty? == false %>
+      <div class="card">
+        <div class="dash-card-header p-3 text-center border-bottom">
+          <h3>My Hosted Events</h3>
+        </div>
+        <div class="dash-card-body p-4 text-center"><% @events.each do |event| %>
+          <div class="border-top p-3 w-100"><%= link_to event.title, event_path(event) %>
+          </div><% end %>
+        </div>
+      </div><% end %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="requests" role="tabpanel" aria-labelledby="friend-request-tab">
+    <div class="card">
+      <div class="dash-card-header p-3 text-center border-bottom">
+        <h3>Friend Requests</h3>
+      </div>
+      <div class="dash-card-body p-4 text-center"><% @user.requested_friends.each do |friendreq| %><%= friendreq.first_name %><%= link_to "accept", accept_friend_path(friendreq), method: :post %><% end %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
+    <div class="card">
+      <div class="dash-card-header p-3 text-center border-bottom">
+        <h3>Your Hub</h3>
+      </div>
+      <div class="dash-card-body p-4 text-center"><%= link_to @user.hub.name, hub_path(@user.hub) %><%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
+    <div class="card">
+      <div class="dash-card-header p-3 text-center border-bottom">
+        <h3>Friends</h3>
+      </div>
+      <div class="dash-card-body p-4 text-center"><% if @user.friends.empty? %>
+        <h5>You're a loser... no one likes you...</h5><% else %><% @user.friends.each do |friend| %>
+        <p><%= friend.first_name %>
+        </p><%= link_to "remove friend", remove_friend_path(friend), method: :delete %><% end %><% end %>
+      </div>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
+    <div class="card text-center">
+      <div class="dash-card-header p-3 text-center border-bottom">
+        <h3>My Tags</h3>
+      </div>
+      <div class="dash-card-body p-4 text-center"><% if params[:newtags] == "newtags" %><% Tag.all.where(tag_type: "user").each do |tag| %><%= link_to tag.tag_name, add_tag_path({ :tag => "#{tag.tag_name}" }), :class => "btn-lg-blue" %><% end %>
+        <h2>my tags</h2><% @user.tags.each do |tag| %><%= tag.tag_name %><% end %><% else %><% @user.tags.each do |tag| %><%= tag.tag_name %><%= link_to remove_tag_path({ :tag => "#{tag.tag_name}" }), method: :delete  do %>
+        <h2>X</h2><% end %><% end %><%= link_to "add tags", dashboard_path({ :newtags => "newtags" }), :class => "btn-lg-blue" %><% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
