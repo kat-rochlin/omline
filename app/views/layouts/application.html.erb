@@ -15,11 +15,11 @@
   <body style="min-height: 100vh; display: flex; flex-direction: column;">
     <p class="custom-notice"><%= notice %></p>
     <p class="custom-alert"><%= alert %></p>
-    <%= render '/shared/navbar' unless controller_name == "registrations" || controller_name == "sessions" %>
-    <div class="<%= 'overall-container' unless controller_name == "registrations" || controller_name == "sessions" %>">
+    <%= render '/shared/navbar' unless controller_name == "registrations" || controller_name == "sessions" || controller_name == "users" %>
+    <div class="<%= 'overall-container' unless controller_name == "registrations" || controller_name == "sessions" || controller_name == "users" %>">
       <%= yield %>
     </div>
-    <%= render 'shared/footer'  unless controller_name == "registrations" || controller_name == "sessions"  %>
+    <%= render 'shared/footer'  unless controller_name == "registrations" || controller_name == "sessions" || controller_name == "users" %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>

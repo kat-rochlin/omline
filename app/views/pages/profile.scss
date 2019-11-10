@@ -5,21 +5,17 @@
   margin: 30px auto 30px;
   padding: 0 !important;
   width: 90%;
-  min-height: 230vh;
-  max-height: 400vh;
+  height: 300vh;
   background-color: #fff;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
+  // box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
 }
 
 .main-profile {
   display: flex;
   flex-wrap: wrap;
 }
-
 
 
 // // Smallest device
@@ -64,16 +60,6 @@
   text-align:center;
 }
 
-
-.hub-prof-link {
-
-  color: white !important;
-      border-bottom: 1px solid white !important;
-      display: inline-block;
-      line-height: 0.95;
-
-}
-
 .cover-photo {
   background: #eee;
   // background-image: url("https://image.noelshack.com/fichiers/2017/38/2/1505775648-annapurnafocus.jpg");
@@ -104,15 +90,6 @@
   .cover-photo i {
     right: -90%;
   }
-}
-
-.prof-current-hub {
-  position: absolute;
-  bottom: 0;
-  left: 18px;
-  font-size: 22px;
-  padding-bottom: 1px;
-  color: white;
 }
 
 
@@ -227,7 +204,6 @@
   width: 300px;
   height: 250px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: auto;
@@ -239,6 +215,9 @@
   font-weight: bold;
 }
 
+.card-subtitle {
+  color: $main-blue;
+}
 
 .see_all-link {
   margin-top: 20px;
@@ -282,7 +261,6 @@
   width: 300px;
   height: 250px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin: auto;
   margin-top: 5vh;
@@ -290,41 +268,12 @@
 }
 
 
-.interest-items {
+.card-items {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
-
-
-
-
-.card-scroll {
-  height: 160px;
-  overflow: scroll;
-  width: 70%;
-}
-
-
-.card-scroll::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-.card-scroll::-webkit-scrollbar:vertical {
-    width: 11px;
-}
-
-/* .frame::-webkit-scrollbar:horizontal {
-    height: 11px;
-} */
-
-.card-scroll::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    border: 2px solid white; /* should match background, can't be transparent */
-    background-color: rgba(0, 0, 0, .1);
-}
-
-
 
 
 .current-location {
@@ -360,8 +309,7 @@
   margin: 30px auto 30px;
   padding: 0 !important;
   width: 90%;
-  min-height: 780px;
-  max-height: 1300px;
+  height: 800px;
   background-color: #f4f4f4;
   border-radius: 20px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
@@ -383,7 +331,6 @@
   width: 300px;
   height: 250px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: auto;
@@ -409,16 +356,12 @@
 
 .teach-exp-title {
   margin: auto;
-  padding: 30px;
-  letter-spacing: 3px;
+  padding: 40px;
 }
 
 .teach-exp {
   display: flex;
   margin: auto;
-  justify-content: space-between;
-  border-radius: 15px;
-  margin-bottom: 12px;
 }
 
 
@@ -429,153 +372,15 @@
 
 
 .teach-exp-cards {
-  height: 294px;
-  overflow: scroll;
-  width: 95%
-}
-
-.teach-exp-cards::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-.teach-exp-cards::-webkit-scrollbar:vertical {
-    width: 11px;
-}
-
-.teach-exp-cards::-webkit-scrollbar-corner {
-  background: rgba(0,0,0,0);
-}
-
-
-.teach-exp-cards::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    border: 2px solid #F4F4F4; /* should match background, can't be transparent */
-    background-color: rgba(0, 0, 0, .1);
-}
-
-
-// .teach-exp-cards::-webkit-scrollbar:horizontal {
-//     height: 11px;
-// }
-
-
-
-/* Tabs Card */
-
-.tab-card {
-  border: 3px solid #eee;
-  // padding: 20px;
-  border-radius: 20px;
-  height: 400px;
-}
-
-.tab-card-header {
-  background:none;
-}
-/* Default mode */
-.tab-card-header > .nav-tabs {
-  border: none;
-  margin: 0px;
-}
-.tab-card-header > .nav-tabs > li {
-  margin-right: 2px;
-}
-.tab-card-header > .nav-tabs > li > a {
-  border: 0;
-  border-bottom:2px solid transparent;
-  margin-right: 0;
-  color: #737373;
-  padding: 2px 15px;
-}
-
-.tab-card-header > .nav-tabs > li > a.show {
-    border-bottom:2px solid #007bff;
-}
-.tab-card-header > .nav-tabs > li > a:hover {
-    color: $seafoam;
-}
-
-.tab-card-header > .tab-content {
-  padding-bottom: 0;
-}
-
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
-    color: $main-blue;
-    // border-color: #dee2e6 #dee2e6 #F4F4F4;
-    background-color: white !important;
-    h4 {
-      font-weight: 980;
-    }
-}
-
-
-
-.card-title-event {
-  padding-top: 30px;
-  padding-bottom: 10px;
-  letter-spacing: 3px;
-}
-
-.tab-card {
-  height: 500px;
-}
-
-
-.card-product-group {
-  height: 275px;
+  height: 276px;
   overflow: scroll;
 }
 
 
-.card-product-group::-webkit-scrollbar {
-    -webkit-appearance: none;
-}
-
-.card-product-group::-webkit-scrollbar:vertical {
-    width: 11px;
-}
-
-
-.card-product-group::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    border: 2px solid white; /* should match background, can't be transparent */
-    background-color: rgba(0, 0, 0, .1);
-}
-
-.card-product {
-  overflow: hidden;
-  height: 120px;
-  background: white;
-  border: 2px solid rgba(0, 0, 0, 0.125) ;
-  display: flex;
-  border-radius: 20px;
-  align-items: center;
-  margin-bottom: 20px;
-  max-width: 650px;
-}
-
-.card-product img {
-  height: 100%;
-  width: 30%;
-  object-fit: cover;
-}
-
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
-
-.card-product .card-product-infos {
-  padding: 16px;
+.see_all-link-exp {
+  bottom: 0;
+  text-align: right;
+    padding-inline-end: 91px;
 }
 
 

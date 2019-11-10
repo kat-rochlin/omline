@@ -1,5 +1,9 @@
-<h1>Users#complete_profile</h1>
-<p>Find me in app/views/users/complete_profile.html.erb</p>
+<div class = "sign-up-body">
+  <%= link_to root_path do %>
+   <i class="fas fa-arrow-left"></i>
+  <% end %>
+  <div class="card card-signin">
+<h1>Complete Your Profile</h1>
 
 <%= simple_form_for @user, url: update_profile_path, method: :patch do |f| %>
   <%= f.error_notification %>
@@ -50,5 +54,6 @@
   <%= f.button :submit %>
 
 <% end %>
-
+</div>
+</div>
 
