@@ -7,7 +7,7 @@
   <div class = "main-profile">
     <div class="row row-centered">
       <div class="col-xs-12 col-s-12 col-md-4">
-        <div class="card-interests" style="width: 18rem;">
+        <div class="card-interests" style="width: auto;">
           <div class = "card-title-fix  mt-3">
           <h5 class="card-title">INTERESTS</h5>
         </div>
@@ -52,12 +52,15 @@
       </div>
     </div>
     <div class="col-xs-12 col-s-12 col-md-4">
-      <div class="card-connection" style="width: 18rem;">
+      <div class="card-connection" style="width: auto;">
         <div class = "card-title-fix mt-3">
-          <h5 class="card-title">38 CONNECTIONS</h5>
+          <h5 class="card-title"><%= current_user.friends.length %> CONNECTIONS</h5>
         </div>
         <div class="card-body">
-            <h6 class="card-subtitle mb-2 ">Recently Added</h6><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %><%= cl_image_tag @user.profilephoto, class:"avatar-large"  %>
+            <h6 class="card-subtitle mb-2 ">Recently Added</h6>
+            <% current_user.friends.first(4).each do |friend| %>
+            <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+            <% end %>
             <div class = "see_all-link">
               <a href="#" class="card-link">See All</a>
             </div>
@@ -111,7 +114,7 @@
     <div class = "teach-info">
       <div class="row row-centered">
         <div class="col-xs-12 col-s-12 col-md-4">
-          <div class="card-teach" style="width: 18rem;">
+          <div class="card-teach" style="width: auto;">
               <div class = "card-title-fix mt-3">
 
               <h5 class="card-title">TEACHING STYLES</h5>
@@ -136,7 +139,7 @@
           </div>
         </div>
         <div class="col-xs-12 col-s-12 col-md-4">
-          <div class="card-teach" style="width: 18rem;">
+          <div class="card-teach" style="width: auto;">
              <div class = "card-title-fix mt-3">
               <h5 class="card-title">CERTIFICATIONS</h5>
               </div>
@@ -148,7 +151,7 @@
           </div>
         </div>
         <div class="col-xs-12 col-s-12 col-md-4">
-          <div class="card-teach" style="width: 18rem;">
+          <div class="card-teach" style="width: auto;">
 
              <div class = "card-title-fix mt-3">
 
