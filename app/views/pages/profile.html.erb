@@ -8,7 +8,7 @@
     </div>
     <div class = "action-btns">
     <!-- Request a friend if youre not yet their friend and not on your own profile  -->
-    <% unless current_user == @user || @user.requested_friends.include?(current_user) %>
+    <% unless current_user == @user || @user.requested_friends.include?(current_user) || @user.friends.include?(current_user) %>
       <%= link_to "Friend Request", request_friend_path(@user),class:"btn-lg-white", method: :post %>
     <% end %>
     <!-- Start a conversation with a friend from their profile -->
@@ -76,10 +76,9 @@
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-md-blue" data-toggle="modal" data-target="#exampleModal">
-              See All
+            <button type="button" class="btn btn-md-blue" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
+            See All
             </button>
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -90,13 +89,14 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                  <% current_user.friends.each do |friend| %>
-                    <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
-                    <%= raise %>
-                    <%= friend.first_name %>
-                    <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-lg-blue" } %>
-                  <% end %>
+                  <div class="modal-body" style="display: flex; justify-content: space-between;">
+                    <% current_user.friends.each do |friend| %>
+                    <div>
+                      <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+                      <strong><%= friend.first_name %></strong>
+                    </div>
+                    <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-sm-blue" } %>
+                    <% end %>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
