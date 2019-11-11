@@ -12,7 +12,6 @@ class MessagesController < ApplicationController
       end
       User.find(id)
     end
-    raise
     @users = User.all
     @message = Message.new
     # 2. in view, list out messages in order of created_at
