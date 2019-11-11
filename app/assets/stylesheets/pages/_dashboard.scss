@@ -42,27 +42,63 @@
   align-items: center;
 }
 
-.dash-tabs   {
+
+.dash-content {
+  width: 90%;
+  height: 600px;
+  background-color: white;
+  border-radius: 20px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+
+
+.dash-tabs  {
      width: 100%;
 }
 
-.dash-tabs .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+.dash-tabs.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: white;
     background-color: $main-blue;
     text-align: center;
     width: 100%;
 }
 
-.dash-tabs .nav-pills .nav-link, .nav-pills .show > .nav-link {
+.dash-tabs.nav-pills .nav-link, .nav-pills .show > .nav-link {
     text-align: center;
 }
 
-.dash-tabs .nav-pills .nav-item  {
+.dash-tabs.nav-pills .nav-item  {
     padding-right: 0px;
 }
 
 
-.dash-tabs .nav-pills .nav-link  {
+.dash-tabs.nav-pills .nav-link  {
     color: $dark-grey;
+    background-color: white;
     font-size: 18px;
+}
+
+.nav-pills .nav-link {
+    color: #454545;
+    font-size: 18px;
+}
+
+
+.dash-event-side-tabs .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: $main-blue;
+    font-size: 18px;
+    background-color: $light-gray;
+    text-align: center;
+}
+
+.fade.event-dashboard:not(.show) {
+  display: none;
+}
+
+
+.event.card {
+  border: none;
+
 }
