@@ -1,4 +1,3 @@
-
 <div class="dashboard-container">
   <div class="row">
     <!-- SIDEBAR -->
@@ -7,6 +6,7 @@
         <div class = "sidebar-top"><%= cl_image_tag @user.profilephoto, class:"dash-photo"  %>
           <div class = "dash-name">
             <h3><%= @user.first_name %>'s Dashboard
+
             </h3>
           </div>
         </div>
@@ -136,13 +136,9 @@
                         </div>
                       </div>
                     </div>
-<!-- need to fix this? -->
-                    <% if @events.empty? %>
+                    <!-- need to fix this? --><% if @events.empty? %>
                     <h5>You have not signed up for any events yet.</h5><% end %>
-
-
                     <div class="tab-pane fade" id="v-pills-attend-past" role="tabpanel" aria-labelledby="v-pills-attend-past-tab">
-
                       <div class="event card">
                         <div class="dash-card-body p-4 text-center"><% if @user.events.empty? %>
                           <h5>You have not signed up for any events yet.</h5><% else %><% @user.events.each do |event| %>
@@ -159,22 +155,16 @@
                           </div><% end %><% end %>
                         </div>
                       </div>
-
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
-
           <div class="tab-pane fade" id="requests" role="tabpanel" aria-labelledby="requests-tab">
             <div class="request card">
-              <div class="request-dash-body p-3">
-                <% @user.requested_friends.each do |friendreq| %><%= friendreq.first_name %><%= link_to "accept", accept_friend_path(friendreq), method: :post %><% end %>
-                <div class="row">
-                  <% 15.times do  %>
+              <div class="request-dash-body p-3"><% @user.requested_friends.each do |friendreq| %><%= friendreq.first_name %><%= link_to "accept", accept_friend_path(friendreq), method: :post %><% end %>
+                <div class="row"><% 15.times do  %>
                   <div class="col-md-4">
                     <div class="contact-box center-version mx-auto">
                       <div class = "top-prof-card">
@@ -183,46 +173,33 @@
                         <h5 class="m-b-xs mt-3">Katie Overbury</h5>
                       </div>
                       <div class="contact-box-footer">
-                        <div class="m-t-xs btn-group"><%= link_to "Accept", "#", class:"btn-xs-white" %></div>
-                        <div class="m-t-xs btn-group"><%= link_to "Delete", "#", class:"btn-xs-white" %></div>
-
+                        <div class="m-t-xs btn-group"><%= link_to "Accept", "#", class:"btn-xs-white" %>
+                        </div>
+                        <div class="m-t-xs btn-group"><%= link_to "Delete", "#", class:"btn-xs-white" %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <% end %>
+                  </div><% end %>
                 </div>
               </div>
-          </div>
-        </div>
-
-
-        <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
-          <div class="card">
-            <div class="dash-card-header p-3 text-center border-bottom">
-              <h3>Your Hub</h3>
-            </div>
-            <div class="dash-card-body p-4 text-center">
-              <% if @user.hub.nil? %>
-                <%= link_to "Choose Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
-              <% end %>
-              <% if @user.hub.nil? == false %>
-                <%= link_to @user.hub.name, hub_path(@user.hub) %><%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
-              <% end %>
             </div>
           </div>
-</div>
-
-
-         <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
+          <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
+            <div class="card">
+              <div class="dash-card-header p-3 text-center border-bottom">
+                <h3>Your Hub</h3>
+              </div>
+              <div class="dash-card-body p-4 text-center"><% if @user.hub.nil? %><%= link_to "Choose Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %><% end %><% if @user.hub.nil? == false %><%= link_to @user.hub.name, hub_path(@user.hub) %><%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %><% end %>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
             <div class="friend card">
-
               <div class="dash-card-body p-4 text-center"><% if @user.friends.empty? %>
                 <h5>NO CONNECTIONS</h5><% else %><% @user.friends.each do |friend| %>
                 <p><%= friend.first_name %>
                 </p><%= link_to "remove friend", remove_friend_path(friend), method: :delete %><% end %><% end %>
-
-                <div class="row">
-                  <% 15.times do  %>
+                <div class="row"><% 15.times do  %>
                   <div class="col-md-4">
                     <div class="contact-box center-version mx-auto">
                       <div class = "top-prof-card">
@@ -235,30 +212,18 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <% end %>
+                  </div><% end %>
                 </div>
-
-
-
               </div>
-
-
             </div>
           </div>
-
-
           <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
             <div class="hub-dash card">
-            <p>Can we have the hub card that we show on the index page here?</p>
+              <p>Can we have the hub card that we show on the index page here?</p>
               <div><%= link_to @user.hub.city, hub_path(@user.hub) %>
-             </div>
-                <%= link_to "Change Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-md-white" %>
-
+              </div><%= link_to "Change Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-md-white" %>
             </div>
           </div>
-
-
 
 
           <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
@@ -266,9 +231,71 @@
               <div class="dash-card-header p-3 text-center border-bottom">
                 <h3>My Tags</h3>
               </div>
-              <div class="dash-card-body p-4 text-center"><% if params[:newtags] == "newtags" %><% Tag.all.where(tag_type: "user").each do |tag| %><%= link_to tag.tag_name, add_tag_path({ :tag => "#{tag.tag_name}" }), :class => "btn-lg-blue" %><% end %>
-                <h2>my tags</h2><% @user.tags.each do |tag| %><%= tag.tag_name %><% end %><% else %><% @user.tags.each do |tag| %><%= tag.tag_name %><%= link_to remove_tag_path({ :tag => "#{tag.tag_name}" }), method: :delete  do %>
-                <h2>X</h2><% end %><% end %><%= link_to "add tags", dashboard_path({ :newtags => "newtags" }), :class => "btn-lg-blue" %><% end %>
+              <div class="dash-card-body p-4 mx-auto">
+                <% if @user.tags.empty? %>
+                  <h3>Your have not selected any interests yet...</h3>
+                <% end %>
+                <div class="cards mb-5">
+                  <% @user.tags.each do |tag| %>
+                    <div class="category-choice-dash row justify-content-center">
+                      <%= link_to remove_tag_path({ :tag => "#{tag.tag_name}" }), class: "trash pr-1", method: :delete  do %>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                      <% end %>
+                      <div class="">
+                        <%= tag.tag_name %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+                <button type="button" class="btn-lg-blue mx-auto" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Interests</button>
+
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content p-5 container">
+                      <%= simple_form_for @user, url: update_profile_path, method: :patch do |f| %>
+                        <%= f.error_notification %>
+
+                        <div class="form-inputs onboarding">
+                          <fieldset class="form-group">
+                            <legend class="col-form-label pt-0">Select Your Intersts</legend>
+                            <input type="hidden" name="user[tag_ids][]" value="">
+                            <div class="cards-dash">
+                              <% Tag.all.where(tag_type: "user").each do |tag| %>
+                                <input class="hidden" style="display:none" type="checkbox" value="<%= tag.id %>" name="user[tag_ids][]" id="user_tag_ids_<%= tag.id %>">
+                                <label class="category-choice <%=  %>" for="user_tag_ids_<%= tag.id %>">
+                                  <%= tag.tag_name %>
+
+                                </label>
+                              <% end %>
+                            </div>
+                          </fieldset>
+                        </div>
+                        <div class="justify-content-center text-center mx-auto">
+                          <input type="hidden" name="save" value="save" />
+                          <%= f.submit "Save", class: "btn-md-blue justify-content-center text-center mx-auto" %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+
+<!--                 <% if params[:newtags] == "newtags" %>
+                  <% Tag.all.where(tag_type: "user").each do |tag| %>
+                    <%= link_to tag.tag_name, add_tag_path({ :tag => "#{tag.tag_name}" }), :class => "btn-lg-blue" %>
+                  <% end %>
+                  <h2>my tags</h2>
+                  <% @user.tags.each do |tag| %>
+                    <%= tag.tag_name %>
+                  <% end %>
+                <% else %>
+                  <% @user.tags.each do |tag| %>
+                    <%= tag.tag_name %>
+                    <%= link_to remove_tag_path({ :tag => "#{tag.tag_name}" }), method: :delete  do %>
+                      <h2>X</h2>
+                    <% end %>
+                <% end %> -->
+<!--                  <%= link_to "add tags", dashboard_path({ :newtags => "newtags" }), :class => "btn-lg-blue" %> -->
+                 <% end %>
               </div>
             </div>
           </div>
@@ -277,4 +304,4 @@
     </div>
   </div>
 </div>
-
+<%= javascript_pack_tag "category_choice" %>
