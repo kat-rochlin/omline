@@ -9,11 +9,17 @@
       <%= submit_tag "Search", class:"btn-sm-blue"%>
     <% end %>
   </div>
+    <h2 class="container border-bottom text-center mb-5 pb-3">Please Choose Your Hub</h2>
+
   <div class="cards container mb-5">
     <% @hubs.each do |hub|%>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
-      <%= link_to hub.city, hub_path(hub.id)%>
-      <%= link_to "Make My Hub", new_hub_path({ :newhub => hub.id }), { :class=>"btn-lg-blue" }%>
+        <div class="col-md-9 text-center">
+            <%= link_to hub.city, hub_path(hub.id)%>
+          <div class="row justify-content-center pt-2">
+            <%= link_to "Select", new_hub_path({ :newhub => hub.id }), { :class=>"btn-md-blue" }%>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

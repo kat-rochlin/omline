@@ -13,7 +13,8 @@ class UsersController < ApplicationController
       if @user.is_teacher
         redirect_to new_teacher_profile_path
       else
-        redirect_to profile_path(@user.id)
+        redirect_to hubs_path({ :newhub => "newhub" })
+
       end
     else
       render 'complete_profile'
