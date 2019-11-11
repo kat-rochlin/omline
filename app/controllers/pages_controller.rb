@@ -52,6 +52,11 @@ class PagesController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def decline_request
+    current_user.decline_request(@user)
+    redirect_to dashboard_path
+  end
+
   def remove_friend
     current_user.remove_friend(@user)
     redirect_to dashboard_path
@@ -61,4 +66,3 @@ class PagesController < ApplicationController
     @user = User.find(params[:id])
   end
 end
-

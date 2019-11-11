@@ -91,11 +91,13 @@
                   </div>
                   <div class="modal-body" style="display: flex; justify-content: space-between;">
                     <% @user.friends.each do |friend| %>
-                    <div>
-                      <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+                      <%= link_to profile_path(friend.id) do %>
+                        <%= cl_image_tag friend.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %>
+                      <% end %>
+                      <div>
                       <strong><%= friend.first_name %></strong>
-                    </div>
-                    <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-sm-blue" } %>
+                      <p><%= (current_user.friends & @user.friends).length %> Mutual Friends</p>
+                      </div>
                     <% end %>
                   </div>
                   <div class="modal-footer">
@@ -104,7 +106,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -198,10 +199,7 @@
 
               <h5 class="card-title">LANGUAGES</h5>
             </div>
-
-
             <div class="card-body">
-
               <div class = "card-items">
                 <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> English
                 </p>
@@ -246,8 +244,6 @@
                   <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
                       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-
-
                         <div class = "card-product-group">
                         <div class="card-product">
                           <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929574/Beach-yoga13-SFW-sharp_kvnbte.jpg" />
@@ -257,7 +253,6 @@
                             <p>August 14, 2019</p>
                           </div>
                         </div>
-
                         <div class="card-product">
                           <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929391/kundalini_event_pm6oif.png" />
                           <div class="card-product-infos">
@@ -266,7 +261,6 @@
                             <p>August 14, 2019</p>
                           </div>
                         </div>
-
                          <div class="card-product">
                           <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929759/zin_cafe_rgvx6z.jpg" />
                           <div class="card-product-infos">
@@ -275,9 +269,7 @@
                             <p>August 14, 2019</p>
                           </div>
                         </div>
-
                       </div>
-
                       </div>
                       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <div class="card-product">
