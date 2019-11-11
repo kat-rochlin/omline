@@ -113,18 +113,20 @@
     <div class = "teach-exp-top">
       <h3 class="teach-exp-title">TEACHING &nbspEXPERIENCE</h3>
       <div class = "teach-exp-cards mx-auto">
-        <div class="card w-75 teach-exp">
-          <div class="card-test">
-            <div class = "col-8">
-              <h5 class="card-title">One Yoga Thailand</h5>
-              <p class="card-text">Koh Phangan</p>
-              <p class="card-text">I taught Vinyasa and Hatha classes</p>
-            </div>
-            <div class = "col-4">
-              <p>April 2018 - April 2019</p>
+        <% @experiences.each do |experience| %>
+          <div class="card w-75 teach-exp">
+            <div class="card-test">
+              <div class = "col-8">
+                <h5 class="card-title"><%= experience.studio_name %></h5>
+                <p class="card-text"><%= experience.location %></p>
+                <p class="card-text"><%= experience.description %></p>
+              </div>
+              <div class = "col-4">
+                <p><%= experience.start_date %> - <%= experience.end_date %></p>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
         <div class="card w-75 teach-exp">
           <div class="card-test">
             <div class = "col-8">
@@ -163,17 +165,10 @@
             <div class="card-scroll">
 
               <div class = "card-items">
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Vinyasa
-                </p>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Hatha
-                </p>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Kundalini
-                </p>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Hatha
-                </p>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Kundalini
-                </p>
-
+                <% @styles.each do |style| %>
+                  <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style_id %>
+                  </p>
+                <% end %>
               </div>
             </div>
           </div>
@@ -183,10 +178,31 @@
              <div class = "card-title-fix mt-3">
               <h5 class="card-title">CERTIFICATIONS</h5>
               </div>
-            <div class="card-body">
-
-              <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
-              </div>
+            <div class="card-scroll">
+              <% @certifications.each do |certification| %>
+                <% if certification.certification_id == 1 %>
+                  <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 2 %>
+                  <div class = 'cert-icons'><%= image_tag 'ryt-500.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 3 %>
+                  <div class = 'cert-icons'><%= image_tag 'eryt-200.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 4 %>
+                  <div class = 'cert-icons'><%= image_tag 'eryt-200-ryt-500.png', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 5 %>
+                  <div class = 'cert-icons'><%= image_tag 'eryt-500.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 6 %>
+                  <div class = 'cert-icons'><%= image_tag 'rcyt.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 7 %>
+                  <div class = 'cert-icons'><%= image_tag 'rpyt.jpg', class:"cert-icon"  %>
+                  </div>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -202,6 +218,9 @@
             <div class="card-body">
 
               <div class = "card-items">
+                <% @languages.each do |language| %>
+                  <%= language.language_id %>
+                <% end %>
                 <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> English
                 </p>
                 <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Finnish
