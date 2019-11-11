@@ -1,34 +1,57 @@
-<h1>Teachers#new_profile</h1>
-<p>Find me in app/views/teachers/new_profile.html.erb</p>
-
 <div class="container">
   <div class="row">
     <div class="col-md-6 mx-auto">
       <%= simple_form_for :teacher, url: save_teacher_profile_path, method: :post do |f| %>
 
-      <div class="d-flex ">
-      <%= f.input :certifications, collection: Certification.all, as: :select, prompt: "Choose a certification", input_html: { class: 'multiselectuser' } %> <br>
-      </div>
+        <%= f.input :certifications, collection: Certification.all, as: :select, input_html: {class:'js-example-basic-multiple', multiple: true} %> <br>
 
-      <hr>
-      <% TeachingStyle.all.each do |style|  %>
-        <input name="styles[]" type="checkbox", value="<%= style.id %>"> <%= style.name %> <br>
+        <hr>
+        <%= f.input :styles, collection: TeachingStyle.all, as: :select, input_html: {class:'js-example-basic-multiple', multiple: true} %> <br>
+
+        <hr>
+        <%= f.input :languages, collection: Language.all, as: :select, input_html: {class:'js-example-basic-multiple', multiple: true} %> <br>
+
+        <hr>
+        <div id="experience-content">
+          <div id="experience-content">
+            <div>
+              <div class="form-group string required teacher_studio_name"><label class="string required" for="teacher_studio_name">Studio name <abbr title="required">*</abbr></label><input class="form-control string required" type="text" name="experience[studio_name][0]" id="teacher_studio_name"></div>
+            </div>
+            <div>
+              <div class="form-group string required teacher_location"><label class="string required" for="teacher_location">Location <abbr title="required">*</abbr></label><input class="form-control string required" type="text" name="experience[location][0]" id="teacher_location"></div>
+            </div>
+            <div>
+              <div class="form-group string required teacher_description"><label class="string required" for="teacher_description">Description <abbr title="required">*</abbr></label><input class="form-control string required" type="text" name="experience[description][0]" id="teacher_description"></div>
+            </div>
+            <div>
+              <div class="form-group date required teacher_start_date"><label class="date required" for="teacher_start_date">Start date <abbr title="required">*</abbr></label><div class="d-flex flex-row justify-content-between align-items-center"><input class="form-control mx-1 date required" type="date" name="teacher[start_date]" id="teacher_start_date"></div></div>
+            </div>
+            <div>
+              <div class="form-group date required teacher_end_date"><label class="date required" for="teacher_end_date">End date <abbr title="required">*</abbr></label><div class="d-flex flex-row justify-content-between align-items-center"><input class="form-control mx-1 date required" type="date" name="teacher[end_date]" id="teacher_end_date"></div></div>
+            </div>
+          </div>
+        </div>
+            <button id="add-experience">Add more</button>
+          <%= f.button :submit %>
       <% end %>
-
-
-      <hr>
-      <% Language.all.each do |language|  %>
-        <input name="languages[]" type="checkbox", value="<%= language.id %>"> <%= language.name %> <br>
-      <% end %>
-
-      <hr>
-      <%= f.input :studio_name %>
-      <%= f.input :location %>
-      <%= f.input :description %>
-      <%= f.input :start_date, as: :date, html5: true %>
-      <%= f.input :end_date, as: :date, html5: true %>
-  <%= f.button :submit %>
-<% end %>
     </div>
   </div>
 </div>
+<!--           <div>
+            <#%= f.input :studio_name %>
+          </div>
+          <div>
+            <#%= f.input :location %>
+          </div>
+          <div>
+            <#%= f.input :description %>
+          </div>
+          <div>
+            <#%= f.input :start_date, as: :date, html5: true %>
+          </div>
+          <div>
+            <#%= f.input :end_date, as: :date, html5: true %>
+          </div>
+          <div>
+            <%#= f.input, :add, as: :button, id: 'add-more' %>
+          </div> -->
