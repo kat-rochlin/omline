@@ -76,8 +76,8 @@
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Launch demo modal
+            <button type="button" class="btn btn-md-blue" data-toggle="modal" data-target="#exampleModal">
+              See All
             </button>
 
             <!-- Modal -->
@@ -93,7 +93,8 @@
                   <div class="modal-body">
                   <% current_user.friends.each do |friend| %>
                     <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
-                    <%= friend.first_name friend.last_name %>
+                    <%= raise %>
+                    <%= friend.first_name %>
                     <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-lg-blue" } %>
                   <% end %>
                   </div>
