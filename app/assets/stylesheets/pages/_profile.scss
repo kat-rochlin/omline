@@ -20,8 +20,16 @@
   flex-wrap: wrap;
 }
 
+.hub-link {
+  text-decoration: none;
+  color: white;
+}
 
-
+.hub-link:hover {
+  text-decoration: none;
+  color: white;
+  border-bottom: 2px solid white;
+}
 // // Smallest device
 // @media (min-width: 100px) and (max-width: 575px) {
 //   .main-profile {
