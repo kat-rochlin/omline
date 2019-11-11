@@ -154,13 +154,19 @@
               </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
-            <div class="card">
-              <div class="dash-card-header p-3 text-center border-bottom">
-                <h3>Your Hub</h3>
-              </div>
-              <div class="dash-card-body p-4 text-center"><%= link_to @user.hub.name, hub_path(@user.hub) %><%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
-              </div>
+        </div>
+        <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
+          <div class="card">
+            <div class="dash-card-header p-3 text-center border-bottom">
+              <h3>Your Hub</h3>
+            </div>
+            <div class="dash-card-body p-4 text-center">
+              <% if @user.hub.nil? %>
+                <%= link_to "Choose Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
+              <% end %>
+              <% if @user.hub.nil? == false %>
+                <%= link_to @user.hub.name, hub_path(@user.hub) %><%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
+              <% end %>
             </div>
           </div>
           <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
