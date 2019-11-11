@@ -1,7 +1,24 @@
 <div class="container-profile">
   <div class = "cover-photo">
-   <div class = "prof-current-hub"><p>Current Hub: <a href="#" class = "hub-prof-link">CANGGU</a><p></div>
-    <div class = "action-btns"><%= link_to "Connect", "#", class:"btn-lg-white" %><%= link_to "Message", "#", class:"btn-lg-white" %>
+
+   <div class = "prof-current-hub">
+    <% unless @user.hub.nil? %>
+    <p>Current Hub: <%= link_to "#{@user.hub.name}", hub_path(@user.hub), class:"hub-link" %><p>
+    <% end %>
+    </div>
+    <div class = "action-btns">
+    <!-- Request a friend if youre not yet their friend and not on your own profile  -->
+    <% unless current_user == @user || @user.requested_friends.include?(current_user) %>
+      <%= link_to "Friend Request", request_friend_path(@user),class:"btn-lg-white", method: :post %>
+    <% end %>
+    <!-- Start a conversation with a friend from their profile -->
+    <% if current_user.friends.include?(@user) %>
+      <% if current_user != @user && @connection.present? %>
+        <%= link_to "Message", user_connection_messages_path(@connection), class:"btn-lg-white" %>
+      <% else %>
+        <%= link_to "Message", user_connections_path(connector: @sender, connectee: @recipient),class:"btn-lg-white", method: :post %>
+      <% end %>
+    <% end %>
     </div>
   </div>
   <div class = "main-profile">
@@ -25,7 +42,6 @@
               </p>
               <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Pranayama
               </p>
-
             </div>
           </div>
         </div>
@@ -35,14 +51,13 @@
         </div>
         <h4 class="name"><%= @user.first_name %> <%= @user.last_name %>
         </h4>
-        <p class="info"><%= @user.nationality %>
+        <p class="nation-info"><%= @user.nationality %>
         </p><% if  @user.is_teacher == true %>
         <div class="teacher-ind"><%= image_tag 'teacher_icon.png', class:"teacher-prof-icon"  %>
           <div class="teacher-text">
             <p>Teacher</p>
           </div>
         </div><% end %>
-      </>
       <div class = "desc">
         <p class="truncate-overflow">Hi ! My name is Jane Doe. I'm a UI/UX Designer
       from Paris, in France. I really enjoy photography and mountains. Hi ! My name is Jane Doe. I'm a UI/UX Designer
@@ -55,14 +70,40 @@
         <div class = "card-title-fix mt-3">
           <h5 class="card-title"><%= current_user.friends.length %> CONNECTIONS</h5>
         </div>
-        <div class="card-body">
+          <div class="card-body">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
             <% current_user.friends.first(4).each do |friend| %>
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
-            <div class = "see_all-link">
-              <a href="#" class="card-link">See All</a>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Launch demo modal
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><%= @user.first_name %>'s Friends</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                  <% current_user.friends.each do |friend| %>
+                    <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+                    <%= friend.first_name friend.last_name %>
+                    <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-lg-blue" } %>
+                  <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
@@ -175,7 +216,7 @@
   <div class="container">
     <div class="row ">
       <div class="pt-5 col-11 mx-auto">
-        <div class="card mt-3 tab-card">
+        <div class="event-prof-section card mt-3 tab-card">
           <h3 class="card-title-event mx-auto">EVENTS</h3>
           <div class = "first-tabs">
             <div class="card-header tab-card-header">
@@ -255,13 +296,13 @@
                 <div class="row">
                   <div class="col-3">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Upcoming</a>
-                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Past</a>
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-attend-upcoming" role="tab" aria-controls="v-pills-attend-upcoming" aria-selected="true">Upcoming</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-attend-past" role="tab" aria-controls="v-pills-attend-past" aria-selected="false">Past</a>
                     </div>
                   </div>
                   <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
-                      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                      <div class="tab-pane fade show active" id="v-pills-attend-upcoming" role="tabpanel" aria-labelledby="v-pills-attend-upcoming-tab">
                         <div class="card-product">
                           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
                           <div class="card-product-infos">
@@ -272,7 +313,7 @@
                           </div>
                         </div>
                       </div>
-                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Bye</div>
+                      <div class="tab-pane fade" id="v-pills-attend-past" role="tabpanel" aria-labelledby="v-pills-attend-past-tab">Bye</div>
                     </div>
                   </div>
                 </div>

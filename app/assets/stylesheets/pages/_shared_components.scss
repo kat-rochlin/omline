@@ -1,0 +1,95 @@
+
+.card-product {
+  overflow: hidden;
+  height: 120px;
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.125) ;
+  display: flex;
+  border-radius: 20px;
+  align-items: center;
+  margin-bottom: 20px;
+  max-width: 650px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 30%;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+  a {
+    color: $main-blue !important;
+  }
+  a:hover {
+    color: $seafoam !important;
+  }
+}
+
+.card-product p {
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product .card-product-infos {
+  padding: 16px;
+}
+
+.contact-box {
+  background-color: #ffffff;
+  border: 1px solid #e7eaec;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+}
+
+.top-prof-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+}
+
+
+.contact-box > a {
+  color: inherit;
+  border-radius: 20px;
+}
+.contact-box.center-version {
+  border: 1px solid #e7eaec;
+  padding: 0;
+  width: 80%;
+}
+.contact-box.center-version > a {
+  display: block;
+  background-color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+.contact-box.center-version > a img {
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.contact-box.center-version address {
+  margin-bottom: 0;
+}
+.contact-box .contact-box-footer {
+  text-align: center;
+  background-color: #ffffff;
+  border-top: 1px solid #e7eaec;
+  padding: 15px 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+
+}
+a{
+    text-decoration:none !important;
+}

@@ -22,6 +22,11 @@
 
 .card-category a {
   text-decoration: none;
+  color: white;
+}
+
+.card-category a:hover {
+  border-bottom: 2px solid white;
 }
 
 // Smallest device
