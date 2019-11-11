@@ -5,7 +5,7 @@
   margin: 30px auto 30px;
   padding: 0 !important;
   width: 90%;
-  min-height: 230vh;
+  min-height: 250vh;
   max-height: 400vh;
   background-color: #fff;
   border-top-left-radius: 20px;
@@ -578,4 +578,19 @@
   padding: 16px;
 }
 
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: white;
+    background-color: $main-blue;
+    text-align: center;
+}
+
+.nav-pills .nav-link, .nav-pills .show > .nav-link {
+    text-align: center;
+}
+
+
+.nav-pills .nav-link  {
+    color: $dark-grey;
+}
 
