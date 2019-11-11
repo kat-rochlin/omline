@@ -579,3 +579,18 @@
 }
 
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: white;
+    background-color: $main-blue;
+    text-align: center;
+}
+
+.nav-pills .nav-link, .nav-pills .show > .nav-link {
+    text-align: center;
+}
+
+
+.nav-pills .nav-link  {
+    color: $dark-grey;
+}
+
