@@ -14,7 +14,6 @@ class HubsController < ApplicationController
     @event = Event.new
     @studios = Studio.where(hub: @hub)
     @users = User.where(hub: @hub)
-
     @markers = @studios.map do |studio|
       {
         lat: studio.latitude,

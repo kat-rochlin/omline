@@ -2,13 +2,12 @@
 .sign-up-body {
   background: $seafoam;
   min-height: calc(100vh + 100px);
-
   padding: 5vw;
 }
 
 .fa-arrow-left {
-  font-size: 40px;
-  color: $main-blue;
+  font-size: 50px;
+  color: $light-blue;
 }
 
 
@@ -16,10 +15,12 @@
   margin: auto;
   border: 0;
   border-radius: 1rem;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  // box-shadow: 0 0.5rem 1rem 0 rgba(220,220,220,0.8);
   overflow: hidden;
-  margin-top: 18vh !important;
-  max-width: 750px;
+  margin-top: 3vh !important;
+  max-width: 900px;
+  height: 70vh;
+
 }
 
 .card-signin .card-title {
@@ -37,6 +38,7 @@
 
 .card-signin .card-body {
   padding: 2rem;
+  margin-top: 10vh !important;
 }
 
 .form-signin {
@@ -57,7 +59,7 @@
 }
 
 .form-label-group input {
-  height: auto;
+  height: 42px;
   border-radius: .5rem;
 }
 
@@ -109,7 +111,7 @@
 .form-label-group input:not(:placeholder-shown)~label {
   padding-top: calc(var(--input-padding-y) / 3);
   padding-bottom: calc(var(--input-padding-y) / 3);
-  font-size: 12px;
+  font-size: 14px;
   color: #777;
 }
 

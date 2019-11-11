@@ -1,32 +1,101 @@
-<div>
-  <h1 class="hub-name-show"><%= @hub.city %></h1>
-<div>
+
+<div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573367728/Sunset-Beach-l_czclfd.jpg)">
+  <h1 class="hub-name-show"><%= @hub.city.upcase %>
+  </h1>
+</div>
 
 
 <div class="container">
-  <div>
-    <% @users.each do |user| %>
-      <%= link_to profile_path(user.id) do %>
-        <%= cl_image_tag user.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %>
-      <% end %>
-    <% end %>
+  <div class="row">
+    <div class="col-md-3">
+      <div class="contact-box center-version">
+        <div class = "top-prof-card">
+          <a href="#profile.html"><%= cl_image_tag current_user.profilephoto, class:"avatar-profile"  %>
+          </a>
+          <h5 class="m-b-xs mt-3">Katie Overbury</h5>
+        </div>
+        <div class="contact-box-footer">
+          <div class="m-t-xs btn-group"><%= link_to "Connect", "#", class:"btn-sm-white" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<div class="card-product-hub">
+  <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929574/Beach-yoga13-SFW-sharp_kvnbte.jpg" />
+  <div class="card-product-infos">
+    <h2>Beachside Morning Vinyasa Flow & Pranayama</h2>
+    <p>Echo Beach</p>
+    <p>Monday, November 3, 2019 at 8:00–9:30AM</p>
+    <p>Capacity: 10 spots | 6 spots available</p>
+    <p>Price: $5</p>
+  </div>
+</div>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+  <div class="info-card">
+    <div class="front">
+      <div class="card front-card" style="width: 20rem;">
+        <image><%= cl_image_tag 'https://res.cloudinary.com/le-wagon1234/image/upload/v1572914351/the_practice_studio_xourec.jpg', class:"card-img-top"%>
+        </image>
+        <div class="card-body">
+          <h4 class="card-title">The Practice</h4>
+        </div>
+      </div>
+    </div>
+    <div class="back">
+      <div class="card studio" style="width: 20rem;">
+      <div class="back-card">
+       <div class="back-card-body">
+       <div class="back-card-title">
+      <h4>The Practice</h4>
+      <p>Styles: Tantric Hatha Yoga, Yoga Nidra</p>
+      </div>
+      <div class="back-card-info">
+      <p><%= image_tag "web_icon.png", :width => 15 %> http://www.thepracticebali.com/</p>
+      <p><%= image_tag "phone_icon.png", :width => 15 %> +62 361-300-3446 </p>
+      <p><%= image_tag "email_icon.png", :width => 15 %> reception@thepracticebali.com</p>
+      <p><%= image_tag "time_icon.png", :width => 15 %> Hours: 7:15 - 20:00</p>
+      </div>
+      </div>
+    </div>
+ </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+<div class="container">
+  <div><% @users.each do |user| %><%= link_to profile_path(user.id) do %><%= cl_image_tag user.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %><% end %><% end %>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="card p-4 rounded mb-4">
         <h3 class="text-center">Events</h3>
-        <div class="event-box-content">
-          <% @hub.events.each do |event| %>
-            <p><%= link_to event.title, event_path(event.id) %>
-            <%= event.description %></p>
-          <% end %>
-        <!-- Button trigger modal -->
+        <div class="event-box-content"><% @hub.events.each do |event| %>
+          <p><%= link_to event.title, event_path(event.id) %><%= event.description %>
+          </p><% end %>
+          <!-- Button trigger modal -->
         </div>
         <button id="create-event-btn" type="button" class="btn-lg-white" data-toggle="modal" data-target="#exampleModal">
           Create Event
         </button>
-
-         <span id="form-to-render" data-to-render="<%= @failed %>"></span>
+        <span id="form-to-render" data-to-render="<%= @failed %>">
+        </span>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -38,17 +107,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <h3 class="text-center">Create an Event</h3>
-                <%= simple_form_for [@hub, @event] do |f| %>
-                  <%= f.input :title %>
-                  <%= f.input :description %>
-                  <%= f.input :address %>
-                  <%= f.input :price %>
-                  <%= f.input :start_time, html5: true %>
-                  <%= f.input :end_time, html5: true %>
-                  <%= f.input :capacity, inline_label: 'Yes, remember me' %>
-                  <%= f.button :submit, input_html: { class: 'btn-md-blue' } %>
-                <% end %>
+                <h3 class="text-center">Create an Event</h3><%= simple_form_for [@hub, @event] do |f| %><%= f.input :title %><%= f.input :description %><%= f.input :address %><%= f.input :price %><%= f.input :start_time, html5: true %><%= f.input :end_time, html5: true %><%= f.input :capacity, inline_label: 'Yes, remember me' %><%= f.button :submit, input_html: { class: 'btn-md-blue' } %><% end %>
               </div>
             </div>
           </div>
@@ -65,14 +124,11 @@
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active studio-box-content" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <% @studios.each do |studio| %>
-            <h5><%= studio.name %></h5>
-            <p><%= studio.address %>
-              <%= studio.website %>
-              <%= studio.email %>
-              <%= studio.phone_number %></p>
-            <% end %>
+          <div class="tab-pane fade show active studio-box-content" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><% @studios.each do |studio| %>
+            <h5><%= studio.name %>
+            </h5>
+            <p><%= studio.address %><%= studio.website %><%= studio.email %><%= studio.phone_number %>
+            </p><% end %>
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div id="map" style="width: 100%; height: 507px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">

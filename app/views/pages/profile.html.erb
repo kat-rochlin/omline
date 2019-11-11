@@ -1,41 +1,286 @@
+<div class="container-profile">
+  <div class = "cover-photo">
+   <div class = "prof-current-hub"><p>Current Hub: <a href="#" class = "hub-prof-link">CANGGU</a><p></div>
+    <div class = "action-btns"><%= link_to "Connect", "#", class:"btn-lg-white" %><%= link_to "Message", "#", class:"btn-lg-white" %>
+    </div>
+  </div>
+  <div class = "main-profile">
+    <div class="row row-centered">
+      <div class="col-xs-12 col-s-12 col-md-4">
+        <div class="card-interests" style="width: auto;">
+          <div class = "card-title-fix  mt-3">
+          <h5 class="card-title">INTERESTS</h5>
+        </div>
+          <div class="card-scroll">
+            <div class = "interest-items">
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Yoga
+              </p>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Meditation
+              </p>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Pranayama
+              </p>
+               <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Yoga
+              </p>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Meditation
+              </p>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Pranayama
+              </p>
 
-<div class="container">
-  <!-- Request a friend if youre not yet their friend and not on your own profile  -->
-  <% unless current_user == @user || @user.pending_friends.include?(current_user) %>
-  <%= link_to "friend request", request_friend_path(@user), method: :post %>
-  <% end %>
-  <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-s-12 col-md-4">
+        <div class="photo-avatar"><%= cl_image_tag @user.profilephoto, class:"prof-photo"  %>
+        </div>
+        <h4 class="name"><%= @user.first_name %> <%= @user.last_name %>
+        </h4>
+        <p class="info"><%= @user.nationality %>
+        </p><% if  @user.is_teacher == true %>
+        <div class="teacher-ind"><%= image_tag 'teacher_icon.png', class:"teacher-prof-icon"  %>
+          <div class="teacher-text">
+            <p>Teacher</p>
+          </div>
+        </div><% end %>
+      </>
+      <div class = "desc">
+        <p class="truncate-overflow">Hi ! My name is Jane Doe. I'm a UI/UX Designer
+      from Paris, in France. I really enjoy photography and mountains. Hi ! My name is Jane Doe. I'm a UI/UX Designer
+      from Paris, in France. I really enjoy photography and mountains.</p>
+        <a href="#">Read More</a>
+      </div>
+    </div>
+    <div class="col-xs-12 col-s-12 col-md-4">
+      <div class="card-connection" style="width: auto;">
+        <div class = "card-title-fix mt-3">
+          <h5 class="card-title"><%= current_user.friends.length %> CONNECTIONS</h5>
+        </div>
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 ">Recently Added</h6>
+            <% current_user.friends.first(4).each do |friend| %>
+            <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+            <% end %>
+            <div class = "see_all-link">
+              <a href="#" class="card-link">See All</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "container-teacher-info">
+    <div class = "teach-exp-top">
+      <h3 class="teach-exp-title">TEACHING &nbspEXPERIENCE</h3>
+      <div class = "teach-exp-cards mx-auto">
+        <div class="card w-75 teach-exp">
+          <div class="card-test">
+            <div class = "col-8">
+              <h5 class="card-title">One Yoga Thailand</h5>
+              <p class="card-text">Koh Phangan</p>
+              <p class="card-text">I taught Vinyasa and Hatha classes</p>
+            </div>
+            <div class = "col-4">
+              <p>April 2018 - April 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="card w-75 teach-exp">
+          <div class="card-test">
+            <div class = "col-8">
+              <h5 class="card-title">One Yoga Thailand</h5>
+              <p class="card-text">Koh Phangan</p>
+              <p class="card-text">I taught Vinyasa and Hatha classes</p>
+            </div>
+            <div class = "col-4">
+              <p>April 2018 - April 2019</p>
+            </div>
+          </div>
+        </div>
+        <div class="card w-75 teach-exp">
+          <div class="card-test">
+            <div class = "col-8">
+              <h5 class="card-title">One Yoga Thailand</h5>
+              <p class="card-text">Koh Phangan</p>
+              <p class="card-text">I taught Vinyasa and Hatha classes</p>
+            </div>
+            <div class = "col-4">
+              <p>April 2018 - April 2019</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "teach-info">
+      <div class="row row-centered">
+        <div class="col-xs-12 col-s-12 col-md-4">
+          <div class="card-teach" style="width: auto;">
+              <div class = "card-title-fix mt-3">
 
-  <!-- Start a conversation with a friend from their profile -->
-  <% if current_user.friends.include?(@user) %>
-    <% if current_user != @user && @connection.present? %>
-      <%= link_to "Message", user_connection_messages_path(@connection) %>
-    <% else %>
-      <%= link_to "Message", user_connections_path(connector: @sender, connectee: @recipient), method: :post %>
-    <% end %>
-  <% end %>
-  <!-- Allow you to accept any pending friends  -->
-  <% if current_user == @user %>
-    <% @user.requested_friends.each do |friend| %>
-      <%= friend %>
-      <%= link_to "accept", accept_friend_path(friend), method: :post %>
-    <% end %>
-  <% end %>
+              <h5 class="card-title">TEACHING STYLES</h5>
 
-  <!-- List all friends and allow you to remove friends -->
-  <% current_user.friends.each do |friend| %>
-    <p>friends : <%= friend %></p>
-    <% if current_user == @user %>
-      <%= link_to "remove friend", remove_friend_path(friend), method: :delete %>
-    <% end %>
-  <% end %>
+            </div>
+            <div class="card-scroll">
 
-<%= @user.first_name %>
-<%= @user.last_name %>
-<%= @user.nationality %>
-<%= @user.birthdate %>
-<%= cl_image_tag @user.profilephoto, height: 300, width: 400, crop: :fill %>
+              <div class = "card-items">
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Vinyasa
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Hatha
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Kundalini
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Hatha
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Kundalini
+                </p>
 
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-s-12 col-md-4">
+          <div class="card-teach" style="width: auto;">
+             <div class = "card-title-fix mt-3">
+              <h5 class="card-title">CERTIFICATIONS</h5>
+              </div>
+            <div class="card-body">
+
+              <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-s-12 col-md-4">
+          <div class="card-teach" style="width: auto;">
+
+             <div class = "card-title-fix mt-3">
+
+              <h5 class="card-title">LANGUAGES</h5>
+            </div>
+
+
+            <div class="card-body">
+
+              <div class = "card-items">
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> English
+                </p>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Finnish
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row ">
+      <div class="pt-5 col-11 mx-auto">
+        <div class="card mt-3 tab-card">
+          <h3 class="card-title-event mx-auto">EVENTS</h3>
+          <div class = "first-tabs">
+            <div class="card-header tab-card-header">
+              <ul class="nav nav-tabs card-header-tabs d-flex justify-content-center" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">
+                    <h4>Host</h4>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">
+                    <h4>Attend</h4>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
+                <div class="row">
+                  <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Upcoming</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Past</a>
+                    </div>
+                  </div>
+                  <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+
+
+                        <div class = "card-product-group">
+                        <div class="card-product">
+                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929574/Beach-yoga13-SFW-sharp_kvnbte.jpg" />
+                          <div class="card-product-infos">
+                            <h2>Beachside Morning Vinyasa Flow & Pranayama</h2>
+                            <p>Location: Canggu</p>
+                            <p>August 14, 2019</p>
+                          </div>
+                        </div>
+
+                        <div class="card-product">
+                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929391/kundalini_event_pm6oif.png" />
+                          <div class="card-product-infos">
+                            <h2>Kundalini Yoga at Canggu Villa</h2>
+                            <p>Location: Canggu</p>
+                            <p>August 14, 2019</p>
+                          </div>
+                        </div>
+
+                         <div class="card-product">
+                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929759/zin_cafe_rgvx6z.jpg" />
+                          <div class="card-product-infos">
+                            <h2>Showing Up: Integrated Men and Women's Circle</h2>
+                              <p>Location: Canggu</p>
+                            <p>August 14, 2019</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                        <div class="card-product">
+                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929877/sound_healing_fweqed.jpg" />
+                          <div class="card-product-infos">
+                            <h2>Sound Healing Journey</h2>
+                            <p>Location: Canggu</p>
+                            <p>August 14, 2019</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
+                <div class="row">
+                  <div class="col-3">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Upcoming</a>
+                      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Past</a>
+                    </div>
+                  </div>
+                  <div class="col-9">
+                    <div class="tab-content" id="v-pills-tabContent">
+                      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="card-product">
+                          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                          <div class="card-product-infos">
+                            <h2>Product name</h2>
+                            <p>Product description with
+                              <strong>relevant info</strong> only.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">Bye</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
