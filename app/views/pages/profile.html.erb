@@ -1,7 +1,24 @@
 <div class="container-profile">
   <div class = "cover-photo">
-   <div class = "prof-current-hub"><p>Current Hub: <a href="#" class = "hub-prof-link">CANGGU</a><p></div>
-    <div class = "action-btns"><%= link_to "Connect", "#", class:"btn-lg-white" %><%= link_to "Message", "#", class:"btn-lg-white" %>
+
+   <div class = "prof-current-hub">
+    <% unless @user.hub.nil? %>
+    <p>Current Hub: <%= link_to "#{@user.hub.name}", hub_path(@user.hub), class:"hub-link" %><p>
+    <% end %>
+    </div>
+    <div class = "action-btns">
+    <!-- Request a friend if youre not yet their friend and not on your own profile  -->
+    <% unless current_user == @user || @user.requested_friends.include?(current_user) %>
+      <%= link_to "Friend Request", request_friend_path(@user),class:"btn-lg-white", method: :post %>
+    <% end %>
+    <!-- Start a conversation with a friend from their profile -->
+    <% if current_user.friends.include?(@user) %>
+      <% if current_user != @user && @connection.present? %>
+        <%= link_to "Message", user_connection_messages_path(@connection), class:"btn-lg-white" %>
+      <% else %>
+        <%= link_to "Message", user_connections_path(connector: @sender, connectee: @recipient),class:"btn-lg-white", method: :post %>
+      <% end %>
+    <% end %>
     </div>
   </div>
   <div class = "main-profile">
@@ -41,7 +58,6 @@
             <p>Teacher</p>
           </div>
         </div><% end %>
-      </>
       <div class = "desc">
         <p class="truncate-overflow">Hi ! My name is Jane Doe. I'm a UI/UX Designer
       from Paris, in France. I really enjoy photography and mountains. Hi ! My name is Jane Doe. I'm a UI/UX Designer
@@ -54,36 +70,40 @@
         <div class = "card-title-fix mt-3">
           <h5 class="card-title"><%= current_user.friends.length %> CONNECTIONS</h5>
         </div>
-        <div class="card-body">
+          <div class="card-body">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
             <% current_user.friends.first(4).each do |friend| %>
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-              See All Friends
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Launch demo modal
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><%= @user.first_name %>'s Friends</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
                   <div class="modal-body">
-                    ...
+                  <% current_user.friends.each do |friend| %>
+                    <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+                    <%= friend.first_name friend.last_name %>
+                    <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-lg-blue" } %>
+                  <% end %>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                   </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </div>
