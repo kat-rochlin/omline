@@ -1,7 +1,7 @@
 
 <div class = "hub-container">
 
-<div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573367728/Sunset-Beach-l_czclfd.jpg)">
+<div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573486560/DSC_1251_el4p4x.jpg)">
   <h1 class="hub-name-show"><%= @hub.city.upcase %>
   </h1>
 </div>
@@ -11,6 +11,7 @@
 
 
 <div class = "row">
+  <div class = "hub-users-title"><h2>YOGIS IN <%= @hub.city.upcase %><h2></div>
   <div class = "col-12">
     <div class="hub-profile-cards"><% @users.each do |user| %>
       <div class="contact-box center-version">
@@ -40,11 +41,12 @@
 
     <div class="col-md-6">
       <div class="hub-events card">
-        <h2 class="text-center">EVENTS</h2>
+        <h2 class="hub-box-title text-center">EVENTS</h2>
         <div class="event-box-content">
 
          <!--  THIS IS JUST A PLACEHOLDER, NEED TO PUT IN REAL HEADERS -->
           <p><strong>Monday, November 12</strong></p>
+          <% 15.times do  %>
           <% @hub.events.each do |event| %>
             <div class="card-product-hub">
               <%= cl_image_tag event.photo %>
@@ -59,10 +61,11 @@
             </div>
           </div>
     <% end %>
+      <% end %>
 
           <!-- Button trigger modal -->
         </div>
-        <button id="create-event-btn" type="button" class="btn-md-white" data-toggle="modal" data-target="#exampleModal">
+        <button id="create-event-btn" type="button" class="btn-md-blue" data-toggle="modal" data-target="#exampleModal">
           Create Event
         </button>
         <span id="form-to-render" data-to-render="<%= @failed %>">
@@ -93,14 +96,16 @@
 
     <div class="col-md-4">
       <div class="studio-events card">
-        <h3 class="text-center">STUDIOS</h3>
+        <h3 class="studio-title-top text-center">STUDIOS</h3>
         <nav>
+          <div class="studio-tabs">
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">List</a>
             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Map</a>
           </div>
+          </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
+        <div class="studio-cards tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active studio-box-content" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <% @studios.each do |studio| %>
 
