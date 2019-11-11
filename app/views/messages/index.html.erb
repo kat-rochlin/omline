@@ -15,7 +15,7 @@
         <% if @over_ten %>
          <%= link_to "Show Previous", user_connection_messages_path(@user_connection.id, button_previous: true) %>
         <% end %>
-        <div class=”ui segment”>
+        <div class="insert-message">
          <% @messages.each do |message| %>
           <% if message.content %>
            <% user = User.find(message.user_id) %>
@@ -33,13 +33,7 @@
          <% end %>
         <% end %>
         </div>
-        <%= simple_form_for [@user_connection, @message] do |f| %>
-           <%= f.text_area :content %>
-          <%= f.hidden_field :user_id, value: current_user.id %>
-         <div>
-           <%= f.button :submit, input_html: { class: 'btn-md-blue' } %>
-         </div>
-        <% end %>
+        <%= render "messages/form", locals: { :user_connection => @user_connection, :message => @message } %>
       </div>
     </div>
   </div>

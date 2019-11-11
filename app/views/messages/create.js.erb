@@ -1,0 +1,23 @@
+function fillForm() {
+  const message = document.getElementById('message_content');
+  const container = document.querySelector('.insert-message');
+  const firstName = "<%= current_user.first_name %>"
+  const date = new Date();
+
+  const html = `<div class="item">
+           <div class="content">
+            <div class="header"><strong> ${firstName} </strong> ${date} </div>
+             <div class="list">
+              <div class="item">
+               <i class="right triangle icon"></i>
+                 ${message.value}
+             </div>
+           </div>
+          </div>
+        </div>`
+
+container.insertAdjacentHTML('beforeend', html);
+message.value = "";
+}
+
+fillForm();
