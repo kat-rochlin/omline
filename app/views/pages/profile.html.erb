@@ -59,7 +59,7 @@
         <div class="card-body">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
             <% current_user.friends.first(4).each do |friend| %>
-            <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+              <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <div class = "see_all-link">
               <a href="#" class="card-link">See All</a>
@@ -176,7 +176,7 @@
   <div class="container">
     <div class="row ">
       <div class="pt-5 col-11 mx-auto">
-        <div class="card mt-3 tab-card">
+        <div class="card mt-3 tab-card"  style="margin-bottom: 40px">
           <h3 class="card-title-event mx-auto">EVENTS</h3>
           <div class = "first-tabs">
             <div class="card-header tab-card-header">
