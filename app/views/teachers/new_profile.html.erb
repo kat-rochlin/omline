@@ -7,10 +7,7 @@
       <%= simple_form_for :teacher, url: save_teacher_profile_path, method: :post do |f| %>
 
       <div class="d-flex ">
-      <% Certification.all.each do |certification|  %>
-        <input name="certification[]" type="checkbox", value="<%= certification.id %>"> <%= certification.name %> <br>
-      <% end %>
-
+      <%= f.input :certifications, collection: Certification.all, as: :select, prompt: "Choose a certification", input_html: { class: 'multiselectuser' } %> <br>
       </div>
 
       <hr>
@@ -25,12 +22,11 @@
       <% end %>
 
       <hr>
-
       <%= f.input :studio_name %>
       <%= f.input :location %>
       <%= f.input :description %>
-      <%= f.input :start_date %>
-      <%= f.input :end_date %>
+      <%= f.input :start_date, as: :date, html5: true %>
+      <%= f.input :end_date, as: :date, html5: true %>
   <%= f.button :submit %>
 <% end %>
     </div>
