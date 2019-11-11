@@ -175,12 +175,12 @@
                 <% @user.requested_friends.each do |friendreq| %><%= friendreq.first_name %><%= link_to "accept", accept_friend_path(friendreq), method: :post %><% end %>
                 <div class="row">
                   <% 15.times do  %>
-                  <div class="col-md-4">
+                  <div class="col-sm-6 col-md-6 col-lg-4">
                     <div class="contact-box center-version mx-auto">
                       <div class = "top-prof-card">
                         <a href="#profile.html"><%= cl_image_tag current_user.profilephoto, class:"avatar-profile"  %>
                         </a>
-                        <h5 class="m-b-xs mt-3">Katie Overbury</h5>
+                        <h5 class="m-b-xs mt-3 text-center">Katie Overbury</h5>
                       </div>
                       <div class="contact-box-footer">
                         <div class="m-t-xs btn-group"><%= link_to "Accept", "#", class:"btn-xs-white" %></div>

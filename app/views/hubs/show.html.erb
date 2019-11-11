@@ -1,97 +1,68 @@
 
+<div class = "hub-container">
+
 <div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573367728/Sunset-Beach-l_czclfd.jpg)">
   <h1 class="hub-name-show"><%= @hub.city.upcase %>
   </h1>
 </div>
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
+
+
+
+<div class = "row">
+  <div class = "col-12">
+    <div class="hub-profile-cards"><% @users.each do |user| %>
       <div class="contact-box center-version">
         <div class = "top-prof-card">
-          <a href="#profile.html"><%= cl_image_tag current_user.profilephoto, class:"avatar-profile"  %>
+          <a href="#profile.html"><%= cl_image_tag user.profilephoto,   crop: :limit, class:"avatar-profile" %>
           </a>
-          <h5 class="m-b-xs mt-3">Katie Overbury</h5>
+          <h5 class="text-center m-b-xs mt-3"><%= user.first_name %>&nbsp<%= user.last_name %>
+          </h5>
         </div>
         <div class="contact-box-footer">
           <div class="m-t-xs btn-group"><%= link_to "Connect", "#", class:"btn-sm-white" %>
           </div>
         </div>
-      </div>
+      </div><% end %>
     </div>
   </div>
-</div>
-
-<div class="container">
-<div class="row">
-<div class="card-product-hub">
-  <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929574/Beach-yoga13-SFW-sharp_kvnbte.jpg" />
-  <div class="card-product-infos">
-    <h2>Beachside Morning Vinyasa Flow & Pranayama</h2>
-    <p>Echo Beach</p>
-    <p>Monday, November 3, 2019 at 8:00–9:30AM</p>
-    <p>Capacity: 10 spots | 6 spots available</p>
-    <p>Price: $5</p>
-  </div>
-</div>
-  </div>
-</div>
-
-<div class="container">
-<div class="row">
-  <div class="info-card">
-    <div class="front">
-      <div class="card front-card" style="width: 20rem;">
-        <image><%= cl_image_tag 'https://res.cloudinary.com/le-wagon1234/image/upload/v1572914351/the_practice_studio_xourec.jpg', class:"card-img-top"%>
-        </image>
-        <div class="card-body">
-          <h4 class="card-title">The Practice</h4>
-        </div>
-      </div>
-    </div>
-    <div class="back">
-      <div class="card studio" style="width: 20rem;">
-      <div class="back-card">
-       <div class="back-card-body">
-       <div class="back-card-title">
-      <h4>The Practice</h4>
-      <p>Styles: Tantric Hatha Yoga, Yoga Nidra</p>
-      </div>
-      <div class="back-card-info">
-      <p><%= image_tag "web_icon.png", :width => 15 %> http://www.thepracticebali.com/</p>
-      <p><%= image_tag "phone_icon.png", :width => 15 %> +62 361-300-3446 </p>
-      <p><%= image_tag "email_icon.png", :width => 15 %> reception@thepracticebali.com</p>
-      <p><%= image_tag "time_icon.png", :width => 15 %> Hours: 7:15 - 20:00</p>
-      </div>
-      </div>
-    </div>
- </div>
-    </div>
-  </div>
-</div>
-</div>
 
 
 
 
 
 
+<div class="container-fluid">
+
+  <div class="row justify-content-center">
 
 
-<div class="container">
-  <div><% @users.each do |user| %><%= link_to profile_path(user.id) do %><%= cl_image_tag user.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %><% end %><% end %>
-  </div>
-  <div class="row">
     <div class="col-md-6">
-      <div class="card p-4 rounded mb-4">
-        <h3 class="text-center">Events</h3>
-        <div class="event-box-content"><% @hub.events.each do |event| %>
-          <p><%= link_to event.title, event_path(event.id) %><%= event.description %>
-          </p><% end %>
+      <div class="hub-events card">
+        <h2 class="text-center">EVENTS</h2>
+        <div class="event-box-content">
+
+         <!--  THIS IS JUST A PLACEHOLDER, NEED TO PUT IN REAL HEADERS -->
+          <p><strong>Monday, November 12</strong></p>
+          <% @hub.events.each do |event| %>
+            <div class="card-product-hub">
+              <%= cl_image_tag event.photo %>
+                <div class="card-product-infos">
+                  <div class="hub-event-title">
+                <h2><%= link_to event.title, event_path(event.id) %></h2>
+                </div>
+                <p><%= event.location_name %></p>
+                <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%>
+                <p>Capacity: <%= event.capacity %></p>
+                <p>Price: $<%= event.price.to_i %></p>
+            </div>
+          </div>
+    <% end %>
+
           <!-- Button trigger modal -->
         </div>
-        <button id="create-event-btn" type="button" class="btn-lg-white" data-toggle="modal" data-target="#exampleModal">
+        <button id="create-event-btn" type="button" class="btn-md-white" data-toggle="modal" data-target="#exampleModal">
           Create Event
         </button>
         <span id="form-to-render" data-to-render="<%= @failed %>">
@@ -114,9 +85,15 @@
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="card p-4 rounded mb-4">
-        <h3 class="text-center">Studios</h3>
+
+
+
+
+
+
+    <div class="col-md-4">
+      <div class="studio-events card">
+        <h3 class="text-center">STUDIOS</h3>
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">List</a>
@@ -124,10 +101,41 @@
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active studio-box-content" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab"><% @studios.each do |studio| %>
-            <h5><%= studio.name %>
-            </h5>
-            <p><%= studio.address %><%= studio.website %><%= studio.email %><%= studio.phone_number %>
+          <div class="tab-pane fade show active studio-box-content" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <% @studios.each do |studio| %>
+
+
+
+
+              <div class="info-card">
+      <div class="front">
+        <div class="card front-card" style="width: 20rem;">
+          <image><%= cl_image_tag studio.photo, crop: :fill, class:"card-img-top"%>
+          </image>
+          <div class="studio-name-front card-body mx-auto">
+            <h4 class="card-title"><%= studio.name %></h4>
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="card studio" style="width: 20rem;">
+          <div class="back-card">
+            <div class="back-card-body">
+              <div class="back-card-title">
+                <h4><%= studio.name %></h4>
+                <p>Styles: <%= studio.styles %></p>
+              </div>
+              <div class="back-card-info">
+                <p><%= image_tag "web_icon.png", :width => 15 %>&nbsp<%= studio.website %></p>
+                <p><%= image_tag "phone_icon.png", :width => 15 %>&nbsp<%= studio.phone_number %></p>
+                <p><%= image_tag "email_icon.png", :width => 15 %>&nbsp<%= studio.email %></p>
+                <p><%= image_tag "time_icon.png", :width => 15 %>&nbsp<%= studio.hours %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
             </p><% end %>
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
@@ -140,6 +148,6 @@
   </div>
 </div>
 
-
+</div>
 <%= javascript_pack_tag 'map.js' %>
 
