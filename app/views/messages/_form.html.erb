@@ -1,4 +1,4 @@
-<%= simple_form_for([@user_connection, @message], remote: true) do |f| %>
+<%= simple_form_for([@user_connection, @message], :url => user_connection_messages_path(@user_connection), remote: true) do |f| %>
    <%= f.text_area :content %>
   <%= f.hidden_field :user_id, value: current_user.id %>
    <%= f.submit "new message"%>

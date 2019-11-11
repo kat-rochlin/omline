@@ -12,6 +12,7 @@ class MessagesController < ApplicationController
       end
       User.find(id)
     end
+    raise
     @users = User.all
     @message = Message.new
     # 2. in view, list out messages in order of created_at
@@ -24,7 +25,7 @@ class MessagesController < ApplicationController
       @over_ten = false
       @messages = @user_connection.messages
     end
-    @message = @user_connection.messages.new
+    @message = Message.new
   end
 
   # 3. use simple form to allow users to create new messages in a conversation
@@ -35,7 +36,10 @@ class MessagesController < ApplicationController
   def create
     @message = @user_connection.messages.new(message_params)
     if @message.save
-      redirect_to user_connection_messages_path(@user_connection)
+      respond_to do |format|
+        format.html { redirect_to user_connection_messages_path(@user_connection) }
+        format.js # <-- will render `app/views/reviews/create.js.erb`
+      end
     end
   end
 
