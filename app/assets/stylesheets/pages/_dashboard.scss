@@ -46,6 +46,7 @@
 .dash-content {
   width: 90%;
   height: 600px;
+  padding: 20px;
   background-color: white;
   border-radius: 20px;
   margin-top: 60px;
@@ -100,5 +101,33 @@
 
 .event.card {
   border: none;
-
+  overflow: scroll;
+  height: 470px;
 }
+
+
+.dash-card-body {
+  // overflow: scroll;
+  // height: 470px;
+}
+
+.request.card {
+  border: none;
+  overflow: scroll;
+  height: 520px;
+}
+
+
+.hub-dash.card {
+  border: none;
+}
+
+
+.friend.card {
+  border: none;
+  padding-top: 10px;
+  overflow: scroll;
+  height: 520px;
+}
+
+

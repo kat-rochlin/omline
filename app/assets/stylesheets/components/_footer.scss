@@ -12,9 +12,9 @@
 }
 
 .contact-info  {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
+
  }
 
 .footer-copyright {
@@ -23,4 +23,9 @@
 
 #sticky-footer {
   position: sticky;
+}
+
+.contact-info-items{
+  text-align:left;
+
 }
