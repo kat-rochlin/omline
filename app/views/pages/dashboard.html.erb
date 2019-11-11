@@ -22,12 +22,12 @@
               aria-controls="requests" aria-selected="false">Friend Requests</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="hub-tab" data-toggle="tab" href="#your_hub" role="tab"
-              aria-controls="your_hub" aria-selected="false">Your Hub</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" id="connections-tab" data-toggle="tab" href="#connections" role="tab"
               aria-controls="connections" aria-selected="false">Connections</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="hub-tab" data-toggle="tab" href="#your_hub" role="tab"
+              aria-controls="your_hub" aria-selected="false">Your Hub</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" id="interests-tab" data-toggle="tab" href="#interests" role="tab"
@@ -119,7 +119,7 @@
                 <div class="col-9">
                   <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-attend-upcoming" role="tabpanel" aria-labelledby="v-pills-attend-upcoming-tab">
-                      <div class="card">
+                      <div class="event card">
                         <div class="dash-card-body p-4 text-center"><% if @user.events.empty? %>
                           <h5>You have not signed up for any events yet.</h5><% else %><% @user.events.each do |event| %>
                           <div class="card-product"><%= cl_image_tag event.photo %>
@@ -135,26 +135,67 @@
                           </div><% end %><% end %>
                         </div>
                       </div>
-                    </div><% if @events.empty? %>
+                    </div>
+<!-- need to fix this? -->
+                    <% if @events.empty? %>
                     <h5>You have not signed up for any events yet.</h5><% end %>
+
+
                     <div class="tab-pane fade" id="v-pills-attend-past" role="tabpanel" aria-labelledby="v-pills-attend-past-tab">
-                      Bye
+
+                      <div class="event card">
+                        <div class="dash-card-body p-4 text-center"><% if @user.events.empty? %>
+                          <h5>You have not signed up for any events yet.</h5><% else %><% @user.events.each do |event| %>
+                          <div class="card-product"><%= cl_image_tag event.photo %>
+                            <div class="card-product-infos">
+                              <h2><%= link_to event.title, event_path(event) %>
+                              </h2>
+                              <p>
+                                <strong>Location:</strong><%= event.location_name %>
+                              </p>
+                              <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%>
+                              </p>
+                            </div>
+                          </div><% end %><% end %>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+
+
+
           <div class="tab-pane fade" id="requests" role="tabpanel" aria-labelledby="requests-tab">
-            <div class="card">
-              <div class="dash-card-header p-3 text-center border-bottom">
-                <h3>Friend Requests</h3>
+            <div class="request card">
+              <div class="request-dash-body p-3">
+                <% @user.requested_friends.each do |friendreq| %><%= friendreq.first_name %><%= link_to "accept", accept_friend_path(friendreq), method: :post %><% end %>
+                <div class="row">
+                  <% 15.times do  %>
+                  <div class="col-md-4">
+                    <div class="contact-box center-version mx-auto">
+                      <div class = "top-prof-card">
+                        <a href="#profile.html"><%= cl_image_tag current_user.profilephoto, class:"avatar-profile"  %>
+                        </a>
+                        <h5 class="m-b-xs mt-3">Katie Overbury</h5>
+                      </div>
+                      <div class="contact-box-footer">
+                        <div class="m-t-xs btn-group"><%= link_to "Accept", "#", class:"btn-xs-white" %></div>
+                        <div class="m-t-xs btn-group"><%= link_to "Delete", "#", class:"btn-xs-white" %></div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
               </div>
-              <div class="dash-card-body p-4 text-center"><% @user.requested_friends.each do |friendreq| %><%= friendreq.first_name %><%= link_to "accept", accept_friend_path(friendreq), method: :post %><% end %>
-              </div>
-            </div>
           </div>
         </div>
+
+
         <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
           <div class="card">
             <div class="dash-card-header p-3 text-center border-bottom">
@@ -169,18 +210,57 @@
               <% end %>
             </div>
           </div>
-          <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
-            <div class="card">
-              <div class="dash-card-header p-3 text-center border-bottom">
-                <h3>Friends</h3>
-              </div>
+</div>
+
+
+         <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
+            <div class="friend card">
+
               <div class="dash-card-body p-4 text-center"><% if @user.friends.empty? %>
-                <h5>You're a loser... no one likes you...</h5><% else %><% @user.friends.each do |friend| %>
+                <h5>NO CONNECTIONS</h5><% else %><% @user.friends.each do |friend| %>
                 <p><%= friend.first_name %>
                 </p><%= link_to "remove friend", remove_friend_path(friend), method: :delete %><% end %><% end %>
+
+                <div class="row">
+                  <% 15.times do  %>
+                  <div class="col-md-4">
+                    <div class="contact-box center-version mx-auto">
+                      <div class = "top-prof-card">
+                        <a href="#profile.html"><%= cl_image_tag current_user.profilephoto, class:"avatar-profile"  %>
+                        </a>
+                        <h5 class="m-b-xs mt-3">Katie Overbury</h5>
+                      </div>
+                      <div class="contact-box-footer">
+                        <div class="m-t-xs btn-group"><%= link_to "Delete", "#", class:"btn-xs-white" %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
+                </div>
+
+
+
               </div>
+
+
             </div>
           </div>
+
+
+          <div class="tab-pane fade" id="your_hub" role="tabpanel" aria-labelledby="your_hub-tab">
+            <div class="hub-dash card">
+            <p>Can we have the hub card that we show on the index page here?</p>
+              <div><%= link_to @user.hub.city, hub_path(@user.hub) %>
+             </div>
+                <%= link_to "Change Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-md-white" %>
+
+            </div>
+          </div>
+
+
+
+
           <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
             <div class="card text-center">
               <div class="dash-card-header p-3 text-center border-bottom">
