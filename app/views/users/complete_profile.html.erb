@@ -46,7 +46,7 @@
           <legend class="col-form-label pt-0">Interests (optional)</legend>
           <input type="hidden" name="user[tag_ids][]" value="">
           <div class="cards">
-            <% Tag.all.each do |tag| %>
+            <% Tag.all.where(tag_type: "user").each do |tag| %>
               <input class="hidden" style="display:none" type="checkbox" value="<%= tag.id %>" name="user[tag_ids][]" id="user_tag_ids_<%= tag.id %>">
               <label class="category-choice" for="user_tag_ids_<%= tag.id %>">
                 <%= tag.tag_name %>
