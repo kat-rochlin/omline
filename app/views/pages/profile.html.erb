@@ -72,7 +72,7 @@
         </div>
           <div class="card-body">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
-            <% current_user.friends.first(4).each do |friend| %>
+            <% @user.friends.first(4).each do |friend| %>
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <!-- Button trigger modal -->
@@ -90,7 +90,7 @@
                     </button>
                   </div>
                   <div class="modal-body" style="display: flex; justify-content: space-between;">
-                    <% current_user.friends.each do |friend| %>
+                    <% @user.friends.each do |friend| %>
                     <div>
                       <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
                       <strong><%= friend.first_name %></strong>
