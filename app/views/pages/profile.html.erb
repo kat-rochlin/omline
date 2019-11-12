@@ -30,18 +30,9 @@
         </div>
           <div class="card-scroll">
             <div class = "interest-items">
-              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Yoga
-              </p>
-              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Meditation
-              </p>
-              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Pranayama
-              </p>
-               <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Yoga
-              </p>
-              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Meditation
-              </p>
-              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Pranayama
-              </p>
+              <% current_user.tags.each do |tag| %>
+              <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= tag.tag_name %></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -70,11 +61,13 @@
         <div class = "card-title-fix mt-3">
           <h5 class="card-title"><%= current_user.friends.length %> CONNECTIONS</h5>
         </div>
-          <div class="card-body">
+          <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between;">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
-            <% @user.friends.first(4).each do |friend| %>
-            <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
-            <% end %>
+            <div class="friends">
+              <% @user.friends.first(4).each do |friend| %>
+                <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+              <% end %>
+            </div>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-md-blue" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
             See All
