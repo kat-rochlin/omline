@@ -1,5 +1,3 @@
-
-
 <div class="messaging container">
   <div class="messaging">
     <div class="inbox_msg">
@@ -29,89 +27,42 @@
                     <!-- <span class="chat_date">Dec 25</span></h5> -->
                   </div>
                 </div>
-              </div><% end %>
+              </div>
+              <% end %>
             </div>
           </div>
           <div class="mesgs">
-            <div class="msg_history"><% @messages.each do |message| %><% if message.content %><% if message.user == current_user  %>
+            <% if @over_ten %>
+             <%= link_to "Show Previous", user_connection_messages_path(@user_connection.id, button_previous: true) %>
+            <% end %>
+            <div class="msg_history">
+              <% @messages.each do |message| %>
+              <% if message.content && message.user == current_user  %>
               <div class="outgoing_msg">
                 <div class="sent_msg">
-                  <p><%= message.content %>
-                  </p>
-                  <span class="time_date"> 11:01 AM    |    Today</span>
+                  <p><%= message.content %></p>
+                  <span class="time_date"> <%= message.message_time %>    |    <%= message.message_day %></span>
                 </div>
               </div>
-            </div><% else %>
+            </div>
+            <% else %>
+            <% user = User.find(message.user_id) %>
             <div class="incoming_msg">
               <div class="incoming_msg_img">
-                <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil">
+                <div class="chat_img"><%= cl_image_tag user.profilephoto, class:"avatar-large" %></div>
                 </div>
                 <div class="received_msg">
                   <div class="received_withd_msg">
                     <p><%= message.content %>
                     </p>
-                    <span class="time_date"> 11:01 AM    |    June 9</span>
+                    <span class="time_date"> <%= message.message_time %>   |    <%= message.message_day %></span>
                   </div>
                 </div>
-              </div><% end %><% end %><% end %>
-              <div class="type_msg">
-                <div class="input_msg_write">
-                  <input type="text" class="write_msg" placeholder="Type a message" />
-                  <button class="msg_send_btn" type="button">
-                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                  </button>
-                </div>
               </div>
+              <% end %>
+              <% end %>
+              <%= render "messages/form", locals: { :user_connection => @user_connection, :message => @message } %>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-<div class="row">
-    <div class="col-4">
-      Conversations
-      <% @conversations.each do |friend| %>
-      <div class="card">
-        <div class="card-body d-flex justify-content-between">
-          <p> <%= friend.first_name %> <%= friend.last_name %></p>
-          <%= link_to "Chat", user_connection_messages_path(UserConnection.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first), class:"btn-sm-white" %>
-        </div>
-      </div>
-      <% end %>
-    </div>
-    <div class="col-8">
-      <div class="message">
-        <% if @over_ten %>
-         <%= link_to "Show Previous", user_connection_messages_path(@user_connection.id, button_previous: true) %>
-        <% end %>
-        <div class="insert-message">
-         <% @messages.each do |message| %>
-          <% if message.content %>
-           <% user = User.find(message.user_id) %>
-           <div class=”item”>
-            <div class=”content”>
-             <div class=”header”><strong><%= user.first_name %></strong>    <%= message.message_time %></div>
-              <div class=”list”>
-               <div class=”item”>
-                <i class=”right triangle icon”></i>
-                 <%= message.content %>
-              </div>
-            </div>
-           </div>
-         </div>
-         <% end %>
-        <% end %>
-        </div>
-        <%= render "messages/form", locals: { :user_connection => @user_connection, :message => @message } %>
-      </div>
-    </div>
-  </div>

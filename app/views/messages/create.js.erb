@@ -1,23 +1,16 @@
 function fillForm() {
   const message = document.getElementById('message_content');
-  const container = document.querySelector('.insert-message');
-  const firstName = "<%= current_user.first_name %>"
-  const date = new Date();
+  const container = document.querySelectorAll('.outgoing_msg');
+  const lastMsg = container[container.length - 1]
+  const html = `<div class="outgoing_msg">
+                  <div class="sent_msg">
+                    <p> ${message.value} </p>
+                    <span class="time_date"> ${currentTime()}    |     ${currentDate()} </span>
+                  </div>
+                </div>`
 
-  const html = `<div class="item">
-           <div class="content">
-            <div class="header"><strong> ${firstName} </strong> ${date} </div>
-             <div class="list">
-              <div class="item">
-               <i class="right triangle icon"></i>
-                 ${message.value}
-             </div>
-           </div>
-          </div>
-        </div>`
 
-container.insertAdjacentHTML('beforeend', html);
+lastMsg.insertAdjacentHTML('afterend', html);
 message.value = "";
 }
-
 fillForm();
