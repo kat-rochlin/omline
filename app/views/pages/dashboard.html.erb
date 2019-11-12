@@ -1,13 +1,10 @@
 <div class="dashboard-container">
   <div class="row">
-    <!-- SIDEBAR -->
     <div class="col-xs-12 col-s-12 col-md-5">
       <div class="sidebar ">
         <div class = "sidebar-top"><%= cl_image_tag @user.profilephoto, class:"dash-photo"  %>
           <div class = "dash-name">
-            <h3><%= @user.first_name %>'s Dashboard
-
-            </h3>
+            <h3><%= @user.first_name %>'s Dashboard</h3>
           </div>
         </div>
         <div class = "sidebar-bottom">
@@ -136,7 +133,7 @@
                           <% else %>
                             <% @cevents.each do |date| %>
                               <% if date[0] > DateTime.now %>
-                                <h4 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h4>
+                                <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
                               <% end %>
                               <% date[1].each do |event| %>
                                 <% if event.end_time > DateTime.now %>
@@ -220,7 +217,7 @@
                       <div class="container w-75">
                         <div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= current_user.hub.photo %>)">
                           <div class="col-md-6 text-center">
-                              <h1> <%= @user.hub.city %> </h1>
+                            <h1> <%= @user.hub.city %> </h1>
                             <div class="row justify-content-center pt-2">
                             </div>
                           </div>
@@ -237,26 +234,26 @@
             <div class="friend card">
               <div class="dash-card-body p-4 text-center">
                 <% if @user.friends.empty? %>
-                <h5>NO CONNECTIONS</h5>
+                  <h5>NO CONNECTIONS</h5>
                 <% else %>
-                <% @user.friends.each do |friend| %>
-                <div class="row">
-                  <div class="col-md-4">
-                    <div class="contact-box center-version mx-auto">
-                      <div class = "top-prof-card">
-                        <a href="#profile.html"><%= cl_image_tag friend.profilephoto, class:"avatar-profile"  %>
-                        </a>
-                        <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
-                      </div>
-                      <div class="contact-box-footer">
-                        <div class="m-t-xs btn-group"><%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
+                  <% @user.friends.each do |friend| %>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="contact-box center-version mx-auto">
+                          <div class = "top-prof-card">
+                            <a href="#profile.html"><%= cl_image_tag friend.profilephoto, class:"avatar-profile"  %></a>
+                            <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
+                          </div>
+                          <div class="contact-box-footer">
+                            <div class="m-t-xs btn-group">
+                              <%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
                   <% end %>
-                  <% end %>
-                </div>
+                <% end %>
               </div>
             </div>
           </div>
@@ -292,7 +289,6 @@
                     <div class="modal-content p-5 container">
                       <%= simple_form_for @user, url: update_profile_path, method: :patch do |f| %>
                         <%= f.error_notification %>
-
                         <div class="form-inputs onboarding">
                           <fieldset class="form-group">
                             <legend class="col-form-label pt-0">Select Your Intersts</legend>

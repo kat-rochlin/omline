@@ -28,25 +28,28 @@
       <div class="hub-events card">
         <h2 class="hub-box-title text-center">EVENTS</h2>
         <div class="event-box-content">
-         <!--  THIS IS JUST A PLACEHOLDER, NEED TO PUT IN REAL HEADERS -->
-          <p><strong>Monday, November 12</strong></p>
-          <% 15.times do  %>
-          <% @hub.events.each do |event| %>
-            <div class="card-product-hub">
-              <%= cl_image_tag event.photo %>
-                <div class="card-product-infos">
-                  <div class="hub-event-title">
-                <h2><%= link_to event.title, event_path(event.id) %></h2>
-                </div>
-                <p><%= event.location_name %></p>
-                <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%>
-                <p>Capacity: <%= event.capacity %></p>
-                <p>Price: $<%= event.price.to_i %></p>
-            </div>
-          </div>
+          <% if @hub.events.empty? %>
+            <h5>You have not signed up for any events yet.</h5>
+            <% if @hub.hub.nil? == false %>
+              <%= link_to "Find Event", hub_path(@hub.id), class: "btn-md-blue mx-auto mt-5" %>
+            <% end %>
+          <% else %>
+            <% @cevents.each do |date| %>
+                <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
+              <% date[1].each do |event| %>
+                <% if event.end_time >= DateTime.now %>
+                  <div class="card-product">
+                    <%= cl_image_tag event.photo %>
+                    <div class="card-product-infos">
+                      <h2><%= link_to event.title, event_path(event) %></h2>
+                      <p><strong>Location:</strong><%= event.location_name %></p>
+                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
           <% end %>
-          <% end %>
-          <!-- Button trigger modal -->
         </div>
         <button id="create-event-btn" type="button" class="btn-md-blue" data-toggle="modal" data-target="#exampleModal">
           Create Event
