@@ -5,6 +5,11 @@
       <p>Current Hub: <%= link_to "#{@user.hub.name}", hub_path(@user.hub), class:"hub-link" %><p>
     <% end %>
     </div>
+    <div class="edit-profile">
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", complete_profile_path, method: :patch,  class: "btn-md-white" %>
+      <% end %>
+    </div>
     <!-- Request a friend if youre not yet their friend and not on your own profile  -->
     <% unless current_user == @user || @user.requested_friends.include?(current_user) || @user.friends.include?(current_user) %>
       <%= link_to "CONNECT", request_friend_path(@user), class: 'btn-md-white', style: 'position: absolute; top: 10px; right: 10px;', method: :post %>
@@ -28,6 +33,7 @@
     </div>
   </div>
   <div class = "main-profile">
+
     <div class="row row-centered">
       <div class="col-xs-12 col-s-12 col-md-4">
         <div class="card-interests" style="width: auto;">
@@ -49,7 +55,8 @@
         <h4 class="name"><%= @user.first_name %> <%= @user.last_name %>
         </h4>
         <p class="nation-info"><%= @user.nationality %>
-        </p><% if  @user.is_teacher == true %>
+        </p>
+        <% if  @user.is_teacher == true %>
         <div class="teacher-ind"><%= image_tag 'teacher_icon.png', class:"teacher-prof-icon"  %>
           <div class="teacher-text">
             <p>Teacher</p>
@@ -57,7 +64,30 @@
         </div><% end %>
       <div class = "desc">
         <p class="truncate-overflow"><%= @user.description %></p>
-        <a href="#">Read More</a>
+        <% if @user.description.length > 200 %>
+          <!-- Button trigger modal -->
+          <button type="button" class="btn-md-white mx-auto" data-toggle="modal" data-target="#exampleModalCenter">
+            Read More
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle"><%= @user.first_name %>'s Bio:</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= @user.description %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-s-12 col-md-4">
