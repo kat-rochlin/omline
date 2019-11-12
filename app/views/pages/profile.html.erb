@@ -124,35 +124,11 @@
                 <p class="card-text"><%= experience.description %></p>
               </div>
               <div class = "col-4">
-                <p><%= experience.start_date %> - <%= experience.end_date %></p>
+                <p><%= experience.start_date.strftime("%B %Y") %> - <%= experience.end_date.strftime("%B %Y") %></p>
               </div>
             </div>
           </div>
         <% end %>
-        <div class="card w-75 teach-exp">
-          <div class="card-test">
-            <div class = "col-8">
-              <h5 class="card-title">One Yoga Thailand</h5>
-              <p class="card-text">Koh Phangan</p>
-              <p class="card-text">I taught Vinyasa and Hatha classes</p>
-            </div>
-            <div class = "col-4">
-              <p>April 2018 - April 2019</p>
-            </div>
-          </div>
-        </div>
-        <div class="card w-75 teach-exp">
-          <div class="card-test">
-            <div class = "col-8">
-              <h5 class="card-title">One Yoga Thailand</h5>
-              <p class="card-text">Koh Phangan</p>
-              <p class="card-text">I taught Vinyasa and Hatha classes</p>
-            </div>
-            <div class = "col-4">
-              <p>April 2018 - April 2019</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
     <div class = "teach-info">
@@ -165,13 +141,12 @@
 
             </div>
             <div class="card-scroll">
-
-              <div class = "card-items">
-                <% @styles.each do |style| %>
-                  <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style_id %>
-                  </p>
-                <% end %>
-              </div>
+                <div class = "card-items">
+                  <% @styles.each do |style| %>
+                    <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style.name %>
+                    </p>
+                  <% end %>
+                </div>
             </div>
           </div>
         </div>
@@ -218,12 +193,9 @@
             <div class="card-body">
               <div class = "card-items">
                 <% @languages.each do |language| %>
-                  <%= language.language_id %>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= language.language.name %>
+                </p>
                 <% end %>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> English
-                </p>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> Finnish
-                </p>
               </div>
             </div>
           </div>
