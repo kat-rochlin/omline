@@ -194,24 +194,27 @@
           </div>
           <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
             <div class="friend card">
-              <div class="dash-card-body p-4 text-center"><% if @user.friends.empty? %>
-                <h5>NO CONNECTIONS</h5><% else %><% @user.friends.each do |friend| %>
-                <p><%= friend.first_name %>
-                </p><%= link_to "remove friend", remove_friend_path(friend), method: :delete %><% end %><% end %>
-                <div class="row"><% 15.times do  %>
+              <div class="dash-card-body p-4 text-center">
+                <% if @user.friends.empty? %>
+                <h5>NO CONNECTIONS</h5>
+                <% else %>
+                <% @user.friends.each do |friend| %>
+                <div class="row">
                   <div class="col-md-4">
                     <div class="contact-box center-version mx-auto">
                       <div class = "top-prof-card">
-                        <a href="#profile.html"><%= cl_image_tag current_user.profilephoto, class:"avatar-profile"  %>
+                        <a href="#profile.html"><%= cl_image_tag friend.profilephoto, class:"avatar-profile"  %>
                         </a>
-                        <h5 class="m-b-xs mt-3">Katie Overbury</h5>
+                        <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
                       </div>
                       <div class="contact-box-footer">
-                        <div class="m-t-xs btn-group"><%= link_to "Delete", "#", class:"btn-xs-white" %>
+                        <div class="m-t-xs btn-group"><%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
                         </div>
                       </div>
                     </div>
-                  </div><% end %>
+                  </div>
+                  <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -223,8 +226,6 @@
               </div><%= link_to "Change Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-md-white" %>
             </div>
           </div>
-
-
           <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
             <div class="card text-center">
               <div class="dash-card-header p-3 text-center border-bottom">
@@ -247,7 +248,6 @@
                   <% end %>
                 </div>
                 <button type="button" class="btn-lg-blue mx-auto" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Interests</button>
-
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content p-5 container">
@@ -263,7 +263,6 @@
                                 <input class="hidden" style="display:none" type="checkbox" value="<%= tag.id %>" name="user[tag_ids][]" id="user_tag_ids_<%= tag.id %>">
                                 <label class="category-choice <%=  %>" for="user_tag_ids_<%= tag.id %>">
                                   <%= tag.tag_name %>
-
                                 </label>
                               <% end %>
                             </div>
@@ -277,7 +276,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
