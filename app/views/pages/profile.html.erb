@@ -9,7 +9,7 @@
     <div class = "action-btns">
     <!-- Request a friend if youre not yet their friend and not on your own profile  -->
     <% unless current_user == @user || @user.requested_friends.include?(current_user) || @user.friends.include?(current_user) %>
-      <%= link_to "Friend Request", request_friend_path(@user),class:"btn-lg-white", method: :post %>
+      <%= link_to "CONNECT", request_friend_path(@user),class:"btn-lg-white", method: :post %>
     <% end %>
     <!-- Start a conversation with a friend from their profile -->
     <% if current_user.friends.include?(@user) %>
@@ -59,16 +59,14 @@
           </div>
         </div><% end %>
       <div class = "desc">
-        <p class="truncate-overflow">Hi ! My name is Jane Doe. I'm a UI/UX Designer
-      from Paris, in France. I really enjoy photography and mountains. Hi ! My name is Jane Doe. I'm a UI/UX Designer
-      from Paris, in France. I really enjoy photography and mountains.</p>
+        <p class="truncate-overflow"><%= @user.description %></p>
         <a href="#">Read More</a>
       </div>
     </div>
     <div class="col-xs-12 col-s-12 col-md-4">
       <div class="card-connection" style="width: auto;">
         <div class = "card-title-fix mt-3">
-          <h5 class="card-title"><%= current_user.friends.length %> CONNECTIONS</h5>
+          <h5 class="card-title"><%= @user.friends.length %> CONNECTIONS</h5>
         </div>
           <div class="card-body">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
@@ -76,13 +74,13 @@
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-md-blue" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
+            <button type="button" class="btn btn-sm-white mx-auto" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
             See All
             </button>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="see-all-users modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"><%= @user.first_name %>'s Friends</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -92,7 +90,7 @@
                   <div class="modal-body" style="display: flex; justify-content: space-between;">
                     <% @user.friends.each do |friend| %>
                       <%= link_to profile_path(friend.id) do %>
-                        <%= cl_image_tag friend.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %>
+                        <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
                       <% end %>
                       <div>
                       <strong><%= friend.first_name %></strong>
@@ -156,7 +154,7 @@
       </div>
     </div>
     <div class = "teach-info">
-      <div class="row row-centered">
+      <div class="row row-teach">
         <div class="col-xs-12 col-s-12 col-md-4">
           <div class="card-teach" style="width: auto;">
               <div class = "card-title-fix mt-3">
