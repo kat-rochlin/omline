@@ -29,13 +29,12 @@
         <h2 class="hub-box-title text-center">EVENTS</h2>
         <div class="event-box-content">
           <% if @hub.events.empty? %>
-            <h5>You have not signed up for any events yet.</h5>
-            <% if @hub.hub.nil? == false %>
-              <%= link_to "Find Event", hub_path(@hub.id), class: "btn-md-blue mx-auto mt-5" %>
-            <% end %>
+            <h5>There are no events in this hub yet.</h5>
           <% else %>
             <% @cevents.each do |date| %>
+              <% if date[0] >= Date.today %>
                 <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
+              <% end %>
               <% date[1].each do |event| %>
                 <% if event.end_time >= DateTime.now %>
                   <div class="card-product">
