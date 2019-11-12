@@ -11,6 +11,7 @@ class HubsController < ApplicationController
   def show
     @studios = Studio.geocoded #returns studios with coordinates
     @hub = Hub.find(params[:id])
+    @cevents = @hub.events.group_by { |e| e.start_time.to_date }
     @event = Event.new
     @studios = Studio.where(hub: @hub)
     @users = User.where(hub: @hub)
