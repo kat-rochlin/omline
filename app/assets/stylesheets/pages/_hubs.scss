@@ -1,8 +1,9 @@
 .card-category.hubs-index {
   background-size: cover;
-  background-position: center;
-  height: 400px !important;
+  background-position: bottom;
+  height: 450px !important;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
@@ -23,4 +24,22 @@
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+
+.hub-search-first {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.hub.form-control {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 15px;
+      border-radius: 20px;
+          text-align: center;
 }
