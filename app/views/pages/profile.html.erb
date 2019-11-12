@@ -8,7 +8,7 @@
     </div>
     <div class = "action-btns">
     <!-- Request a friend if youre not yet their friend and not on your own profile  -->
-    <% unless current_user == @user || @user.requested_friends.include?(current_user) %>
+    <% unless current_user == @user || @user.requested_friends.include?(current_user) || @user.friends.include?(current_user) %>
       <%= link_to "Friend Request", request_friend_path(@user),class:"btn-lg-white", method: :post %>
     <% end %>
     <!-- Start a conversation with a friend from their profile -->
@@ -72,14 +72,13 @@
         </div>
           <div class="card-body">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
-            <% current_user.friends.first(4).each do |friend| %>
+            <% @user.friends.first(4).each do |friend| %>
             <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
             <% end %>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-              Launch demo modal
+            <button type="button" class="btn btn-md-blue" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
+            See All
             </button>
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -90,12 +89,16 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">
-                  <% current_user.friends.each do |friend| %>
-                    <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
-                    <%= friend.first_name friend.last_name %>
-                    <%= link_to "See Profile", profile_path(friend.id), { :class=>"btn-lg-blue" } %>
-                  <% end %>
+                  <div class="modal-body" style="display: flex; justify-content: space-between;">
+                    <% @user.friends.each do |friend| %>
+                      <%= link_to profile_path(friend.id) do %>
+                        <%= cl_image_tag friend.profilephoto, height: 70, width: 70, crop: :fill, class:"avatar-profile" %>
+                      <% end %>
+                      <div>
+                      <strong><%= friend.first_name %></strong>
+                      <p><%= (current_user.friends & @user.friends).length %> Mutual Friends</p>
+                      </div>
+                    <% end %>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -103,7 +106,6 @@
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -197,10 +199,7 @@
 
               <h5 class="card-title">LANGUAGES</h5>
             </div>
-
-
             <div class="card-body">
-
               <div class = "card-items">
                 <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> English
                 </p>
@@ -245,8 +244,6 @@
                   <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
                       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-
-
                         <div class = "card-product-group">
                         <div class="card-product">
                           <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929574/Beach-yoga13-SFW-sharp_kvnbte.jpg" />
@@ -256,7 +253,6 @@
                             <p>August 14, 2019</p>
                           </div>
                         </div>
-
                         <div class="card-product">
                           <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929391/kundalini_event_pm6oif.png" />
                           <div class="card-product-infos">
@@ -265,7 +261,6 @@
                             <p>August 14, 2019</p>
                           </div>
                         </div>
-
                          <div class="card-product">
                           <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929759/zin_cafe_rgvx6z.jpg" />
                           <div class="card-product-infos">
@@ -274,9 +269,7 @@
                             <p>August 14, 2019</p>
                           </div>
                         </div>
-
                       </div>
-
                       </div>
                       <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                         <div class="card-product">
