@@ -24,6 +24,11 @@
           <% end %>
           </li>
           <li class="nav-bar nav-item">
+            <%= link_to hubs_path, class: "nav-link" do%>
+            <%= image_tag "search_icon.png", :width => 31 %>
+            <% end %>
+          </li>
+          <li class="nav-bar nav-item">
               <% if @connections.present? %>
                 <%= link_to user_connection_messages_path(@connections.first), class: "nav-link" do%>
                 <%= image_tag "message_icon.png", :width => 32 %>
@@ -33,11 +38,6 @@
                 <%= image_tag "message_icon.png", :width => 32 %>
                 <% end %>
               <% end %>
-          </li>
-          <li class="nav-bar nav-item">
-            <%= link_to "#", class: "nav-link" do%>
-            <%= image_tag "connections_icon.png", :width => 38 %>
-            <% end %>
           </li>
         </div>
         <li class="nav-bar nav-item dropdown">
