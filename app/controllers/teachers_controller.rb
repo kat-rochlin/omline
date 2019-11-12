@@ -25,11 +25,3 @@ class TeachersController < ApplicationController
     redirect_to hubs_path
   end
 end
-
-
- # "experience"=>
- #  {"studio_name"=>{"0"=>"Studio1", "1"=>"Studio2"},
- #   "location"=>{"0"=>"Location1", "1"=>"Location2"},
- #   "description"=>{"0"=>"Desc1", "1"=>"Description2"},
- #   "start_date"=>{"0"=>"2019-01-01", "1"=>"2019-02-01"},
- #   "end_date"=>{"0"=>"2019-02-01", "1"=>"2019-03-01"}},
