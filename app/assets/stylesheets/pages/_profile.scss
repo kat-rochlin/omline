@@ -1,5 +1,7 @@
 
 
+
+
 .container-profile {
   max-width: 75%;
   margin: 30px auto 30px;
@@ -18,6 +20,7 @@
 .main-profile {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hub-link {
@@ -70,7 +73,14 @@
 
 .row-centered {
   text-align:center;
+  min-width: 75vw;
 }
+
+.row-teach {
+  text-align:center;
+  min-width: 50vw;
+}
+
 
 
 .hub-prof-link {
@@ -112,6 +122,12 @@
   .cover-photo i {
     right: -90%;
   }
+}
+
+
+
+.see-all-users.modal-content {
+  border-radius: 20px;
 }
 
 .prof-current-hub {
@@ -182,8 +198,10 @@
 
 .desc {
   text-align: center;
+  min-width: 345px;
+  // min-height: 300px;
   margin-top: 25px;
-  margin: 25px 40px;
+  // margin: 25px 40px;
   color: #777;
   font-size: 12pt;
   padding-bottom: 10px;
@@ -211,6 +229,11 @@
   text-align: justify;
   margin-right: -1em;
   padding-right: 1em;
+
+ p {
+    min-width: 345px;
+ }
+
 }
 .truncate-overflow:before {
   content: '...';
