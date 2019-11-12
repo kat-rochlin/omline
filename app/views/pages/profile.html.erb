@@ -1,16 +1,22 @@
 <div class="container-profile">
   <div class = "cover-photo">
-
    <div class = "prof-current-hub">
     <% unless @user.hub.nil? %>
-    <p>Current Hub: <%= link_to "#{@user.hub.name}", hub_path(@user.hub), class:"hub-link" %><p>
+      <p>Current Hub: <%= link_to "#{@user.hub.name}", hub_path(@user.hub), class:"hub-link" %><p>
     <% end %>
     </div>
-    <div class = "action-btns">
     <!-- Request a friend if youre not yet their friend and not on your own profile  -->
     <% unless current_user == @user || @user.requested_friends.include?(current_user) || @user.friends.include?(current_user) %>
-      <%= link_to "CONNECT", request_friend_path(@user),class:"btn-lg-white", method: :post %>
+      <%= link_to "CONNECT", request_friend_path(@user), class: 'btn-md-white', style: 'position: absolute; top: 10px; right: 10px;', method: :post %>
     <% end %>
+    <% if @user.requested_friends.include?(current_user)%>
+      <%= link_to "Requested", "#", class: 'btn-md-blue', style: 'position: absolute;top: 10px; right: 10px;' %>
+    <% elsif @user.friends.include?(current_user) %>
+      <%= link_to "#", class: "btn-md-blue", style: 'position: absolute;top: 10px; right: 10px;' do %>
+        <i class="fa fa-check" aria-hidden="true">  <bold>Connected</bold> </i>
+      <% end %>
+    <% end %>
+    <div class = "action-btns">
     <!-- Start a conversation with a friend from their profile -->
     <% if current_user.friends.include?(@user) %>
       <% if current_user != @user && @connection.present? %>
