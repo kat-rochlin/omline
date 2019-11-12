@@ -1,6 +1,3 @@
-<div class="card-category hubs-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573486560/DSC_1251_el4p4x.jpg)">
-  <h1 class="hubs-index-header">WHERE TO?</h1>
-</div>
 
 <% if params[:newhub] == "newhub" %>
   <div class="hub-search py-2">
@@ -17,7 +14,7 @@
 
   <div class="cards container mb-5">
     <% @hubs.each do |hub|%>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= hub.photo %>)">
         <div class="col-md-9 text-center">
             <%= link_to hub.city, hub_path(hub.id)%>
           <div class="row justify-content-center pt-2">
@@ -28,21 +25,28 @@
     <% end %>
   </div>
 <% else %>
-  <div class="hub-search py-2">
+
+
+<div class="card-category hubs-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573545509/capetown_med_mtxigo.jpg)">
+  <h1 class="hubs-index-header">YOGA DESTINATIONS</h1>
+    <div class="hub-search-first py-2 mx-auto text-center">
     <%= form_tag hubs_path, method: :get do %>
       <%= text_field_tag :search,
         @search,
-        class: "form-control",
-        placeholder: "Search a location"
+        class: "hub form-control",
+        placeholder: "Enter a location"
       %>
-      <%= submit_tag "Search", class:"btn-sm-blue"%>
+      <%= submit_tag "Search", class:"btn-sm-blue mx-auto"%>
     <% end %>
   </div>
+</div>
+
+
   <div class="card-button">
-    <div class="cards container mb-5">
+    <div class="cards container mb-5 mt-5">
       <% @hubs.each do |hub|%>
         <%= link_to hub_path(hub.id) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= hub.photo %>)">
             <h1><%= hub.city %></h1>
           </div>
         <% end %>
@@ -50,3 +54,5 @@
     </div>
   </div>
 <% end %>
+
+
