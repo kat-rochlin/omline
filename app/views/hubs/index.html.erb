@@ -34,11 +34,15 @@
       <%= submit_tag "Search", class:"btn-sm-blue"%>
     <% end %>
   </div>
-  <div class="cards container mb-5">
-    <% @hubs.each do |hub|%>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
-      <%= link_to hub.city, hub_path(hub.id)%>
-      </div>
-    <% end %>
+  <div class="card-button">
+    <div class="cards container mb-5">
+      <% @hubs.each do |hub|%>
+        <%= link_to hub_path(hub.id) do %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
+            <h1><%= hub.city %></h1>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 <% end %>

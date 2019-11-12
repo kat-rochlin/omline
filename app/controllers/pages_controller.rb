@@ -20,6 +20,7 @@ class PagesController < ApplicationController
     @user = current_user
     @tags = Tag.all
     @events = Event.where(user: current_user)
+    @cevents = @user.events.group_by { |e| e.start_time.to_date }
   end
 
   def current_hub
