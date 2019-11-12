@@ -1,15 +1,9 @@
 
 <div class = "hub-container">
-
 <div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573486560/DSC_1251_el4p4x.jpg)">
   <h1 class="hub-name-show"><%= @hub.city.upcase %>
   </h1>
 </div>
-
-
-
-
-
 <div class = "row">
   <div class = "hub-users-title"><h2>YOGIS IN <%= @hub.city.upcase %><h2></div>
   <div class = "col-12">
@@ -28,22 +22,12 @@
       </div><% end %>
     </div>
   </div>
-
-
-
-
-
-
 <div class="container-fluid">
-
   <div class="row justify-content-center">
-
-
     <div class="col-md-6">
       <div class="hub-events card">
         <h2 class="hub-box-title text-center">EVENTS</h2>
         <div class="event-box-content">
-
          <!--  THIS IS JUST A PLACEHOLDER, NEED TO PUT IN REAL HEADERS -->
           <p><strong>Monday, November 12</strong></p>
           <% 15.times do  %>
@@ -60,9 +44,8 @@
                 <p>Price: $<%= event.price.to_i %></p>
             </div>
           </div>
-    <% end %>
-      <% end %>
-
+          <% end %>
+          <% end %>
           <!-- Button trigger modal -->
         </div>
         <button id="create-event-btn" type="button" class="btn-md-blue" data-toggle="modal" data-target="#exampleModal">
