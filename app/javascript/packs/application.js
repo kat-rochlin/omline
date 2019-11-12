@@ -16,7 +16,7 @@ window.initMapbox = initMapbox
 //initMapbox();
 initSelect2();
 multiSelect2();
-formDuplicate();
+//formDuplicate();
 triggerClickOnEventForm();
 
 const removeFlash = () => {
