@@ -10,13 +10,25 @@
     <div class="hub-profile-cards"><% @users.each do |user| %>
       <div class="contact-box center-version">
         <div class = "top-prof-card">
-          <a href="#profile.html"><%= cl_image_tag user.profilephoto,   crop: :limit, class:"avatar-profile" %>
+          <%= link_to profile_path(user) do %>
+          <%= cl_image_tag user.profilephoto, crop: :limit, class:"avatar-profile" %>
+          <% end %>
           </a>
           <h5 class="text-center m-b-xs mt-3"><%= user.first_name %>&nbsp<%= user.last_name %>
           </h5>
         </div>
         <div class="contact-box-footer">
-          <div class="m-t-xs btn-group"><%= link_to "Connect", "#", class:"btn-sm-white" %>
+          <div class="m-t-xs btn-group">
+            <% unless current_user == user || user.requested_friends.include?(current_user) || user.friends.include?(current_user) %>
+              <%= link_to "connect", request_friend_path(user), class:"btn-md-white", method: :post %>
+            <% end %>
+            <% if user.requested_friends.include?(current_user)%>
+              <%= link_to "pending", "#", class:"btn-md-white"%>
+            <% elsif user.friends.include?(current_user) %>
+              <%= link_to "#", class:"btn-md-white" do %>
+                <i class="fa fa-check" aria-hidden="true"> Connected </i>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div><% end %>
