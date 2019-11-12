@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     if UserConnection.between(@sender, @recipient).present?
       @connection = UserConnection.between(@sender, @recipient).first
     end
+    @experiences = TeacherExperience.where(user: current_user)
+    @certifications = TeacherCertification.where(user: current_user)
+    @languages = TeacherLanguage.where(user: current_user)
+    @styles = TeacherTeachingStyle.where(user: current_user)
   end
 
   def dashboard
