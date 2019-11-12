@@ -188,7 +188,26 @@
               <div class="dash-card-header p-3 text-center border-bottom">
                 <h3>Your Hub</h3>
               </div>
-              <div class="dash-card-body p-4 text-center"><% if @user.hub.nil? %><%= link_to "Choose Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %><% end %><% if @user.hub.nil? == false %><%= link_to @user.hub.name, hub_path(@user.hub) %><%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %><% end %>
+              <div class="dash-card-body p-4 text-center">
+                <% if @user.hub.nil? %>
+                  <%= link_to "Choose Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue" %>
+                <% end %>
+                <% if @user.hub.nil? == false %>
+                  <div class="card-button">
+                    <%= link_to hub_path(@user.hub.id) do %>
+                      <div class="container w-75">
+                        <div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= current_user.hub.photo %>)">
+                          <div class="col-md-6 text-center">
+                              <h1> <%= @user.hub.city %> </h1>
+                            <div class="row justify-content-center pt-2">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                  <%= link_to "change hub", hubs_path({ :newhub => "newhub" }), :class => "btn-lg-blue mx-auto" %>
+                <% end %>
               </div>
             </div>
           </div>
