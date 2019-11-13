@@ -184,7 +184,12 @@
             <div class="request card">
               <div class="request-dash-body p-3">
                 <div class="row">
-                <% @user.requested_friends.each do |friendreq| %>
+                  <% if @user.requested_friends.empty?%>
+                    <div class="no-friends">
+                      <h6>You Have No Friend Requests</h6>
+                    </div>
+                  <% else %>
+                  <% @user.requested_friends.each do |friendreq| %>
                   <div class="col-md-4">
                     <div class="contact-box center-version mx-auto">
                       <div class = "top-prof-card">
@@ -197,7 +202,9 @@
                         <div class="m-t-xs btn-group"><%= link_to "Delete", decline_request_path(friendreq), method: :delete, class:"btn-xs-white" %></div>
                       </div>
                     </div>
-                  </div><% end %>
+                  </div>
+                  <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
