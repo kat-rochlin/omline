@@ -64,7 +64,7 @@
         </div><% end %>
       <div class = "desc">
         <p class="truncate-overflow"><%= @user.description %></p>
-        <% if @user.description.length > 200 %>
+        <% if @user.description && @user.description.length > 200 %>
           <!-- Button trigger modal -->
           <button type="button" class="btn-md-white mx-auto" data-toggle="modal" data-target="#exampleModalCenter">
             Read More
