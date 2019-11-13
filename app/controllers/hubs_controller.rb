@@ -19,7 +19,8 @@ class HubsController < ApplicationController
       {
         lat: studio.latitude,
         lng: studio.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { studio: studio })
+        infoWindow: render_to_string(partial: "info_window", locals: { studio: studio }),
+        image_url: helpers.asset_url("lotus_icon.png")
       }
     end
   end
