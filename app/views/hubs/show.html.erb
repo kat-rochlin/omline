@@ -26,7 +26,10 @@
               <%= link_to "pending", "#", class:"btn-md-white"%>
             <% elsif user.friends.include?(current_user) %>
               <%= link_to "#", class:"btn-md-white" do %>
-                <i class="fa fa-check" aria-hidden="true"> Connected </i>
+                <div class="d-flex">
+                  <i class="fa fa-check icon" aria-hidden="true"></i>
+                  <p id="word">  connected </p>
+                </div>
               <% end %>
             <% end %>
           </div>
