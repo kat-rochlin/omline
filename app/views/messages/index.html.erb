@@ -1,4 +1,4 @@
-<div class="messaging container">
+<div class="messaging container" style="margin-top: 64px;">
   <div class="messaging">
     <div class="inbox_msg">
       <div class="inbox_people">
@@ -37,32 +37,34 @@
             <% end %>
             <div class="msg_history">
               <% @messages.each do |message| %>
-              <% if message.content && message.user == current_user  %>
-              <div class="outgoing_msg">
-                <div class="sent_msg">
-                  <p><%= message.content %></p>
-                  <span class="time_date"> <%= message.message_time %>    |    <%= message.message_day %></span>
-                </div>
-              </div>
-            </div>
-            <% else %>
-            <% user = User.find(message.user_id) %>
-            <div class="incoming_msg">
-              <div class="incoming_msg_img">
-                <div class="chat_img"><%= cl_image_tag user.profilephoto, class:"avatar-large" %></div>
-                </div>
-                <div class="received_msg">
-                  <div class="received_withd_msg">
-                    <p><%= message.content %>
-                    </p>
-                    <span class="time_date"> <%= message.message_time %>   |    <%= message.message_day %></span>
+                <% if message.content && message.user == current_user  %>
+                  <div class="outgoing_msg">
+                    <div class="sent_msg">
+                      <p><%= message.content %></p>
+                      <span class="time_date"> <%= message.message_time %>    |    <%= message.message_day %></span>
+                    </div>
                   </div>
-                </div>
+                <% else %>
+                  <% user = User.find(message.user_id) %>
+                  <div class="incoming_msg">
+                    <div class="incoming_msg_img">
+                      <div class="chat_img"><%= cl_image_tag user.profilephoto, class:"avatar-large" %></div>
+                      </div>
+                      <div class="received_msg">
+                        <div class="received_withd_msg">
+                          <p><%= message.content %>
+                          </p>
+                          <span class="time_date"> <%= message.message_time %>   |    <%= message.message_day %></span>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
-              <% end %>
-              <% end %>
               <%= render "messages/form", locals: { :user_connection => @user_connection, :message => @message } %>
             </div>
           </div>
         </div>
       </div>
+
+

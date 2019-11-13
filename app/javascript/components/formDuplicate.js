@@ -18,13 +18,15 @@ const formDuplicate = () => {
         }
   const addNewButton = document.querySelector("#add-experience")
   let total = 1
-  addNewButton.addEventListener('click', (e) => {
-    e.preventDefault()
-    const form = document.querySelector("#experience-content")
-    form.insertAdjacentHTML('beforeend', formWhole(total));
-    total += 1
-    console.log(total)
-  })
+  if (addNewButton) {
+    addNewButton.addEventListener('click', (e) => {
+      e.preventDefault()
+      const form = document.querySelector("#experience-content")
+      form.insertAdjacentHTML('beforeend', formWhole(total));
+      total += 1
+      console.log(total)
+    })
+  }
 }
 
 export { formDuplicate }
