@@ -230,7 +230,9 @@
              <div class = "card-title-fix mt-3">
 
               <h5 class="card-title">LANGUAGES</h5>
+
             </div>
+          <div class="teach-prof card-scroll">
             <div class="card-body">
               <div class = "card-items">
                 <% if current_user == @user %>
@@ -241,6 +243,7 @@
                 <% end %>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -295,9 +298,9 @@
                                   <div class="card-product">
                                     <%= cl_image_tag event.photo %>
                                     <div class="card-product-infos">
-                                      <h2><%= link_to event.title, event_path(event) %></h2>
-                                      <p><strong>Location:</strong><%= event.location_name %></p>
-                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                      <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                      <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                      <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                     </div>
                                   </div>
                                 <% end %>
@@ -318,9 +321,9 @@
                                 <div class="card-product">
                                   <%= cl_image_tag event.photo %>
                                   <div class="card-product-infos">
-                                    <h2><%= link_to event.title, event_path(event) %></h2>
-                                    <p><strong>Location:</strong><%= event.location_name %></p>
-                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                    <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                    <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                   </div>
                                 </div>
                               <% end %>
@@ -331,48 +334,6 @@
                     </div>
                   </div>
                 </div>
-<!--                   <div class="col-9">
-                    <div class="tab-content" id="v-pills-tabContent">
-                      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                        <div class = "card-product-group">
-                        <div class="card-product">
-                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929574/Beach-yoga13-SFW-sharp_kvnbte.jpg" />
-                          <div class="card-product-infos">
-                            <h2>Beachside Morning Vinyasa Flow & Pranayama</h2>
-                            <p>Location: Canggu</p>
-                            <p>August 14, 2019</p>
-                          </div>
-                        </div>
-                        <div class="card-product">
-                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929391/kundalini_event_pm6oif.png" />
-                          <div class="card-product-infos">
-                            <h2>Kundalini Yoga at Canggu Villa</h2>
-                            <p>Location: Canggu</p>
-                            <p>August 14, 2019</p>
-                          </div>
-                        </div>
-                         <div class="card-product">
-                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929759/zin_cafe_rgvx6z.jpg" />
-                          <div class="card-product-infos">
-                            <h2>Showing Up: Integrated Men and Women's Circle</h2>
-                              <p>Location: Canggu</p>
-                            <p>August 14, 2019</p>
-                          </div>
-                        </div>
-                      </div>
-                      </div>
-                      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                        <div class="card-product">
-                          <img src="https://res.cloudinary.com/le-wagon1234/image/upload/v1572929877/sound_healing_fweqed.jpg" />
-                          <div class="card-product-infos">
-                            <h2>Sound Healing Journey</h2>
-                            <p>Location: Canggu</p>
-                            <p>August 14, 2019</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
                 </div>
               </div>
               <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
@@ -403,9 +364,9 @@
                                   <div class="card-product">
                                     <%= cl_image_tag event.photo %>
                                     <div class="card-product-infos">
-                                      <h2><%= link_to event.title, event_path(event) %></h2>
-                                      <p><strong>Location:</strong><%= event.location_name %></p>
-                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                      <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                      <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                      <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                     </div>
                                   </div>
                                 <% end %>
@@ -427,9 +388,9 @@
                                 <div class="card-product">
                                   <%= cl_image_tag event.photo %>
                                   <div class="card-product-infos">
-                                    <h2><%= link_to event.title, event_path(event) %></h2>
-                                    <p><strong>Location:</strong><%= event.location_name %></p>
-                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                    <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                    <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                   </div>
                                 </div>
                               <% end %>

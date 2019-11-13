@@ -24,10 +24,10 @@
             <% if user.requested_friends.include?(current_user)%>
               <%= link_to "Pending", "#", class:"btn-sm-white"%>
             <% elsif user.friends.include?(current_user) %>
-              <%= link_to "#", class:"btn-md-white" do %>
+              <%= link_to "#", class:"btn-sm-connected-white" do %>
                 <div class="d-flex">
                   <i class="fa fa-check icon" aria-hidden="true"></i>
-                  <p id="word">  connected </p>
+                  <p id="word">  Connected </p>
                 </div>
               <% end %>
             <% end %>
@@ -55,7 +55,7 @@
                     <%= cl_image_tag event.photo %>
                     <div class="card-product-infos">
                       <h2><%= link_to event.title, event_path(event) %></h2>
-                      <p><strong>Location:</strong><%= event.location_name %></p>
+                      <p><strong>Location:&nbsp;</strong><%= event.location_name %></p>
                       <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                     </div>
                   </div>
@@ -120,8 +120,8 @@
         <nav>
           <div class="studio-tabs">
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">List</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Map</a>
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true"><h5>List</h5></a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false"><h5>Map</h5></a>
           </div>
           </div>
         </nav>
