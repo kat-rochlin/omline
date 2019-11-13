@@ -48,7 +48,6 @@ class PagesController < ApplicationController
 
   def request_friend
     current_user.friend_request(@user)
-    flash[:notice] = "Friendship Requested"
     redirect_to request.referrer
   end
 
