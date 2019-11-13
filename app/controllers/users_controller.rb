@@ -18,12 +18,15 @@ class UsersController < ApplicationController
       end
       redirect_to dashboard_path
     else
-      params[:user][:tag_ids].shift
-      params[:user][:tag_ids].each do |tagid|
-        newtag = Tag.where(id: tagid)
-        relation = Relationship.new(tag_id: newtag.first.id, tagable: @user)
-        relation.save
+      if params[:save] == "save"
+        params[:user][:tag_ids].shift
+        params[:user][:tag_ids].each do |tagid|
+          newtag = Tag.where(id: tagid)
+          relation = Relationship.new(tag_id: newtag.first.id, tagable: @user)
+          relation.save
+        end
       end
+
       if @user.update(user_params)
         if @user.is_teacher
           redirect_to new_teacher_profile_path
@@ -39,6 +42,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :birthdate, :nationality, :is_teacher, :profile_photo, :cover_photo)
+    params.require(:user).permit(:first_name, :last_name, :description, :birthdate, :nationality, :is_teacher, :profile_photo, :cover_photo)
   end
 end
