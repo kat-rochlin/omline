@@ -17,14 +17,16 @@ function fillForm() {
   }
 
   const message = document.getElementById('message_content');
-  const container = document.querySelectorAll('.outgoing_msg');
+  const allMessages = document.querySelectorAll('.general_message');
+
+
   const msg_history = document.querySelector('.msg_history');
 
   const isEmpty = document.querySelector('.msg_history').innerHTML.replace(/\s/g, '').length
 
 
-  const lastMsg = container[container.length - 1]
-  const html = `<div class="outgoing_msg">
+  const lastMsg = allMessages[allMessages.length - 1]
+  const html = `<div class="outgoing_msg general_message">
                   <div class="sent_msg">
                     <p> ${message.value} </p>
                     <span class="time_date"> ${currentTime()}    |     ${currentDate()} </span>
@@ -35,6 +37,9 @@ function fillForm() {
     msg_history.insertAdjacentHTML('afterbegin', html);
     message.value = "";
   } else {
+    const allMessages = document.querySelectorAll('.general_message');
+    const lastMsg = allMessages[allMessages.length - 1]
+    console.log(lastMsg)
     lastMsg.insertAdjacentHTML('afterend', html);
     message.value = "";
   }
