@@ -72,15 +72,22 @@
                             <h5>You have not created any events yet.</h5>
                             <%= link_to "Create Event", hub_path(@user.hub.id), class: "btn-md-blue mx-auto mt-5" %>
                           <% else %>
-                            <% @events.each do |event| %>
-                              <div class="card-product">
-                                <%= cl_image_tag event.photo %>
-                                <div class="card-product-infos">
-                                  <h2><%= link_to event.title, event_path(event) %></h2>
-                                  <p><strong>Location:</strong><%= event.location_name %></p>
-                                  <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
-                                </div>
-                              </div>
+                            <% @hevents.sort.each do |date| %>
+                              <% if date[0] > DateTime.now %>
+                                <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
+                              <% end %>
+                              <% date[1].each do |event| %>
+                                <% if event.end_time > DateTime.now %>
+                                  <div class="card-product">
+                                    <%= cl_image_tag event.photo %>
+                                    <div class="card-product-infos">
+                                      <h2><%= link_to event.title, event_path(event) %></h2>
+                                      <p><strong>Location:</strong><%= event.location_name %></p>
+                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    </div>
+                                  </div>
+                                <% end %>
+                              <% end %>
                             <% end %>
                           <% end %>
                         </div>
@@ -92,15 +99,17 @@
                           <% if @events.empty? %>
                             <h5>You have not hosted any events yet.</h5>
                           <% else %>
-                            <% @events.each do |event| %>
-                              <div class="card-product">
-                                <%= cl_image_tag event.photo %>
-                                <div class="card-product-infos">
-                                  <h2><%= link_to event.title, event_path(event) %></h2>
-                                  <p><strong>Location:</strong><%= event.location_name %></p>
-                                  <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                            <% @events.sort.each do |event| %>
+                              <% if event.end_time < DateTime.now %>
+                                <div class="card-product">
+                                  <%= cl_image_tag event.photo %>
+                                  <div class="card-product-infos">
+                                    <h2><%= link_to event.title, event_path(event) %></h2>
+                                    <p><strong>Location:</strong><%= event.location_name %></p>
+                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                  </div>
                                 </div>
-                              </div>
+                              <% end %>
                             <% end %>
                           <% end %>
                         </div>
@@ -131,7 +140,7 @@
                               <%= link_to "Find Event", hub_path(@user.hub.id), class: "btn-md-blue mx-auto mt-5" %>
                             <% end %>
                           <% else %>
-                            <% @cevents.each do |date| %>
+                            <% @cevents.sort.each do |date| %>
                               <% if date[0] > DateTime.now %>
                                 <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
                               <% end %>

@@ -57,39 +57,42 @@
         <p class="nation-info"><%= @user.nationality %>
         </p>
         <% if  @user.is_teacher == true %>
-        <div class="teacher-ind"><%= image_tag 'teacher_icon.png', class:"teacher-prof-icon"  %>
-          <div class="teacher-text">
-            <p>Teacher</p>
-          </div>
-        </div><% end %>
-      <div class = "desc">
-        <p class="truncate-overflow"><%= @user.description %></p>
-        <% if @user.description.length > 200 %>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn-md-white mx-auto" data-toggle="modal" data-target="#exampleModalCenter">
-            Read More
-          </button>
-
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle"><%= @user.first_name %>'s Bio:</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= @user.description %>
-                </div>
-              </div>
+          <div class="teacher-ind"><%= image_tag 'teacher_icon.png', class:"teacher-prof-icon"  %>
+            <div class="teacher-text">
+              <p>Teacher</p>
             </div>
           </div>
-
         <% end %>
-      </div>
-    </div>
+        <% if @user.description != nil %>
+          <div class = "desc">
+            <p class="truncate-overflow"><%= @user.description %></p>
+            <% if @user.description.length > 200 %>
+              <!-- Button trigger modal -->
+              <button type="button" class="btn-md-white mx-auto" data-toggle="modal" data-target="#exampleModalCenter">
+                Read More
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"><%= @user.first_name %>'s Bio:</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= @user.description %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <% end %>
+          </div>
+        <% end %>
+          </div>
     <div class="col-xs-12 col-s-12 col-md-4">
       <div class="card-connection" style="width: auto;">
         <div class = "card-title-fix mt-3">
@@ -243,6 +246,8 @@
       </div>
     </div>
   </div>
+
+
   <div class="container">
     <div class="row ">
       <div class="pt-5 col-11 mx-auto">
@@ -273,6 +278,60 @@
                     </div>
                   </div>
                   <div class="col-9">
+                  <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                      <div class="event card">
+                        <div class="dash-card-body p-4 text-center">
+                          <% if @events.empty? %>
+                            <h5>You have not created any events yet.</h5>
+                            <%= link_to "Create Event", hub_path(@user.hub.id), class: "btn-md-blue mx-auto mt-5" %>
+                          <% else %>
+                            <% @hevents.sort.each do |date| %>
+                              <% if date[0] > DateTime.now %>
+                                <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
+                              <% end %>
+                              <% date[1].each do |event| %>
+                                <% if event.end_time > DateTime.now %>
+                                  <div class="card-product">
+                                    <%= cl_image_tag event.photo %>
+                                    <div class="card-product-infos">
+                                      <h2><%= link_to event.title, event_path(event) %></h2>
+                                      <p><strong>Location:</strong><%= event.location_name %></p>
+                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    </div>
+                                  </div>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane event-dashboard fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                      <div class="event card">
+                        <div class="dash-card-body p-4 text-center">
+                          <% if @events.empty? %>
+                            <h5>You have not hosted any events yet.</h5>
+                          <% else %>
+                            <% @events.sort.each do |event| %>
+                              <% if event.end_time < DateTime.now %>
+                                <div class="card-product">
+                                  <%= cl_image_tag event.photo %>
+                                  <div class="card-product-infos">
+                                    <h2><%= link_to event.title, event_path(event) %></h2>
+                                    <p><strong>Location:</strong><%= event.location_name %></p>
+                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                  </div>
+                                </div>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+<!--                   <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
                       <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class = "card-product-group">
@@ -313,7 +372,7 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
@@ -325,6 +384,63 @@
                     </div>
                   </div>
                   <div class="col-9">
+                  <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-attend-upcoming" role="tabpanel" aria-labelledby="v-pills-attend-upcoming-tab">
+                      <div class="event card">
+                        <div class="dash-card-body p-4 text-center">
+                          <% if @user.events.empty? %>
+                            <h5>You have not signed up for any events yet.</h5>
+                            <% if @user.hub.nil? == false %>
+                              <%= link_to "Find Event", hub_path(@user.hub.id), class: "btn-md-blue mx-auto mt-5" %>
+                            <% end %>
+                          <% else %>
+                            <% @cevents.sort.each do |date| %>
+                              <% if date[0] > DateTime.now %>
+                                <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
+                              <% end %>
+                              <% date[1].each do |event| %>
+                                <% if event.end_time > DateTime.now %>
+                                  <div class="card-product">
+                                    <%= cl_image_tag event.photo %>
+                                    <div class="card-product-infos">
+                                      <h2><%= link_to event.title, event_path(event) %></h2>
+                                      <p><strong>Location:</strong><%= event.location_name %></p>
+                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    </div>
+                                  </div>
+                                <% end %>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="v-pills-attend-past" role="tabpanel" aria-labelledby="v-pills-attend-past-tab">
+                      <div class="event card">
+                        <div class="dash-card-body p-4 text-center">
+                          <% if @user.events.empty? %>
+                            <h5>You have not attended any events yet.</h5>
+                          <% else %>
+                            <% @user.events.each do |event| %>
+                              <% if event.end_time < DateTime.now %>
+                                <div class="card-product">
+                                  <%= cl_image_tag event.photo %>
+                                  <div class="card-product-infos">
+                                    <h2><%= link_to event.title, event_path(event) %></h2>
+                                    <p><strong>Location:</strong><%= event.location_name %></p>
+                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                  </div>
+                                </div>
+                              <% end %>
+                            <% end %>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <!-- <div class="col-9">
                     <div class="tab-content" id="v-pills-tabContent">
                       <div class="tab-pane fade show active" id="v-pills-attend-upcoming" role="tabpanel" aria-labelledby="v-pills-attend-upcoming-tab">
                         <div class="card-product">
@@ -339,7 +455,7 @@
                       </div>
                       <div class="tab-pane fade" id="v-pills-attend-past" role="tabpanel" aria-labelledby="v-pills-attend-past-tab">Bye</div>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -348,4 +464,6 @@
       </div>
     </div>
   </div>
+
+
 </div>

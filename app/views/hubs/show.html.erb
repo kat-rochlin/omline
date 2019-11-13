@@ -43,7 +43,7 @@
           <% if @hub.events.empty? %>
             <h5>There are no events in this hub yet.</h5>
           <% else %>
-            <% @cevents.each do |date| %>
+            <% @cevents.sort.each do |date| %>
               <% if date[0] >= Date.today %>
                 <h5 class="text-left" ><%= date[0].strftime("%A, %b %d") %></h5>
               <% end %>
@@ -87,6 +87,7 @@
                       <%= f.input :photo_cache, as: :hidden %>
                       <%= f.input :description %>
                       <%= f.input :address %>
+                      <%= f.input :location_name, label: "Location Name" %>
                       <div class="row justify-content-between time">
                       <%= f.input :start_time, as: :string, type: :text, label: "Start Date & Time", wrapper_html: { class: "same-row" }  %>
                       <%= f.input :end_time, as: :string, type: :text, label: "End Date & Time", wrapper_html: { class: "same-row" }  %>
