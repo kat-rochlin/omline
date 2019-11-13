@@ -5,6 +5,9 @@ class PagesController < ApplicationController
   end
 
   def profile
+    @events = Event.where(user: @user)
+    @cevents = @user.events.group_by { |e| e.start_time.to_date }
+    @hevents = @events.group_by { |e| e.start_time.to_date }
     @sender = current_user
     @recipient = @user
     if UserConnection.between(@sender, @recipient).present?
@@ -21,6 +24,7 @@ class PagesController < ApplicationController
     @tags = Tag.all
     @events = Event.where(user: current_user)
     @cevents = @user.events.group_by { |e| e.start_time.to_date }
+    @hevents = @events.group_by { |e| e.start_time.to_date }
   end
 
   def current_hub
