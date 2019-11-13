@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     # 2. in view, list out messages in order of created_at
     @messages = @user_connection.messages
+    @messages.sort_by(&:created_at)
     if @messages.length > 10
       @over_ten = true
       @messages = @messages[-10..-1]

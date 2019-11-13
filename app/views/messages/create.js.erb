@@ -1,23 +1,42 @@
 function fillForm() {
+  function currentTime() {
+    var currentTime = new Date(),
+        hours = currentTime.getHours(),
+        minutes = currentTime.getMinutes();
+        if (minutes < 10) {
+         minutes = "0" + minutes;
+        }
+        return (hours + ":" + minutes);
+      }
+  function currentDate() {
+    var currentDate = new Date(),
+    day = currentDate.getDate(),
+    month = currentDate.getMonth() + 1,
+    year = currentDate.getFullYear();
+    return (day + "/" + month + "/" + year);
+  }
+
   const message = document.getElementById('message_content');
-  const container = document.querySelector('.insert-message');
-  const firstName = "<%= current_user.first_name %>"
-  const date = new Date();
+  const container = document.querySelectorAll('.outgoing_msg');
+  const msg_history = document.querySelector('.msg_history');
 
-  const html = `<div class="item">
-           <div class="content">
-            <div class="header"><strong> ${firstName} </strong> ${date} </div>
-             <div class="list">
-              <div class="item">
-               <i class="right triangle icon"></i>
-                 ${message.value}
-             </div>
-           </div>
-          </div>
-        </div>`
+  const isEmpty = document.querySelector('.msg_history').innerHTML.replace(/\s/g, '').length
 
-container.insertAdjacentHTML('beforeend', html);
-message.value = "";
+
+  const lastMsg = container[container.length - 1]
+  const html = `<div class="outgoing_msg">
+                  <div class="sent_msg">
+                    <p> ${message.value} </p>
+                    <span class="time_date"> ${currentTime()}    |     ${currentDate()} </span>
+                  </div>
+                </div>`
+
+  if (isEmpty == 0) {
+    msg_history.insertAdjacentHTML('afterbegin', html);
+    message.value = "";
+  } else {
+    lastMsg.insertAdjacentHTML('afterend', html);
+    message.value = "";
+  }
 }
-
 fillForm();

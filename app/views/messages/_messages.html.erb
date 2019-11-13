@@ -1,18 +1,29 @@
-<div class=”insert-message”>
+<% if @over_ten %>
+ <%= link_to "Show Previous", user_connection_messages_path(@user_connection.id, button_previous: true) %>
+<% end %>
+<div class="msg_history">
   <% @messages.each do |message| %>
-   <% if message.content %>
-    <% user = User.find(message.user_id) %>
-    <div class=”item”>
-     <div class=”content”>
-      <div class=”header”><strong><%= user.first_name %></strong>    <%= message.message_time %></div>
-       <div class=”list”>
-        <div class=”item”>
-         <i class=”right triangle icon”></i>
-          <%= message.content %>
-       </div>
-     </div>
+  <% if message.content && message.user == current_user  %>
+  <div class="outgoing_msg">
+    <div class="sent_msg">
+      <p><%= message.content %></p>
+      <span class="time_date"> <%= message.message_time %>    |    <%= message.message_day %></span>
+    </div>
+  </div>
+</div>
+<% else %>
+<% user = User.find(message.user_id) %>
+<div class="incoming_msg">
+  <div class="incoming_msg_img">
+    <div class="chat_img"><%= cl_image_tag user.profilephoto, class:"avatar-large" %></div>
+    </div>
+    <div class="received_msg">
+      <div class="received_withd_msg">
+        <p><%= message.content %>
+        </p>
+        <span class="time_date"> <%= message.message_time %>   |    <%= message.message_day %></span>
+      </div>
     </div>
   </div>
   <% end %>
- <% end %>
-</div>
+  <% end %>

@@ -5,7 +5,11 @@ class Message < ApplicationRecord
   validates_presence_of :content, :user_connection_id, :user_id
 
   def message_time
-    created_at.strftime("%m/%d/%y at %l:%M %p")
+    created_at.strftime("%l:%M %p")
+  end
+
+  def message_day
+    created_at.strftime("%d.%m.%y")
   end
 
   def conversations
