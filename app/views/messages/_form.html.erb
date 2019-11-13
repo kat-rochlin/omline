@@ -1,5 +1,7 @@
-<%= simple_form_for([@user_connection, @message], :url => user_connection_messages_path(@user_connection), remote: true) do |f| %>
-   <%= f.text_area :content %>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-   <%= f.submit "new message"%>
-<% end %>
+<form class="input_msg_write"  novalidate="novalidate" action="/user_connections/<%=@user_connection.id%>/messages" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓">
+   <input value="8" type="hidden" name="message[user_id]" id="message_user_id">
+   <div class="d-flex justify-content-between align-items-center type_msg">
+     <textarea class="write_msg" name="message[content]" id="message_content"></textarea>
+     <button class="msg_send_btn" type="submit" name="commit" value="new message" ><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+   </div>
+</form>

@@ -13,8 +13,6 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.42.0/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body style="min-height: 100vh; display: flex; flex-direction: column;">
-    <p class="custom-notice"><%= notice %></p>
-    <p class="custom-alert"><%= alert %></p>
     <%= render '/shared/navbar' unless controller_name == "registrations" || controller_name == "sessions" || controller_name == "users" %>
     <div class="<%= 'overall-container' unless controller_name == "registrations" || controller_name == "sessions" || controller_name == "users" %>">
       <%= yield %>

@@ -1,15 +1,29 @@
 tag_name,tag_type
-beach,hub
-mountains,hub
-jungle,hub
-yoga,user
-meditation,user
-pranayama,user
-ecstatic dance,user
-yoga,event
-meditation,event
-pranayama,event
-kundalini,studio
-vinyasa,studio
-hatha,studio
-yoga nidra,studio
+Yoga,user
+Meditation,user
+Pranayama,user
+Ecstatic Dance,user
+Sound Healing,user
+Aroma Therapy,user
+Ecstatic Dance,user
+Kirtan,user
+Ayurveda,user
+Reiki,user
+Vinyasa Yoga,user
+Hatha Yoga,user
+Ashtanga Yoga,user
+Yin Yoga,user
+Kundalini Yoga,user
+Iyengar Yoga,user
+Bikram Yoga,user
+Power Yoga,user
+Hot Yoga,user
+Sivananda Yoga,user
+Restorative Yoga,user
+Prenatal Yoga,user
+Aerial Yoga,user
+Acro Yoga,user
+Yoga Nidra,user
+Jivamukti Yoga,user
+Bhakti Yoga,user
+Prenatal Yoga,user
