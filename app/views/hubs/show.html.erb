@@ -20,10 +20,10 @@
         <div class="contact-box-footer">
           <div class="m-t-xs btn-group">
             <% unless current_user == user || user.requested_friends.include?(current_user) || user.friends.include?(current_user) %>
-              <%= link_to "connect", request_friend_path(user), class:"btn-md-white", method: :post %>
+              <%= link_to "Connect", request_friend_path(user), class:"btn-sm-white", method: :post %>
             <% end %>
             <% if user.requested_friends.include?(current_user)%>
-              <%= link_to "pending", "#", class:"btn-md-white"%>
+              <%= link_to "Pending", "#", class:"btn-sm-white"%>
             <% elsif user.friends.include?(current_user) %>
               <%= link_to "#", class:"btn-md-white" do %>
                 <div class="d-flex">

@@ -2,7 +2,8 @@ class HubsController < ApplicationController
   def index
     @search = params[:search]
     if @search.present?
-      @hubs = Hub.where("city ILIKE ?", "%#{@search}%")
+      sql_query = "city ILIKE :search OR name ILIKE :search"
+      @hubs = Hub.where(sql_query, search: "%#{@search}%")
     else
       @hubs = Hub.all
     end
