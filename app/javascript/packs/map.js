@@ -51,7 +51,6 @@ const initMapbox = async () => {
     }
     const tab = document.getElementById("nav-profile-tab");
     tab.addEventListener("click", () => {
-    console.log(map)
      setTimeout(function() { map.resize() }, 250)
     tab.click()
   });
