@@ -33,7 +33,6 @@
     </div>
   </div>
   <div class = "main-profile">
-
     <div class="row row-centered">
       <div class="col-xs-12 col-s-12 col-md-4">
         <div class="card-interests" style="width: auto;">
@@ -100,7 +99,9 @@
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
             <div class="friends pt-3">
               <% @user.friends.first(3).each do |friend| %>
-                <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
+                <%= link_to profile_path(friend.id) do %>
+                  <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-large" %>
+                <% end %>
               <% end %>
             </div>
             <!-- Button trigger modal -->

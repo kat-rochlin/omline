@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-xs-12 col-s-12 col-md-5">
       <div class="sidebar ">
-        <div class = "sidebar-top"><%= cl_image_tag @user.profilephoto, class:"dash-photo"  %>
+        <div class = "sidebar-top">
+          <%= cl_image_tag @user.profilephoto, class:"dash-photo"  %>
           <div class = "dash-name">
             <h3><%= @user.first_name %>'s Dashboard</h3>
           </div>
@@ -200,7 +201,10 @@
                   <div class="col-md-4">
                     <div class="contact-box center-version mx-auto">
                       <div class = "top-prof-card">
-                        <a href="#profile.html"><%= cl_image_tag friendreq.profilephoto, class:"avatar-profile"  %>
+                        <a href="#profile.html">
+                          <%= link_to profile_path(friendreq.id) do %>
+                            <%= cl_image_tag friendreq.profilephoto, crop: :fill, class:"avatar-profile" %>
+                          <% end %>
                         </a>
                         <h5 class="m-b-xs mt-3"><%= friendreq.first_name %></h5>
                       </div>
@@ -251,7 +255,9 @@
                       <div class="col-md-4">
                         <div class="contact-box center-version mx-auto">
                           <div class = "top-prof-card">
-                            <a href="#profile.html"><%= cl_image_tag friend.profilephoto, class:"avatar-profile"  %></a>
+                            <%= link_to profile_path(friend.id) do %>
+                              <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
+                            <% end %>
                             <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
                           </div>
                           <div class="contact-box-footer">
