@@ -23,12 +23,3 @@ initSelect2();
 multiSelect2();
 formDuplicate();
 triggerClickOnEventForm();
-
-
-const removeFlash = () => {
-  document.querySelector(".custom-notice").remove()
-}
-
-setTimeout(removeFlash, 5000);
-
-

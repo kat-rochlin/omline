@@ -68,9 +68,6 @@
 //   }
 // }
 
-
-
-
 .row-centered {
   text-align:center;
   min-width: 75vw;
@@ -522,7 +519,7 @@
   border: 3px solid #eee;
   // padding: 20px;
   border-radius: 20px;
-  height: 400px;
+  height: 659px;
 }
 
 .tab-card-header {
@@ -577,10 +574,6 @@
   letter-spacing: 3px;
 }
 
-.tab-card {
-  height: 500px;
-}
-
 
 .card-product-group {
   height: 275px;
@@ -620,3 +613,15 @@
     color: $dark-grey;
 }
 
+.connection-body {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.friend-avatar {
+  display: flex;
+  margin: 0px 5%;
+  flex-direction: column;
+}
