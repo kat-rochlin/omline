@@ -7,4 +7,6 @@ class Event < ApplicationRecord
   has_many :types, through: :event_types
   has_many :tags, as: :tagable
   validates :title, :description, :start_time, :end_time, :address, :capacity, presence: true
+
+  mount_uploader :photo, PhotoUploader
 end

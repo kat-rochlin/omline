@@ -68,17 +68,37 @@
         <span id="form-to-render" data-to-render="<%= @failed %>">
         </span>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Create an event</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <h3 class="text-center">Create an Event</h3><%= simple_form_for [@hub, @event] do |f| %><%= f.input :title %><%= f.input :description %><%= f.input :address %><%= f.input :price %><%= f.input :start_time, html5: true %><%= f.input :end_time, html5: true %><%= f.input :capacity, inline_label: 'Yes, remember me' %><%= f.button :submit, input_html: { class: 'btn-md-blue' } %><% end %>
+        <div class="modal fade rounded" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" id="event-modal">
+              <div class="container">
+                <div class="modal-header">
+                  <h3 class="modal-title" id="exampleModalLabel">Create an Event</h3>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+
+                    <%= simple_form_for [@hub, @event] do |f| %>
+                      <%= f.input :title %>
+                      <%= f.input :photo %>
+                      <%= f.input :photo_cache, as: :hidden %>
+                      <%= f.input :description %>
+                      <%= f.input :address %>
+                      <div class="row justify-content-between time">
+                      <%= f.input :start_time, as: :string, type: :text, label: "Start Date & Time", wrapper_html: { class: "same-row" }  %>
+                      <%= f.input :end_time, as: :string, type: :text, label: "End Date & Time", wrapper_html: { class: "same-row" }  %>
+                      </div>
+                      <div class="row justify-content-between time">
+                      <%= f.input :price, wrapper_html: { class: "same-row" } %>
+                      <%= f.input :capacity, inline_label: 'Yes, remember me', wrapper_html: { class: "same-row" } %>
+                      </div>
+                      <%= f.button :submit, :class => 'btn-md-blue mx-auto' %>
+                    <% end %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -152,4 +172,5 @@
 
 </div>
 <%= javascript_pack_tag 'map.js' %>
+
 
