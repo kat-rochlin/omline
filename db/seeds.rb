@@ -88,7 +88,7 @@ puts 'creating event'
     price: row['price']
   )
 
-  event.photo = row['photo']
+  event.remote_photo_url = row['photo']
   event.save!
 end
 

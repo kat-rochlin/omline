@@ -66,7 +66,7 @@
         <p class="truncate-overflow"><%= @user.description %></p>
         <% if @user.description.length > 200 %>
           <!-- Button trigger modal -->
-          <button type="button" class="btn-md-white mx-auto" data-toggle="modal" data-target="#exampleModalCenter">
+          <button type="button" class="btn-prof-top-white mx-auto" data-toggle="modal" data-target="#exampleModalCenter">
             Read More
           </button>
 
@@ -103,7 +103,7 @@
               <% end %>
             </div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-sm-white mx-auto" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
+            <button type="button" class="btn-prof-top-white mx-auto" data-toggle="modal" data-target="#exampleModal" style="margin-top: 34px;">
             See All
             </button>
             <!-- Modal -->
@@ -174,7 +174,7 @@
               <h5 class="card-title">TEACHING STYLES</h5>
 
             </div>
-            <div class="card-scroll">
+            <div class="teach-prof card-scroll">
                 <div class = "card-items">
                   <% if current_user == @user %>
                     <% @styles.each do |style| %>
@@ -191,7 +191,7 @@
              <div class = "card-title-fix mt-3">
               <h5 class="card-title">CERTIFICATIONS</h5>
               </div>
-            <div class="card-scroll">
+            <div class="teach-prof card-scroll">
               <% if current_user == @user %>
                 <% @certifications.each do |certification| %>
                   <% if certification.certification_id == 1 %>

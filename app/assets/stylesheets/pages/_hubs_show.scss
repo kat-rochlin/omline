@@ -14,7 +14,7 @@
   // display: flex;
   // align-items: center;
   text-align: right;
-  margin-left: -105px;
+  margin-left: -207px;
   margin-top: 30px;
   width: 500px;
   height: 80px;
@@ -27,7 +27,8 @@
 
 .hub-users-title h2 {
     margin-left: 70px;
-    padding-right: 37px;
+    padding-right: 75px;
+    letter-spacing: 3px;
 }
 
 
@@ -96,7 +97,7 @@
 .event-box-content {
   height: 900px;
   overflow: scroll;
-  margin: auto;
+  margin: 0 auto;
   // padding-top: 50px;
 
 }
@@ -164,6 +165,7 @@
 
 .hub-box-title {
   margin-bottom: 60px;
+  letter-spacing: 3px;
 }
 
 .hub-event-title {
@@ -179,6 +181,7 @@
 .studio-title-top {
     margin-bottom: 53px;
     margin-top: 20px;
+    letter-spacing: 3px;
 }
 
 .studio-tabs .nav-tabs .nav-link {
@@ -322,7 +325,8 @@ height: 220px;
   padding: 50px;
   min-height: 900px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.10), 0 3px 6px rgba(0,0,0,0.10);
-
+  margin-bottom: 20px;
+  padding-bottom: 32px;
 }
 
 
@@ -338,4 +342,9 @@ height: 220px;
   width: 48%;
 }
 
+.teach-prof.card-scroll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 

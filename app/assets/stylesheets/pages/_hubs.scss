@@ -1,6 +1,6 @@
 .card-category.hubs-index {
   background-size: cover;
-  background-position: bottom;
+  background-position: right 0px bottom -131px;
   height: 450px !important;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   color: white;
   font-size: 24px;
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin-bottom: 20px;
@@ -40,13 +40,17 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 15px;
-      border-radius: 20px;
-          text-align: center;
+    border-radius: 20px;
+    text-align: center;
+    width: 300px;
 }
 
 
 .hub-index.cards.container {
-
+  max-width: 1400px;
+  grid-gap: 50px;
+  margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 
@@ -54,5 +58,17 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-top: 50px;
+  h1 {
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  }
 }
+
+.hub-index-contain.card-button {
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
+
 
