@@ -92,6 +92,34 @@
 
 
 
+.btn-sm-connected-white {
+  color: $main-blue;
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  padding: 7px 0px;
+  display: block;
+  text-align: center;
+  width: 87px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.btn-sm-connected-white:hover {
+  color: $main-blue;
+  background: white;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  padding: 7px 0px;
+  display: block;
+  text-align: center;
+  width: 87px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+
+
 
 
 .event-box-content {
@@ -177,7 +205,7 @@
 
 
 .studio-title-top {
-    margin-bottom: 53px;
+    margin-bottom: 41px;
     margin-top: 20px;
     letter-spacing: 3px;
 }
@@ -192,7 +220,9 @@
 .studio-tabs .nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
     color: #4095A6;
     background-color: transparent;
+    h5 {
     font-weight: bolder;
+  }
 
 }
 

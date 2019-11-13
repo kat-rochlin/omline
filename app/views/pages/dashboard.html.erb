@@ -82,9 +82,9 @@
                                   <div class="card-product">
                                     <%= cl_image_tag event.photo %>
                                     <div class="card-product-infos">
-                                      <h2><%= link_to event.title, event_path(event) %></h2>
-                                      <p><strong>Location:</strong><%= event.location_name %></p>
-                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                      <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                      <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                      <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                     </div>
                                   </div>
                                 <% end %>
@@ -105,9 +105,9 @@
                                 <div class="card-product">
                                   <%= cl_image_tag event.photo %>
                                   <div class="card-product-infos">
-                                    <h2><%= link_to event.title, event_path(event) %></h2>
-                                    <p><strong>Location:</strong><%= event.location_name %></p>
-                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                    <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                    <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                   </div>
                                 </div>
                               <% end %>
@@ -150,9 +150,9 @@
                                   <div class="card-product">
                                     <%= cl_image_tag event.photo %>
                                     <div class="card-product-infos">
-                                      <h2><%= link_to event.title, event_path(event) %></h2>
-                                      <p><strong>Location:</strong><%= event.location_name %></p>
-                                      <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                      <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                      <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                      <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                     </div>
                                   </div>
                                 <% end %>
@@ -174,9 +174,9 @@
                                 <div class="card-product">
                                   <%= cl_image_tag event.photo %>
                                   <div class="card-product-infos">
-                                    <h2><%= link_to event.title, event_path(event) %></h2>
-                                    <p><strong>Location:</strong><%= event.location_name %></p>
-                                    <p><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
+                                    <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
+                                    <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
+                                    <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                   </div>
                                 </div>
                               <% end %>
@@ -209,7 +209,7 @@
                         <h5 class="m-b-xs mt-3"><%= friendreq.first_name %></h5>
                       </div>
                       <div class="contact-box-footer">
-                        <div class="m-t-xs btn-group"><%= link_to "accept", accept_friend_path(friendreq), method: :post, class:"btn-xs-white" %></div>
+                        <div class="m-t-xs btn-group"><%= link_to "Accept", accept_friend_path(friendreq), method: :post, class:"btn-xs-white" %></div>
                         <div class="m-t-xs btn-group"><%= link_to "Delete", decline_request_path(friendreq), method: :delete, class:"btn-xs-white" %></div>
                       </div>
                     </div>
