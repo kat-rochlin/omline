@@ -601,3 +601,15 @@
     color: $dark-grey;
 }
 
+.connection-body {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.friend-avatar {
+  display: flex;
+  margin: 0px 5%;
+  flex-direction: column;
+}

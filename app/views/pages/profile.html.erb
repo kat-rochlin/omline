@@ -97,8 +97,8 @@
         </div>
           <div class="card-body" style="display: flex; flex-direction: column; justify-content: space-between;">
             <h6 class="card-subtitle mb-2 ">Recently Added</h6>
-            <div class="friends">
-              <% @user.friends.first(4).each do |friend| %>
+            <div class="friends pt-3">
+              <% @user.friends.first(3).each do |friend| %>
                 <%= cl_image_tag friend.profilephoto, class:"avatar-large"  %>
               <% end %>
             </div>
@@ -111,21 +111,22 @@
               <div class="modal-dialog" role="document">
                 <div class="see-all-users modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><%= @user.first_name %>'s Friends</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><%= @user.first_name %>'s Connections</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body" style="display: flex; justify-content: space-between;">
-                    <% @user.friends.each do |friend| %>
-                      <%= link_to profile_path(friend.id) do %>
-                        <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
+                  <div class="modal-body" style="display: flex;">
+                    <div class="connection-body">
+                      <% @user.friends.each do |friend| %>
+                        <div class="friend-avatar">
+                          <p><%= link_to profile_path(friend.id) do %>
+                            <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
+                          <% end %></p>
+                          <p><strong><%= friend.first_name %></strong></p>
+                        </div>
                       <% end %>
-                      <div>
-                      <strong><%= friend.first_name %></strong>
-                      <p><%= (current_user.friends & @user.friends).length %> Mutual Friends</p>
-                      </div>
-                    <% end %>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
