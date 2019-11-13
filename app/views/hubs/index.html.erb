@@ -1,22 +1,25 @@
 
 <% if params[:newhub] == "newhub" %>
+  <h2 class="container border-bottom text-center mb-3 pb-3 mt-4">Please Select a Destination</h2>
   <div class="hub-search py-2">
+  <div class="hub-search-first py-2 mx-auto text-center">
     <%= form_tag hubs_path, method: :get do %>
       <%= text_field_tag :search,
         @search,
-        class: "form-control",
+        class: "hub form-control",
         placeholder: "Search a location"
       %>
-      <%= submit_tag "Search", class:"btn-sm-blue"%>
+      <%= submit_tag "Search", class:"btn-sm-blue mx-auto"%>
     <% end %>
+     </div>
   </div>
-    <h2 class="container border-bottom text-center mb-5 pb-3">Please Choose Your Hub</h2>
 
-  <div class="cards container mb-5">
+  <div class="hub-index cards container mb-5">
     <% @hubs.each do |hub|%>
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= hub.photo %>)">
         <div class="col-md-9 text-center">
-            <%= link_to hub.city, hub_path(hub.id)%>
+            <%= link_to hub.name, hub_path(hub.id)%>
+            <h4><%= link_to hub.city, hub_path(hub.id)%></h4>
           <div class="row justify-content-center pt-2">
             <%= link_to "Select", new_hub_path({ :newhub => hub.id }), { :class=>"btn-md-blue" }%>
           </div>
@@ -27,8 +30,9 @@
 <% else %>
 
 
-<div class="card-category hubs-index" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573545509/capetown_med_mtxigo.jpg)">
+<div class="card-category hubs-index" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573545509/capetown_med_mtxigo.jpg)">
   <h1 class="hubs-index-header">YOGA DESTINATIONS</h1>
+    <div class="hub-search py-2">
     <div class="hub-search-first py-2 mx-auto text-center">
     <%= form_tag hubs_path, method: :get do %>
       <%= text_field_tag :search,
@@ -39,16 +43,17 @@
       <%= submit_tag "Search", class:"btn-sm-blue mx-auto"%>
     <% end %>
   </div>
+  </div>
 </div>
 
 
-  <div class="card-button">
+  <div class="hub-index card-button">
     <div class="hub-index cards container">
       <% @hubs.each do |hub|%>
         <%= link_to hub_path(hub.id) do %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= hub.photo %>)">
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= hub.photo %>)">
             <div class = "hub-card-text">
-            <h1><%= hub.name %></h1>
+            <%= hub.name %>
             <h4><%= hub.city %></h4>
             </div>
           </div>
