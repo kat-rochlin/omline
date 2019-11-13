@@ -73,7 +73,7 @@
               <!-- Modal -->
               <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
+                  <div class="prof-desc modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLongTitle"><%= @user.first_name %>'s Bio:</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -131,7 +131,6 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
@@ -154,7 +153,7 @@
                   <p class="card-text"><%= experience.location %></p>
                   <p class="card-text"><%= experience.description %></p>
                 </div>
-                <div class = "col-4">
+                <div class = "col-4 text-right">
                   <p><%= experience.start_date.strftime("%B %Y") %> -
                     <% if experience.end_date.nil? %>
                       Present
