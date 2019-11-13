@@ -3,7 +3,6 @@ class EventsController < ApplicationController
 
   def show
     @booking = EventBooking.new
-    @event.user = current_user
   end
 
   def create

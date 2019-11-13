@@ -1,3 +1,9 @@
+.event-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .event-title {
   color: $main-blue !important;
   text-align: center;
@@ -29,4 +35,8 @@
 .card-event {
   border-radius: 30px;
   box-shadow: 2px 4px 10px gray;
+}
+
+.back-arrow {
+  color: #4095A6;
 }
