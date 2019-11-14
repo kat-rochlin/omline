@@ -154,12 +154,7 @@
                   <p class="card-text"><%= experience.description %></p>
                 </div>
                 <div class = "col-4">
-                  <p><%= experience.start_date.strftime("%B %Y") %> -
-                    <% if experience.end_date.nil? %>
-                      Present
-                    <% else %>
-                      <%= experience.end_date.strftime("%B %Y") %>
-                    <% end %></p>
+
                 </div>
               </div>
             </div>
