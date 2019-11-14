@@ -30,11 +30,26 @@
           </li>
           <li class="nav-bar nav-item">
               <% if @connections.present? %>
+                <% if user_signed_in? %>
+                <% counter = 0 %>
+                <% UserConnection.where('connector_id = ? OR connectee_id = ?', current_user.id, current_user.id).each do |connection| %>
+                  <% if Message.where(user_connection_id: connection.id).where.not(user_id: current_user.id).where(read: false).length > 0 %>
+                    <% counter += Message.where(user_connection_id: connection.id).where.not(user_id: current_user.id).where(read: false).length %>
+                  <% end %>
+                <% end %>
+                  <% if counter > 0  %>
+                    <div class="notification-badge">
+                      <i class="fas fa-circle"></i>
+                      <p id="badge-count"><%= counter %></p>
+                    </div>
+                  <% end %>
+                <% end %>
                 <%= link_to user_connection_messages_path(@connections.first), class: "nav-link" do%>
-                <%= image_tag "message_icon.png", :width => 32 %>
+                  <%= image_tag "message_icon.png", :width => 32 %>
                 <% end %>
               <% elsif %>
                 <%= link_to "#", class: "nav-link" do%>
+
                 <%= image_tag "message_icon.png", :width => 32 %>
                 <% end %>
               <% end %>

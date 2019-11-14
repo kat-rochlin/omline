@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :is_teacher, inclusion: { in: [true, false] }, on: :update
   validates :first_name, :last_name, :nationality, presence: true, on: :update
   has_many :user_connections
+  has_many :messages, through: :user_connections
   # allows user to have - accept - and block friends
   has_friendship
   mount_uploader :profilephoto, PhotoUploader
