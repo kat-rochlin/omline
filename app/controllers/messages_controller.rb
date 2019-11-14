@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   def index
     # 1. find all UserConnections for current user that contain messages
     @connections = UserConnection.where('connector_id = ? OR connectee_id = ?', current_user.id, current_user.id)
+
     @conversations = @connections.pluck(:connector_id, :connectee_id).map do |pair|
       id = pair.find do |friend|
         friend != current_user.id
