@@ -28,6 +28,7 @@
   height: 200px;
   border-radius: 100px;
   border: 4px solid #fff;
+  object-fit: cover;
 }
 
 .dash-name {
@@ -108,6 +109,11 @@
 
 .hub-dash-content.dash-card-body {
   margin-top: 100px;
+}
+
+.dash-card-body{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .request.card {
