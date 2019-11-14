@@ -195,7 +195,7 @@
               <div class="request-dash-body p-3">
                 <div class="row justify-content-center">
                   <% if @user.requested_friends.empty?%>
-                    <h5>No New Friend Requests</h5>
+                    <h3 class = "req-title">No Friend Requests</h3>
                   <% else %>
                   <% @user.requested_friends.each do |friendreq| %>
                   <div class="col-md-4">
@@ -227,18 +227,16 @@
                 <% end %>
                 <% if @user.hub.nil? == false %>
                   <div class="card-button">
-                    <%= link_to hub_path(@user.hub.id) do %>
-                      <div class="container w-75">
+                    <div class="container w-75">
+                      <%= link_to hub_path(@user.hub.id), class: "hub-btn" do %>
                         <div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= current_user.hub.photo %>)">
-                          <div class="col-md-6 text-center">
+                          <div class="col-md-6 text-center hub-card">
                             <%= @user.hub.name %>
-                            <h4><%= @user.hub.city %></h4>
-                            <div class="row justify-content-center pt-2">
-                            </div>
+                            <div class="hub-name"><h4><%= @user.hub.city %></h4></div>
                           </div>
                         </div>
-                      </div>
-                    <% end %>
+                      <% end %>
+                    </div>
                   </div>
                   <%= link_to "Change Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-md-white mx-auto" %>
                 <% end %>
@@ -246,24 +244,22 @@
           </div>
           <div class="tab-pane fade" id="connections" role="tabpanel" aria-labelledby="connections-tab">
             <div class="friend card">
-              <div class="dash-card-body p-4 text-center">
+              <div class="connection-content dash-card-body p-4 text-center">
                 <% if @user.friends.empty? %>
-                  <h5>No Connections</h5>
+                  <h3>No Connections</h3>
                 <% else %>
                   <% @user.friends.each do |friend| %>
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="contact-box center-version mx-auto">
-                          <div class = "top-prof-card">
-                            <%= link_to profile_path(friend.id) do %>
-                              <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
-                            <% end %>
-                            <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
-                          </div>
-                          <div class="contact-box-footer">
-                            <div class="m-t-xs btn-group">
-                              <%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
-                            </div>
+                    <div class="col-md-4">
+                      <div class="contact-box center-version mx-auto">
+                        <div class = "top-prof-card">
+                          <%= link_to profile_path(friend.id) do %>
+                            <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
+                          <% end %>
+                          <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
+                        </div>
+                        <div class="contact-box-footer">
+                          <div class="m-t-xs btn-group">
+                            <%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
                           </div>
                         </div>
                       </div>
@@ -279,13 +275,13 @@
             </div>
           </div>
           <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
-            <div class="card text-center">
-              <div class="dash-card-header p-3 text-center border-bottom">
-                <h3>My Tags</h3>
+            <div class="interest-design card text-center">
+              <div class="dash-card-header p-3 text-center ">
+                <h3>My Interests</h3>
               </div>
               <div class="dash-card-body p-4 mx-auto">
                 <% if @user.tags.empty? %>
-                  <h3>Your have not selected any interests yet...</h3>
+                  <h5>No interests selected</h5>
                 <% end %>
                 <div class="cards mb-5">
                   <% @user.tags.each do |tag| %>
@@ -299,7 +295,7 @@
                     </div>
                   <% end %>
                 </div>
-                <button type="button" class="btn-lg-blue mx-auto" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Interests</button>
+                <button type="button" class="btn-lg-white mx-auto" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Interests</button>
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content p-5 container">
