@@ -137,6 +137,10 @@
   color: #999;
 }
 
-.card-button a:hover h1 {
-  border-bottom: 2px solid white;
+
+.hub-btn:hover {
+  .hub-name {
+    border-bottom: 2px solid white;
+  }
 }
+
