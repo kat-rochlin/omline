@@ -21,7 +21,9 @@
         <div class="contact-box-footer">
           <div class="m-t-xs btn-group">
             <% unless current_user == user || user.requested_friends.include?(current_user) || user.friends.include?(current_user) %>
-              <%= link_to "Connect", request_friend_path(user), class:"btn-sm-white", method: :post %>
+              <div class="connect-<%= user.id %>">
+                <%= link_to "Connect", request_friend_path(user), class:"btn-sm-white", method: :post, remote: true %>
+              </div>
             <% end %>
             <% if user.requested_friends.include?(current_user)%>
               <%= link_to "Pending", "#", class:"btn-sm-white"%>
