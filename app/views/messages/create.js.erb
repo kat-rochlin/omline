@@ -39,7 +39,6 @@ function fillForm() {
   } else {
     const allMessages = document.querySelectorAll('.general_message');
     const lastMsg = allMessages[allMessages.length - 1]
-    console.log(lastMsg)
     lastMsg.insertAdjacentHTML('afterend', html);
     message.value = "";
   }

@@ -22,8 +22,8 @@ class EventsController < ApplicationController
         infoWindow: render_to_string(partial: "hubs/info_window", locals: { studio: studio })
       }
     end
-      @failed = true
-      render "hubs/show", locals: { :@hub => @event.hub, :@markers => @markers }
+    @failed = true
+    render "hubs/show", locals: { :@hub => @event.hub, :@markers => @markers }
     end
   end
 
@@ -49,6 +49,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :address, :price, :capacity, :photo)
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :location_name, :address, :price, :capacity, :photo)
   end
 end

@@ -147,13 +147,14 @@
                               <% end %>
                               <% date[1].each do |event| %>
                                 <% if event.end_time > DateTime.now %>
-                                  <div class="card-product">
-                                    <%= cl_image_tag event.photo %>
+                                  <div class="card-product event-booked-card">
+                                    <%= cl_image_tag event.photo, class: "dash-event-photo" %>
                                     <div class="card-product-infos">
                                       <h2 class="text-left"><%= link_to event.title, event_path(event) %></h2>
                                       <p class="text-left"><strong>Location:&nbsp;</strong><%= event.location_name %></p>
                                       <p class="text-left"><%= event.start_time.to_date.strftime("%A, %b %d")%> at <%= event.start_time.strftime("%l:%M")%> - <%= event.end_time.strftime("%l:%M %p")%></p>
                                     </div>
+                                    <%= image_tag "delete.png", id:"delete_icon"%>
                                   </div>
                                 <% end %>
                               <% end %>
@@ -195,7 +196,7 @@
               <div class="request-dash-body p-3">
                 <div class="row justify-content-center">
                   <% if @user.requested_friends.empty?%>
-                    <h5>No New Friend Requests</h5>
+                    <h3 class = "req-title">No Friend Requests</h3>
                   <% else %>
                   <% @user.requested_friends.each do |friendreq| %>
                   <div class="col-md-4">
@@ -246,7 +247,7 @@
             <div class="friend card">
               <div class="connection-content dash-card-body p-4 text-center">
                 <% if @user.friends.empty? %>
-                  <h5>No Connections</h5>
+                  <h3>No Connections</h3>
                 <% else %>
                   <% @user.friends.each do |friend| %>
                     <div class="col-md-4">
@@ -275,13 +276,13 @@
             </div>
           </div>
           <div class="tab-pane fade" id="interests" role="tabpanel" aria-labelledby="interests-tab">
-            <div class="card text-center">
-              <div class="dash-card-header p-3 text-center border-bottom">
-                <h3>My Tags</h3>
+            <div class="interest-design card text-center">
+              <div class="dash-card-header p-3 text-center ">
+                <h3>My Interests</h3>
               </div>
               <div class="dash-card-body p-4 mx-auto">
                 <% if @user.tags.empty? %>
-                  <h3>Your have not selected any interests yet...</h3>
+                  <h5>No interests selected</h5>
                 <% end %>
                 <div class="cards mb-5">
                   <% @user.tags.each do |tag| %>
@@ -295,7 +296,7 @@
                     </div>
                   <% end %>
                 </div>
-                <button type="button" class="btn-lg-blue mx-auto" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Interests</button>
+                <button type="button" class="btn-lg-white mx-auto" data-toggle="modal" data-target=".bd-example-modal-lg">Edit Interests</button>
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content p-5 container">

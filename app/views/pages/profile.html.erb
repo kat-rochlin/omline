@@ -140,106 +140,108 @@
       </div>
     </div>
   </div>
-  <div class = "container-teacher-info">
-    <div class = "teach-exp-top">
-      <h3 class="teach-exp-title">TEACHING &nbspEXPERIENCE</h3>
-      <div class = "teach-exp-cards mx-auto">
-        <% @experiences.each do |experience| %>
-          <div class="card w-75 teach-exp">
-            <div class="card-test">
-              <div class = "col-8">
-                <h5 class="card-title"><%= experience.studio_name %></h5>
-                <p class="card-text"><%= experience.location %></p>
-                <p class="card-text"><%= experience.description %></p>
+  <% if  @user.is_teacher == true %>
+    <div class = "container-teacher-info">
+      <div class = "teach-exp-top">
+        <h3 class="teach-exp-title">TEACHING &nbspEXPERIENCE</h3>
+        <div class = "teach-exp-cards mx-auto">
+          <% @experiences.each do |experience| %>
+            <div class="card w-75 teach-exp">
+              <div class="card-test">
+                <div class = "col-8">
+                  <h5 class="card-title"><%= experience.studio_name %></h5>
+                  <p class="card-text"><%= experience.location %></p>
+                  <p class="card-text"><%= experience.description %></p>
+                </div>
+                <div class = "col-4">
+                  <p><%= experience.start_date.strftime("%B %Y") %> -
+                    <% if experience.end_date.nil? %>
+                      Present
+                    <% else %>
+                      <%= experience.end_date.strftime("%B %Y") %>
+                    <% end %></p>
+                </div>
               </div>
-              <div class = "col-4">
-                <p><%= experience.start_date.strftime("%B %Y") %> -
-                  <% if experience.end_date.nil? %>
-                    Present
-                  <% else %>
-                    <%= experience.end_date.strftime("%B %Y") %>
-                  <% end %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class = "teach-info">
+        <div class="row row-teach">
+          <div class="col-xs-12 col-s-12 col-md-4">
+            <div class="card-teach" style="width: auto;">
+                <div class = "card-title-fix mt-3">
+
+                <h5 class="card-title">TEACHING STYLES</h5>
+
+              </div>
+              <div class="teach-prof card-scroll">
+                  <div class = "card-items">
+                    <% @styles.each do |style| %>
+                      <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style.name %>
+                      </p>
+                    <% end %>
+                  </div>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-    </div>
-    <div class = "teach-info">
-      <div class="row row-teach">
-        <div class="col-xs-12 col-s-12 col-md-4">
-          <div class="card-teach" style="width: auto;">
-              <div class = "card-title-fix mt-3">
-
-              <h5 class="card-title">TEACHING STYLES</h5>
-
+          <div class="col-xs-12 col-s-12 col-md-4">
+            <div class="card-teach" style="width: auto;">
+               <div class = "card-title-fix mt-3">
+                <h5 class="card-title">CERTIFICATIONS</h5>
+                </div>
+              <div class="teach-prof card-scroll">
+                <% @certifications.each do |certification| %>
+                  <% if certification.certification_id == 1 %>
+                    <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
+                    </div>
+                  <% elsif certification.certification_id == 2 %>
+                    <div class = 'cert-icons'><%= image_tag 'ryt-500.jpg', class:"cert-icon"  %>
+                    </div>
+                  <% elsif certification.certification_id == 3 %>
+                    <div class = 'cert-icons'><%= image_tag 'eryt-200.jpg', class:"cert-icon"  %>
+                    </div>
+                  <% elsif certification.certification_id == 4 %>
+                    <div class = 'cert-icons'><%= image_tag 'eryt-200-ryt-500.png', class:"cert-icon"  %>
+                    </div>
+                  <% elsif certification.certification_id == 5 %>
+                    <div class = 'cert-icons'><%= image_tag 'eryt-500.jpg', class:"cert-icon"  %>
+                    </div>
+                  <% elsif certification.certification_id == 6 %>
+                    <div class = 'cert-icons'><%= image_tag 'rcyt.jpg', class:"cert-icon"  %>
+                    </div>
+                  <% elsif certification.certification_id == 7 %>
+                    <div class = 'cert-icons'><%= image_tag 'rpyt.jpg', class:"cert-icon"  %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
+          </div>
+          <div class="col-xs-12 col-s-12 col-md-4">
+            <div class="card-teach" style="width: auto;">
+
+               <div class = "card-title-fix mt-3">
+
+                <h5 class="card-title">LANGUAGES</h5>
+
+              </div>
             <div class="teach-prof card-scroll">
+              <div class="card-body">
                 <div class = "card-items">
-                  <% @styles.each do |style| %>
-                    <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style.name %>
-                    </p>
+                  <% @languages.each do |language| %>
+                  <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= language.language.name %>
+                  </p>
                   <% end %>
                 </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-s-12 col-md-4">
-          <div class="card-teach" style="width: auto;">
-             <div class = "card-title-fix mt-3">
-              <h5 class="card-title">CERTIFICATIONS</h5>
-              </div>
-            <div class="teach-prof card-scroll">
-              <% @certifications.each do |certification| %>
-                <% if certification.certification_id == 1 %>
-                  <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
-                  </div>
-                <% elsif certification.certification_id == 2 %>
-                  <div class = 'cert-icons'><%= image_tag 'ryt-500.jpg', class:"cert-icon"  %>
-                  </div>
-                <% elsif certification.certification_id == 3 %>
-                  <div class = 'cert-icons'><%= image_tag 'eryt-200.jpg', class:"cert-icon"  %>
-                  </div>
-                <% elsif certification.certification_id == 4 %>
-                  <div class = 'cert-icons'><%= image_tag 'eryt-200-ryt-500.png', class:"cert-icon"  %>
-                  </div>
-                <% elsif certification.certification_id == 5 %>
-                  <div class = 'cert-icons'><%= image_tag 'eryt-500.jpg', class:"cert-icon"  %>
-                  </div>
-                <% elsif certification.certification_id == 6 %>
-                  <div class = 'cert-icons'><%= image_tag 'rcyt.jpg', class:"cert-icon"  %>
-                  </div>
-                <% elsif certification.certification_id == 7 %>
-                  <div class = 'cert-icons'><%= image_tag 'rpyt.jpg', class:"cert-icon"  %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-s-12 col-md-4">
-          <div class="card-teach" style="width: auto;">
-
-             <div class = "card-title-fix mt-3">
-
-              <h5 class="card-title">LANGUAGES</h5>
-
-            </div>
-          <div class="teach-prof card-scroll">
-            <div class="card-body">
-              <div class = "card-items">
-                <% @languages.each do |language| %>
-                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= language.language.name %>
-                </p>
-                <% end %>
               </div>
             </div>
-          </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 
 
   <div class="container">

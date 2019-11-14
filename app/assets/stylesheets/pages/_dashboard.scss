@@ -137,6 +137,7 @@
 
 .trash {
   color: #333;
+  padding-right: 5px;
 }
 
 .trash:hover {
@@ -148,5 +149,26 @@
   .hub-name {
     border-bottom: 2px solid white;
   }
+}
+
+.card-product.event-booked-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+#delete_icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
+
+.req-title {
+  margin-top: 23px;
+}
+
+
+.interest-design.card {
+  margin-top: 13px;
+  border: 1px solid transparent;
 }
 
