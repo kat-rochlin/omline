@@ -50,11 +50,11 @@
   <div class="hub-index card-button">
     <div class="hub-index cards container">
       <% @hubs.each do |hub|%>
-        <%= link_to hub_path(hub.id) do %>
+        <%= link_to hub_path(hub.id), class: "hub-btn" do %>
           <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= hub.photo %>)">
             <div class = "hub-card-text">
             <%= hub.name %>
-            <h4><%= hub.city %></h4>
+            <div class="hub-name"><h4><%= hub.city %></h4></div>
             </div>
           </div>
         <% end %>

@@ -227,18 +227,16 @@
                 <% end %>
                 <% if @user.hub.nil? == false %>
                   <div class="card-button">
-                    <%= link_to hub_path(@user.hub.id) do %>
-                      <div class="container w-75">
+                    <div class="container w-75">
+                      <%= link_to hub_path(@user.hub.id), class: "hub-btn" do %>
                         <div class="card-category mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(<%= current_user.hub.photo %>)">
-                          <div class="col-md-6 text-center">
+                          <div class="col-md-6 text-center hub-card">
                             <%= @user.hub.name %>
-                            <h4><%= @user.hub.city %></h4>
-                            <div class="row justify-content-center pt-2">
-                            </div>
+                            <div class="hub-name"><h4><%= @user.hub.city %></h4></div>
                           </div>
                         </div>
-                      </div>
-                    <% end %>
+                      <% end %>
+                    </div>
                   </div>
                   <%= link_to "Change Hub", hubs_path({ :newhub => "newhub" }), :class => "btn-md-white mx-auto" %>
                 <% end %>
