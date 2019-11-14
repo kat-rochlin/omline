@@ -238,6 +238,236 @@ puts 'creating tags'
   tag.save!
 end
 
+# katie friends seed
+
+puts 'creating katie friends'
+
+katie = User.find(1)
+surya = User.find(2)
+katie.friend_request(surya)
+surya.accept_request(katie)
+
+
+katie = User.find(1)
+florian = User.find(3)
+katie.friend_request(florian)
+florian.accept_request(katie)
+
+
+katie = User.find(1)
+matthias = User.find(4)
+katie.friend_request(matthias)
+matthias.accept_request(katie)
+
+
+katie = User.find(1)
+leah = User.find(5)
+katie.friend_request(leah)
+leah.accept_request(katie)
+
+
+katie = User.find(1)
+sarah = User.find(6)
+katie.friend_request(sarah)
+sarah.accept_request(katie)
+
+
+katie = User.find(1)
+lily = User.find(7)
+katie.friend_request(lily)
+lily.accept_request(katie)
+
+
+katie = User.find(1)
+rozina = User.find(8)
+katie.friend_request(rozina)
+rozina.accept_request(katie)
+
+
+katie = User.find(1)
+deni = User.find(10)
+katie.friend_request(deni)
+deni.accept_request(katie)
+
+
+katie = User.find(1)
+giverny = User.find(11)
+katie.friend_request(giverny)
+giverny.accept_request(katie)
+
+
+katie = User.find(1)
+quinn = User.find(12)
+katie.friend_request(quinn)
+quinn.accept_request(katie)
+
+
+katie = User.find(1)
+mason = User.find(13)
+katie.friend_request(mason)
+mason.accept_request(katie)
+
+
+katie = User.find(1)
+sneha = User.find(14)
+katie.friend_request(sneha)
+sneha.accept_request(katie)
+
+
+katie = User.find(1)
+kat = User.find(15)
+katie.friend_request(kat)
+kat.accept_request(katie)
+
+
+
+
+# surya friends seed
+
+puts 'creating surya friends'
+
+
+surya = User.find(2)
+florian = User.find(3)
+surya.friend_request(florian)
+florian.accept_request(surya)
+
+
+surya = User.find(2)
+matthias = User.find(4)
+surya.friend_request(matthias)
+matthias.accept_request(surya)
+
+
+surya = User.find(2)
+leah = User.find(5)
+surya.friend_request(leah)
+leah.accept_request(surya)
+
+
+surya = User.find(2)
+sarah = User.find(6)
+surya.friend_request(sarah)
+sarah.accept_request(surya)
+
+
+surya = User.find(2)
+lily = User.find(7)
+surya.friend_request(lily)
+lily.accept_request(surya)
+
+
+surya = User.find(2)
+rozina = User.find(8)
+surya.friend_request(rozina)
+rozina.accept_request(surya)
+
+
+surya = User.find(2)
+deni = User.find(10)
+surya.friend_request(deni)
+deni.accept_request(surya)
+
+
+surya = User.find(2)
+giverny = User.find(11)
+surya.friend_request(giverny)
+giverny.accept_request(surya)
+
+
+surya = User.find(2)
+quinn = User.find(12)
+surya.friend_request(quinn)
+quinn.accept_request(surya)
+
+
+surya = User.find(2)
+mason = User.find(13)
+surya.friend_request(mason)
+mason.accept_request(surya)
+
+
+surya = User.find(2)
+sneha = User.find(14)
+surya.friend_request(sneha)
+sneha.accept_request(surya)
+
+
+surya = User.find(2)
+kat = User.find(15)
+surya.friend_request(kat)
+kat.accept_request(surya)
+
+
+
+# florian friends seed
+puts "creating florian friends"
+
+
+florian = User.find(3)
+matthias = User.find(4)
+florian.friend_request(matthias)
+matthias.accept_request(florian)
+
+
+florian = User.find(3)
+leah = User.find(5)
+florian.friend_request(leah)
+leah.accept_request(florian)
+
+
+florian = User.find(3)
+sarah = User.find(6)
+florian.friend_request(sarah)
+sarah.accept_request(florian)
+
+
+florian = User.find(3)
+lily = User.find(7)
+florian.friend_request(lily)
+lily.accept_request(florian)
+
+
+florian = User.find(3)
+rozina = User.find(8)
+florian.friend_request(rozina)
+rozina.accept_request(florian)
+
+
+florian = User.find(3)
+deni = User.find(10)
+florian.friend_request(deni)
+deni.accept_request(florian)
+
+
+florian = User.find(3)
+giverny = User.find(11)
+florian.friend_request(giverny)
+giverny.accept_request(florian)
+
+
+florian = User.find(3)
+quinn = User.find(12)
+florian.friend_request(quinn)
+quinn.accept_request(florian)
+
+
+florian = User.find(3)
+mason = User.find(13)
+florian.friend_request(mason)
+mason.accept_request(florian)
+
+
+florian = User.find(3)
+sneha = User.find(14)
+florian.friend_request(sneha)
+sneha.accept_request(florian)
+
+
+florian = User.find(3)
+kat = User.find(15)
+florian.friend_request(kat)
+kat.accept_request(florian)
 
 
 

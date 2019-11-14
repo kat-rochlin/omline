@@ -1,5 +1,9 @@
 <div class = "hub-container">
+  <% if @hub.id == 1 %>
 <div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573486560/DSC_1251_el4p4x.jpg)">
+  <% else  %>
+<div class="card-category hub-show" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res.cloudinary.com/le-wagon1234/image/upload/v1573721859/1562057394_0.jpg_jyfimi.jpg)">
+ <% end  %>
   <h1 class="hub-name-show"><%= @hub.name.upcase %>
   </h1>
 </div>
