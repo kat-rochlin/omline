@@ -6,7 +6,9 @@
 <div class = "row">
   <div class = "hub-users-title"><h2>YOGIS<h2></div>
   <div class = "col-12">
+
     <div class="hub-profile-cards"><% @users.each do |user| %>
+      <% if user != current_user %>
       <div class="contact-box center-version">
         <div class = "top-prof-card">
           <%= link_to profile_path(user) do %>
@@ -33,7 +35,9 @@
             <% end %>
           </div>
         </div>
-      </div><% end %>
+      </div>
+      <% end %>
+      <% end %>
     </div>
   </div>
 <div class="container-fluid">
