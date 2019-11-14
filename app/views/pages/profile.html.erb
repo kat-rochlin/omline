@@ -144,26 +144,24 @@
     <div class = "teach-exp-top">
       <h3 class="teach-exp-title">TEACHING &nbspEXPERIENCE</h3>
       <div class = "teach-exp-cards mx-auto">
-        <% if current_user == @user %>
-          <% @experiences.each do |experience| %>
-            <div class="card w-75 teach-exp">
-              <div class="card-test">
-                <div class = "col-8">
-                  <h5 class="card-title"><%= experience.studio_name %></h5>
-                  <p class="card-text"><%= experience.location %></p>
-                  <p class="card-text"><%= experience.description %></p>
-                </div>
-                <div class = "col-4 text-right">
-                  <p><%= experience.start_date.strftime("%B %Y") %> -
-                    <% if experience.end_date.nil? %>
-                      Present
-                    <% else %>
-                      <%= experience.end_date.strftime("%B %Y") %>
-                    <% end %></p>
-                </div>
+        <% @experiences.each do |experience| %>
+          <div class="card w-75 teach-exp">
+            <div class="card-test">
+              <div class = "col-8">
+                <h5 class="card-title"><%= experience.studio_name %></h5>
+                <p class="card-text"><%= experience.location %></p>
+                <p class="card-text"><%= experience.description %></p>
+              </div>
+              <div class = "col-4">
+                <p><%= experience.start_date.strftime("%B %Y") %> -
+                  <% if experience.end_date.nil? %>
+                    Present
+                  <% else %>
+                    <%= experience.end_date.strftime("%B %Y") %>
+                  <% end %></p>
               </div>
             </div>
-          <% end %>
+          </div>
         <% end %>
       </div>
     </div>
@@ -178,11 +176,9 @@
             </div>
             <div class="teach-prof card-scroll">
                 <div class = "card-items">
-                  <% if current_user == @user %>
-                    <% @styles.each do |style| %>
-                      <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style.name %>
-                      </p>
-                    <% end %>
+                  <% @styles.each do |style| %>
+                    <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= style.teaching_style.name %>
+                    </p>
                   <% end %>
                 </div>
             </div>
@@ -194,30 +190,28 @@
               <h5 class="card-title">CERTIFICATIONS</h5>
               </div>
             <div class="teach-prof card-scroll">
-              <% if current_user == @user %>
-                <% @certifications.each do |certification| %>
-                  <% if certification.certification_id == 1 %>
-                    <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
-                    </div>
-                  <% elsif certification.certification_id == 2 %>
-                    <div class = 'cert-icons'><%= image_tag 'ryt-500.jpg', class:"cert-icon"  %>
-                    </div>
-                  <% elsif certification.certification_id == 3 %>
-                    <div class = 'cert-icons'><%= image_tag 'eryt-200.jpg', class:"cert-icon"  %>
-                    </div>
-                  <% elsif certification.certification_id == 4 %>
-                    <div class = 'cert-icons'><%= image_tag 'eryt-200-ryt-500.png', class:"cert-icon"  %>
-                    </div>
-                  <% elsif certification.certification_id == 5 %>
-                    <div class = 'cert-icons'><%= image_tag 'eryt-500.jpg', class:"cert-icon"  %>
-                    </div>
-                  <% elsif certification.certification_id == 6 %>
-                    <div class = 'cert-icons'><%= image_tag 'rcyt.jpg', class:"cert-icon"  %>
-                    </div>
-                  <% elsif certification.certification_id == 7 %>
-                    <div class = 'cert-icons'><%= image_tag 'rpyt.jpg', class:"cert-icon"  %>
-                    </div>
-                  <% end %>
+              <% @certifications.each do |certification| %>
+                <% if certification.certification_id == 1 %>
+                  <div class = 'cert-icons'><%= image_tag 'ryt-200.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 2 %>
+                  <div class = 'cert-icons'><%= image_tag 'ryt-500.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 3 %>
+                  <div class = 'cert-icons'><%= image_tag 'eryt-200.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 4 %>
+                  <div class = 'cert-icons'><%= image_tag 'eryt-200-ryt-500.png', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 5 %>
+                  <div class = 'cert-icons'><%= image_tag 'eryt-500.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 6 %>
+                  <div class = 'cert-icons'><%= image_tag 'rcyt.jpg', class:"cert-icon"  %>
+                  </div>
+                <% elsif certification.certification_id == 7 %>
+                  <div class = 'cert-icons'><%= image_tag 'rpyt.jpg', class:"cert-icon"  %>
+                  </div>
                 <% end %>
               <% end %>
             </div>
@@ -234,11 +228,9 @@
           <div class="teach-prof card-scroll">
             <div class="card-body">
               <div class = "card-items">
-                <% if current_user == @user %>
-                  <% @languages.each do |language| %>
-                  <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= language.language.name %>
-                  </p>
-                  <% end %>
+                <% @languages.each do |language| %>
+                <p><%= image_tag 'lotus_icon.png', class:"lotus-icon"  %> <%= language.language.name %>
+                </p>
                 <% end %>
               </div>
             </div>
