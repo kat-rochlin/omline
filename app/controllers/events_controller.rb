@@ -22,8 +22,8 @@ class EventsController < ApplicationController
         infoWindow: render_to_string(partial: "hubs/info_window", locals: { studio: studio })
       }
     end
-      @failed = true
-      render "hubs/show", locals: { :@hub => @event.hub, :@markers => @markers }
+    @failed = true
+    render "hubs/show", locals: { :@hub => @event.hub, :@markers => @markers }
     end
   end
 
