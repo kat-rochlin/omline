@@ -4,7 +4,7 @@
       <div class="inbox_people">
         <div class="headind_srch">
           <div class="recent_heading">
-            <h3>MESSAGES</h>
+            <h3>MESSAGES</h3>
           </div>
           <div class="srch_bar">
             <div class="stylish-input-group">
@@ -18,7 +18,8 @@
             </div>
           </div>
           <div class="inbox_chat"><% @conversations.each do |friend| %>
-            <div class="chat_list active_chat">
+            <div class="chat_list <%= 'active-chat' if params[:user_connection_id].to_i == UserConnection.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first.id  %>">
+            <%= link_to "", user_connection_messages_path(UserConnection.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first), class: "btn-invisible" %>
               <div class="chat_people">
                 <div class="chat_img"><%= cl_image_tag friend.profilephoto, class:"avatar-large" %>
                 </div>
@@ -26,12 +27,28 @@
                   <h5 style="display: flex; justify-content: space-between;">
                     <%= friend.first_name %>
                     <%= friend.last_name %>
-                    <%= link_to "Chat", user_connection_messages_path(UserConnection.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first), class: "btn-sm-white #{'active' if params[:user_connection_id].to_i == UserConnection.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first.id }" %>
-                    <!-- <span class="chat_date">Dec 25</span></h5> -->
+
+        <!--  <%# connection = @connections.where('connector_id = ? OR connectee_id = ?', friend.id, friend.id).first %>
+                  <%# if connection.messages.any? %>
+                    <div class = "message-preview">
+
+                      <%# if connection.messages.last.user.first_name == current_user.first_name %>
+                       <p>You: </p>&nbsp;
+                      <%# else %>
+                    <p><%#=  connection.messages.last.user.first_name %>: </p>&nbsp;
+                    <%# end %>
+
+                     <p><%#=  connection.messages.last.content %>&nbsp;</p>
+                     <p> | <%#= connection.messages.last.message_time %>, &nbsp;<%#=  connection.messages.last.created_at.to_date.strftime("%b %d") %></p>
+                    </div>
+                  <%# end %> -->
+
+
+
                   </div>
                 </div>
               </div>
-              <% end %>
+        <% end %>
             </div>
           </div>
           <div class="mesgs" style="background-color: white;">
@@ -44,7 +61,7 @@
                   <div class="outgoing_msg general_message">
                     <div class="sent_msg">
                       <p><%= message.content %></p>
-                      <span class="time_date"> <%= message.message_time %>    |    <%= message.message_day %></span>
+                      <span class="time_date"> <%= message.message_time %>    |    <%= message.message_day.to_date.strftime("%b %y") %></span>
                     </div>
                   </div>
                 <% else %>
@@ -57,7 +74,7 @@
                         <div class="received_withd_msg">
                           <p><%= message.content %>
                           </p>
-                          <span class="time_date"> <%= message.message_time %>   |    <%= message.message_day %></span>
+                          <span class="time_date"> <%= message.message_time %>   |    <%= message.message_day.to_date.strftime("%b %y") %></span>
                         </div>
                       </div>
                     </div>
