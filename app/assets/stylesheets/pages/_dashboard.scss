@@ -150,3 +150,13 @@
   }
 }
 
+.card-product.event-booked-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+#delete_icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
+}
