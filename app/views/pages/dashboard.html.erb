@@ -251,23 +251,21 @@
                   <h5>No Connections</h5>
                 <% else %>
                   <% @user.friends.each do |friend| %>
-
-                      <div class="col-md-4">
-                        <div class="contact-box center-version mx-auto">
-                          <div class = "top-prof-card">
-                            <%= link_to profile_path(friend.id) do %>
-                              <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
-                            <% end %>
-                            <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
-                          </div>
-                          <div class="contact-box-footer">
-                            <div class="m-t-xs btn-group">
-                              <%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
-                            </div>
+                    <div class="col-md-4">
+                      <div class="contact-box center-version mx-auto">
+                        <div class = "top-prof-card">
+                          <%= link_to profile_path(friend.id) do %>
+                            <%= cl_image_tag friend.profilephoto, crop: :fill, class:"avatar-profile" %>
+                          <% end %>
+                          <h5 class="m-b-xs mt-3"><%= friend.first_name %></h5>
+                        </div>
+                        <div class="contact-box-footer">
+                          <div class="m-t-xs btn-group">
+                            <%= link_to "Delete", remove_friend_path(friend), method: :delete,class:"btn-xs-white" %>
                           </div>
                         </div>
                       </div>
-
+                    </div>
                   <% end %>
                 <% end %>
               </div>
