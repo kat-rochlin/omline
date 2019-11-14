@@ -52,7 +52,10 @@ class PagesController < ApplicationController
 
   def request_friend
     current_user.friend_request(@user)
-    redirect_to request.referrer
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js  # <-- idem
+    end
   end
 
   def accept_friend
