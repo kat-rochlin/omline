@@ -200,6 +200,7 @@ puts 'creating teacher_experiences'
     location: row['location']
   )
   teacher_experience.save!
+  puts teacher_experience.id
 end
 
 
@@ -262,14 +263,12 @@ matthias.accept_request(katie)
 
 katie = User.find(1)
 leah = User.find(5)
-katie.friend_request(leah)
-leah.accept_request(katie)
+leah.friend_request(katie)
 
 
 katie = User.find(1)
 sarah = User.find(6)
-katie.friend_request(sarah)
-sarah.accept_request(katie)
+sarah.friend_request(katie)
 
 
 katie = User.find(1)
@@ -280,8 +279,7 @@ lily.accept_request(katie)
 
 katie = User.find(1)
 rozina = User.find(8)
-katie.friend_request(rozina)
-rozina.accept_request(katie)
+rozina.friend_request(katie)
 
 
 katie = User.find(1)
@@ -298,8 +296,7 @@ giverny.accept_request(katie)
 
 katie = User.find(1)
 quinn = User.find(12)
-katie.friend_request(quinn)
-quinn.accept_request(katie)
+quinn.friend_request(katie)
 
 
 katie = User.find(1)
@@ -319,6 +316,14 @@ kat = User.find(15)
 katie.friend_request(kat)
 kat.accept_request(katie)
 
+
+katie = User.find(1)
+genna = User.find(16)
+genna.friend_request(katie)
+
+katie = User.find(1)
+michael = User.find(17)
+michael.friend_request(katie)
 
 
 

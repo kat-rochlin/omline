@@ -1,9 +1,4 @@
 user_connection_id,user_id,content
-1,1,"Hey Surya! Long time no talk, how are you doing?"
-1,2,"Hey Katie :) so great to hear from you! I'm doing great, I'm actually living in Canggu for the time being. Teaching Vinyasa classes on the beach and Kundalini classes from the Villa I'm staying in. Also leading an Integrated Men and Women's circle soon which I'm very excited about. "
-1,1,"No way, I'm planning to go to Canggu in a week! Wow I can't wait to see you and take some of your classes. When are your classes and the men and women's circle?"
-1,2,"Amazing, can't believe you'll be here in a week - so excited to see you! I've posted all of the event details on OMline - you can find them on my profile or in the Canggu destination page :)"
-1,1,"Perfect, I'll check them out and make a booking! "
 2,1,Hey Florian! Great to see you OMline :) I see you've been hosting a bunch of Ashtanga yoga classes - that's awesome! Did you do an additional certification of did you just learn on your own?
 2,3,"Hi Katie! So great to hear from you, I actually took a 3 day training where we learning how to teach a basic Ashtanga class. I was taking a lot of classes before I did the training so I felt comfortable diving into teaching. While it's been fun to teach Hatha, it's been really rewarding and fun to teach Ashtanga - much more my pace :)"
 2,3,Are you interested in teaching Ashtanga?
@@ -11,4 +6,5 @@ user_connection_id,user_id,content
 2,3,It's called Core Ashtanga training and I highly recommend. They have multiple locations for the trainings so I would look them up online and see if there are any upcoming trainings near you.
 2,1,"Amazing, thanks so much Florian!"
 2,3,"Of course, glad I could help! Let me know if you have any other questions :) "
-3,6,"Hi Katie! How are things going with you? I see you've been teaching lots of Vinyasa classes, that's awsome!"
+3,4,"Hi Katie! How are things going with you? I see you've been teaching lots of Vinyasa classes, that's awesome!"
+4,7,"Hey it was so great to connect at the Yoga Barn in Ubud :) Hope you enjoy the rest of your travels!"

@@ -32,11 +32,11 @@ img{ max-width:100%;}
 
 .btn-invisible {
   background-color: transparent;
-  width: 100%;
+  width: 80%;
   height: 100%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10%;
 }
 
 .inbox_msg {
@@ -98,10 +98,12 @@ img{ max-width:100%;}
   // width: 11%;
 }
 .chat_ib {
-  float: left;
-  padding: 0 0 0 20px;
-  margin-top: 20px;
-  width: 84%;
+    float: left;
+    padding: 0 0 0 20px;
+    margin-top: 20px;
+    width: 84%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .chat_people{ overflow:hidden; clear:both;}
@@ -194,5 +196,24 @@ height: 800px;
 .message-preview {
   display: flex;
   margin-left: 40px;
+  align-items: center;
 }
+
+.truncate-msg-text {
+  // margin-left: 30px;
+  // width: 200px;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  display: flex;
+}
+
+.msg-preview-date {
+  margin-left: 30px;
+}
+
+
+
+
+
 

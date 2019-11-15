@@ -18,7 +18,7 @@
       <%= link_to "Requested", "#", class: 'btn-md-blue', style: 'position: absolute;top: 10px; right: 10px;' %>
     <% elsif @user.friends.include?(current_user) %>
       <%= link_to "#", class: "btn-md-blue", style: 'position: absolute;top: 10px; right: 10px;' do %>
-        <i class="fa fa-check" aria-hidden="true">  <bold>Connected</bold> </i>
+        <div class= "d-flex"><i class="fa fa-check icon" aria-hidden="true"> </i><p id="word"><bold>Connected</bold></p></div>
       <% end %>
     <% end %>
     <div class = "action-btns">
@@ -153,8 +153,14 @@
                   <p class="card-text"><%= experience.location %></p>
                   <p class="card-text"><%= experience.description %></p>
                 </div>
-                <div class = "col-4">
-
+                <div class = "col-4 text-right">
+                  <p><%= experience.start_date.strftime("%B %Y") %> -
+                    <% if experience.end_date.nil? %>
+                      Present
+                    <% else %>
+                      <%= experience.end_date.strftime("%B %Y") %>
+                    <% end %>
+                  </p>
                 </div>
               </div>
             </div>
